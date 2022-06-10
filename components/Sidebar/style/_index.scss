@@ -1,0 +1,72 @@
+.sidebar {
+  @apply md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-sm bg-bg flex flex-wrap items-center justify-between relative md:w-64 z-10 pt-4;
+  border-right: 1px solid #001d6e0f;
+  padding-right: 30px;
+  padding-bottom: 30px;
+
+  &__container {
+    @apply md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto;
+  }
+
+  &__logo {
+    @apply md:flex items-center text-left md:pb-2 md:mx-auto inline-block whitespace-nowrap font-medium p-4 px-0 text-lg text-primary-deep_1;
+    letter-spacing: -0.05em;
+
+    span {
+      margin-left: 15px;
+    }
+  }
+
+  &__mobile__hamburger {
+    @apply cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent;
+    padding-left: 30px;
+  }
+
+  &__navigation__title {
+    @apply md:min-w-full inline-block text-sm text-primary-deep_1 font-semibold pt-1 mb-5;
+    padding-left: 30px;
+  }
+
+  &__navigation__list {
+    @apply items-center py-3 text-secondary;
+    padding-left: 30px;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+
+    &__active {
+      @apply text-primary-deep_2;
+      background: linear-gradient(
+        90deg,
+        rgba(196, 221, 255, 0.5) 0.89%,
+        rgba(196, 221, 255, 0) 100%
+      );
+      border-radius: 8px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  &__navigation__link,
+  &__navigation__logout {
+    @apply flex items-center font-normal text-base;
+  }
+
+  &__navigation__logout {
+    @apply md:absolute bottom-0 hover:opacity-80 pt-4 mt-5;
+    padding-left: 30px;
+  }
+
+  &__navigation__ul {
+    @apply md:flex-col md:min-w-full flex flex-col list-none;
+  }
+
+  &__navigation__collapse {
+    @apply md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-10 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded;
+  }
+
+  &__navigation__mobile__close {
+    @apply cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent;
+  }
+}

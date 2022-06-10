@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: 'smooth';
+  box-sizing: border-box;
+}
+
+body,
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+body.modal-open {
+  overflow-y: hidden;
+}
+
+button,
+i,
+a,
+ul,
+li {
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+span,
+a,
+h6 {
+  color: inherit;
+}
