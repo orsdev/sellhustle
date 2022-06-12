@@ -6,7 +6,7 @@ const Header = () => {
       <div className="home__profile__header__left">
         <button>
           <Image
-            src="/icons/light/notification.png"
+            src="/icons/light/bell.png"
             alt="Notification"
             height={18}
             width={18}
