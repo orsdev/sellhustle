@@ -1,0 +1,16 @@
+.home__profile__reputation {
+  &__title {
+    @apply text-secondary opacity-60 font-normal;
+    margin-bottom: 20px;
+  }
+
+  &__progress {
+    header {
+      @apply flex justify-between mb-2;
+
+      h5 {
+        font-size: 14px;
+      }
+    }
+  }
+}

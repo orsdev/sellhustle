@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -5,8 +7,18 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
+    screens: {
+      base: '500px',
+      ...defaultTheme.screens
+    },
     extend: {
       fontSize: {
+        xs: [
+          '14px',
+          {
+            lineHeight: '17px'
+          }
+        ],
         base: [
           '16px',
           {
@@ -19,6 +31,12 @@ module.exports = {
             lineHeight: '21px'
           }
         ],
+        md: [
+          '22px',
+          {
+            lineHeight: '27px'
+          }
+        ],
         lg: [
           '24px',
           {
@@ -28,8 +46,9 @@ module.exports = {
       },
       colors: {
         highlight: '#F5BD4F',
-        bg: '#FFFFFF',
+        bg: '#F5F5F5',
         secondary: '#0B192D',
+        accent: '#FBFBFB',
         primary: {
           deep_1: '#001D6E',
           deep_2: '#0544DD',
@@ -40,5 +59,5 @@ module.exports = {
       }
     }
   },
-  plugins: []
+  plugins: [require('tailwind-scrollbar')]
 }

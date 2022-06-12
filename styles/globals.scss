@@ -2,40 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: 'smooth';
-  box-sizing: border-box;
+@layer base {
+  html {
+    scroll-behavior: 'smooth';
+    box-sizing: border-box;
+  }
+
+  body,
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+
+  body {
+    overflow-y: scroll;
+  }
+
+  button,
+  i,
+  a,
+  ul,
+  li {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  span,
+  a,
+  h6 {
+    color: inherit;
+  }
 }
 
-body,
-html {
-  font-family: 'Inter', sans-serif;
-}
+@layer utilities {
+  .cm-border-radius {
+    border: 1px solid rgba(0, 29, 110, 0.1);
+    border-radius: 16px;
+  }
 
-body {
-  overflow-y: scroll;
-}
+  .cm-border {
+    border: 1px solid rgba(0, 29, 110, 0.1);
+  }
 
-body.modal-open {
-  overflow-y: hidden;
-}
+  .cm-border-left {
+    border-left: 1px solid rgba(0, 29, 110, 0.1);
+  }
 
-button,
-i,
-a,
-ul,
-li {
-  -webkit-tap-highlight-color: transparent;
-}
+  .font-xs {
+    @apply text-xs font-normal;
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-p,
-span,
-a,
-h6 {
-  color: inherit;
+  .font-base {
+    @apply text-base font-medium;
+  }
 }
