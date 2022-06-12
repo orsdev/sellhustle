@@ -9,7 +9,7 @@
   }
 
   &__logo {
-    @apply md:flex items-center text-left md:pb-2 md:mx-auto inline-block whitespace-nowrap font-medium p-4 px-0 text-lg text-primary-deep_1;
+    @apply md:flex items-center text-left md:pb-2 md:mx-auto inline-block whitespace-nowrap font-medium p-4 px-0 text-lg text-primary-blue_dark_1;
     letter-spacing: -0.05em;
 
     span {
@@ -23,12 +23,12 @@
   }
 
   &__navigation__title {
-    @apply md:min-w-full inline-block text-sm text-primary-deep_1 font-semibold pt-1 mb-5;
+    @apply md:min-w-full inline-block text-sm text-primary-blue_dark_1 font-semibold pt-1 mb-5;
     padding-left: 30px;
   }
 
   &__navigation__list {
-    @apply items-center py-3 text-secondary;
+    @apply items-center py-3;
     padding-left: 30px;
 
     &:not(:last-child) {
@@ -36,7 +36,7 @@
     }
 
     &__active {
-      @apply text-primary-deep_2;
+      @apply text-primary-blue_dark_2;
       background: linear-gradient(
         90deg,
         rgba(196, 221, 255, 0.5) 0.89%,
@@ -54,7 +54,7 @@
   }
 
   &__navigation__logout {
-    @apply md:absolute bottom-0 hover:opacity-80 pt-4 mt-5;
+    @apply md:absolute bottom-0 hover:opacity-80 pt-4 mt-5 text-black opacity-60;
     padding-left: 30px;
   }
 

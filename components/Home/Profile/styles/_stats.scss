@@ -27,12 +27,11 @@
   }
 
   &__text {
-    @apply text-secondary opacity-60;
     font-size: 12px;
     margin-bottom: 7px;
   }
 
   &__total {
-    @apply text-primary-deep_1 font-semibold;
+    @apply text-primary-blue_dark_1 font-semibold;
   }
 }

@@ -12,12 +12,11 @@
     @apply bg-white p-5 flex items-center;
 
     &__sub {
-      @apply text-secondary opacity-75;
       margin-bottom: 7px;
     }
 
     &__title {
-      @apply text-primary-deep_1 font-semibold;
+      @apply text-primary-blue_dark_1 font-semibold;
     }
   }
 }

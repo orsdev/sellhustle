@@ -94,7 +94,7 @@ const PopularProducts = () => {
         <h5 className="font-base home__popular__products__heading">
           Popular Products
         </h5>
-        <button className="text-primary-deep_1 font-xs">
+        <button className="text-primary-blue_dark_1 font-xs">
           <span className="pr-2">See all</span>
           <Image
             src="/icons/light/next.png"
@@ -120,10 +120,13 @@ const PopularProducts = () => {
                 />
               </div>
               <hgroup className="block ml-3">
-                <button type="button" className="font-base text-primary-deep_1">
+                <button
+                  type="button"
+                  className="font-base text-primary-blue_dark_1"
+                >
                   {title}
                 </button>
-                <h5 className="font-xs text-secondary">{uploaded}</h5>
+                <h5 className="font-xs">{uploaded}</h5>
               </hgroup>
             </div>
             <div className="home__popular__products__price font-xs">

@@ -3,7 +3,7 @@
   height: 600px;
 
   &__heading {
-    @apply text-secondary opacity-60 font-normal;
+    @apply font-normal;
     font-size: 15px;
   }
 
@@ -42,7 +42,6 @@
 
       .font-xs {
         font-size: 12.5px;
-        opacity: 0.7;
       }
     }
   }

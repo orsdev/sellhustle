@@ -47,14 +47,16 @@ module.exports = {
       colors: {
         highlight: '#F5BD4F',
         bg: '#F5F5F5',
-        secondary: '#0B192D',
+        secondary: 'rgba(11, 25, 45, 0.5)',
         accent: '#FBFBFB',
         primary: {
-          deep_1: '#001D6E',
-          deep_2: '#0544DD',
-          light_1: '#C4DDFF',
-          light_2: '#EEF5FF',
-          light_3: '#7FB5FF'
+          blue_dark_1: '#001D6E',
+          blue_dark_2: '#0544DD',
+          blue_light_1: '#C4DDFF',
+          blue_light_2: '#EEF5FF',
+          blue_light_3: '#7FB5FF',
+          blue_light_4: 'rgba(196, 221, 255, 0.2)',
+          green_dark_1: '#3CC13B'
         }
       }
     }

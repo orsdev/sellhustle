@@ -2,13 +2,13 @@
   @apply flex flex-col items-center justify-center;
 
   &__name {
-    @apply font-semibold text-primary-deep_1 text-center text-md;
+    @apply font-semibold text-primary-blue_dark_1 text-center text-md;
     text-align: center;
     font-size: 19px;
   }
 
   &__role {
-    @apply text-xs text-secondary opacity-60;
+    @apply text-xs;
     font-size: 13px;
   }
 }

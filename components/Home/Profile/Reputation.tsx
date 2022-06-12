@@ -6,8 +6,8 @@ const ProfileReputation = () => {
       <h4 className="home__profile__reputation__title font-base">Reputation</h4>
       <div className="home__profile__reputation__progress">
         <header className="block">
-          <h5 className="font-base text-primary-deep_1">Star seller</h5>
-          <h5 className="font-base text-primary-deep_1">85%</h5>
+          <h5 className="font-base text-primary-blue_dark_1">Star seller</h5>
+          <h5 className="font-base text-primary-blue_dark_1">85%</h5>
         </header>
         <Progress
           percent={85}

@@ -16,7 +16,7 @@ const PageTitle = () => {
   console.log(pathname)
   return (
     <div className="common__page__title">
-      <h1 className="text-left font-medium text-lg text-primary-deep_1">
+      <h1 className="text-left font-medium text-lg text-primary-blue_dark_1">
         {FormatTitle(pathname)}
       </h1>
     </div>

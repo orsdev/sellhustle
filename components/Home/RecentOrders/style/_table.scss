@@ -1,0 +1,46 @@
+.recent__orders__table {
+  .ant-table {
+    thead th {
+      @apply text-secondary select-none;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13.5px;
+      line-height: 15px;
+    }
+
+    tbody tr,
+    tbody td {
+      font-size: 13px;
+    }
+  }
+
+  &__image {
+    @apply rounded-lg;
+    width: 34px;
+    height: 34px;
+  }
+
+  &__info {
+    @apply flex;
+  }
+
+  .font-base {
+    font-size: 13px;
+  }
+
+  &__delete,
+  &__edit {
+    @apply text-secondary py-2 px-3;
+    width: 90px;
+    font-size: 12px;
+    border-radius: 5px;
+  }
+
+  &__edit {
+    @apply bg-primary-blue_light_4 mb-1;
+  }
+
+  &__delete {
+    @apply bg-red-100 mb-1;
+  }
+}
