@@ -1,0 +1,26 @@
+.custom__date {
+  @apply flex bg-white rounded-lg;
+  min-width: 140px;
+  max-width: 160px;
+  height: 35px;
+  padding: 0 5px;
+
+  @media (max-width: 500px) {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .custom__flatpickr {
+    width: calc(100% - 25px);
+    height: 100%;
+
+    &::placeholder {
+      padding-left: 10px;
+    }
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
+  }
+}
