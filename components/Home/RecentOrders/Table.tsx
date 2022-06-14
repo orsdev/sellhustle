@@ -7,8 +7,6 @@ import Image from 'next/image'
 interface DataType {
   key: React.Key
   image: string
-  category: string
-  brand: string
   date: string
   title: string
   price: number
@@ -63,24 +61,9 @@ const columns: ColumnsType<DataType> = [
     }
   },
   {
-    title: 'Category',
-    dataIndex: 'category',
-    sortDirections: ['descend'],
-    sorter: (a: any, b: any) => a.category.localeCompare(b.category),
-    render: (category: string) => (
-      <span className="text-secondary">{category}</span>
-    )
-  },
-  {
-    title: 'Brand',
-    dataIndex: 'brand',
-    sortDirections: ['descend'],
-    sorter: (a: any, b: any) => a.brand.localeCompare(b.brand),
-    render: (brand: string) => <span className="text-secondary">{brand}</span>
-  },
-  {
     title: 'Date',
     dataIndex: 'date',
+    width: 150,
     sortDirections: ['descend'],
     sorter: (a: any, b: any) => dayjs(a.date).diff(dayjs(b.date)),
     render: (date) => {
@@ -147,8 +130,6 @@ const data: DataType[] = [
     key: 0,
     title: 'Knot Crop',
     image: '/product-sm.png',
-    category: 'Fashion',
-    brand: 'Prada',
     date: customDate(2, 'years'),
     price: 200,
     status: 'Available'
@@ -157,9 +138,7 @@ const data: DataType[] = [
     key: 1,
     title: 'V-neck',
     image: '/product-sm.png',
-    category: 'Fashion',
-    brand: 'Fendi',
-    date: customDate(200, 'days'),
+    date: customDate(10, 'years'),
     price: 1000,
     status: 'In Progress'
   },
@@ -167,8 +146,6 @@ const data: DataType[] = [
     key: 2,
     title: 'Mini Jean',
     image: '/product-sm.png',
-    category: 'Fashion',
-    brand: 'Hermes',
     date: customDate(10, 'months'),
     price: 500,
     status: 'Completed'
@@ -177,9 +154,7 @@ const data: DataType[] = [
     key: 3,
     title: 'Tank Top',
     image: '/product-sm.png',
-    category: 'Fashion',
-    brand: 'Burberry',
-    date: customDate(300, 'days'),
+    date: customDate(1000, 'days'),
     price: 200,
     status: 'In Progress'
   },
@@ -187,31 +162,9 @@ const data: DataType[] = [
     key: 4,
     title: 'Tube Top',
     image: '/product-sm.png',
-    category: 'Fashion',
-    brand: 'Ralph Lauren',
-    date: customDate(400, 'days'),
+    date: customDate(4, 'years'),
     price: 580,
     status: 'Available'
-  },
-  {
-    key: 5,
-    title: 'Sport Bra',
-    image: '/product-sm.png',
-    category: 'Fashion',
-    brand: 'Gucci',
-    date: customDate(500, 'days'),
-    price: 1500,
-    status: 'In Progress'
-  },
-  {
-    key: 6,
-    title: 'Batwing Tops',
-    image: '/product-sm.png',
-    category: 'Fashion',
-    brand: 'Chanel',
-    date: customDate(800, 'days'),
-    price: 4600,
-    status: 'Completed'
   }
 ]
 
@@ -305,7 +258,7 @@ const OrdersTable = () => {
         ]}
         dataSource={dataSource}
         pagination={false}
-        scroll={{ x: 1200 }}
+        scroll={{ x: 700 }}
       />
     </div>
   )

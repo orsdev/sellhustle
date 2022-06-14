@@ -1,35 +1,34 @@
 .sidebar {
-  @apply md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-sm bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 pt-4;
+  @apply md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-sm bg-white flex flex-wrap items-center justify-between relative md:w-52 md:pr-0 md:pt-4 md:pb-7;
   border-right: 1px solid #001d6e0f;
-  padding-right: 30px;
-  padding-bottom: 30px;
+  z-index: 100;
 
   &__container {
     @apply md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto;
   }
 
   &__logo {
-    @apply md:flex items-center text-left md:pb-2 md:mx-auto inline-block whitespace-nowrap font-medium p-4 px-0 text-lg text-primary-blue_dark_1;
+    @apply md:flex items-center text-left md:pb-2 md:mx-auto inline-block whitespace-nowrap font-medium p-4 px-0 text-md text-primary-blue_dark_1;
     letter-spacing: -0.05em;
 
     span {
-      margin-left: 15px;
+      margin-left: 10px;
     }
   }
 
   &__mobile__hamburger {
     @apply cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent;
-    padding-left: 30px;
+    padding-right: 28px;
   }
 
   &__navigation__title {
     @apply md:min-w-full inline-block text-sm text-primary-blue_dark_1 font-semibold pt-1 mb-5;
-    padding-left: 30px;
+    padding-left: 28px;
   }
 
   &__navigation__list {
     @apply items-center py-3;
-    padding-left: 30px;
+    padding-left: 28px;
 
     &:not(:last-child) {
       margin-bottom: 8px;
@@ -54,8 +53,8 @@
   }
 
   &__navigation__logout {
-    @apply md:absolute bottom-0 hover:opacity-80 pt-4 mt-5 text-black opacity-60;
-    padding-left: 30px;
+    @apply md:absolute bottom-0 hover:opacity-80 md:pt-4 md:mt-5 text-black opacity-60 w-full;
+    padding-left: 28px;
   }
 
   &__navigation__ul {

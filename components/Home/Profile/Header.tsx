@@ -13,15 +13,6 @@ const Header = () => {
             objectFit="contain"
           />
         </button>
-        <button>
-          <Image
-            src="/icons/light/message.png"
-            alt="Message"
-            height={18}
-            width={18}
-            objectFit="contain"
-          />
-        </button>
       </div>
       <div className="home__profile__header__right">
         <button>

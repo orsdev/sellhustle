@@ -11,13 +11,13 @@ function Home() {
     <AppLayout>
       <div className="mx-auto w-full">
         <div className="flex flex-wrap">
-          <div className="w-full xl:w-[68%]  mb-12 xl:mb-0 px-7 py-12">
+          <div className="w-full xl:w-[73%]  mb-12 xl:mb-0 px-7 py-12">
             <Header />
             <Stats />
             <AbandonedCart />
             <RecentOrders />
           </div>
-          <div className="w-full xl:w-[32%] p-7 bg-white cm-border-left">
+          <div className="w-full xl:w-[27%] p-7 bg-white cm-border-left">
             <Profile />
             <PopularProducts />
           </div>

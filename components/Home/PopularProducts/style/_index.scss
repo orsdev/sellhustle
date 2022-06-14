@@ -1,7 +1,4 @@
 .home__popular__products {
-  @apply pr-4;
-  height: 600px;
-
   &__heading {
     @apply font-normal;
     font-size: 15px;
@@ -12,7 +9,7 @@
   }
 
   &__body {
-    @apply p-3 rounded-lg relative;
+    @apply p-4 px-1 rounded-lg relative;
     border-radius: 8px;
   }
 
@@ -37,7 +34,7 @@
       @apply xl:pr-3;
 
       .font-base {
-        font-size: 14px;
+        font-size: 12px;
       }
 
       .font-xs {

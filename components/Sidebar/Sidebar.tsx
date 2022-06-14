@@ -47,6 +47,21 @@ export default function Sidebar() {
     <>
       <nav className="sidebar">
         <div className="sidebar__container">
+          {/* Logo */}
+          <div className="pl-7">
+            <Link href="/">
+              <a className="sidebar__logo">
+                <Image
+                  src="/logo.png"
+                  alt="Sell Hustle Logo"
+                  height={50}
+                  width={50}
+                />
+                <span className="hidden md:block">Sel Hustle</span>
+              </a>
+            </Link>
+          </div>
+
           {/* Toggler */}
           <button
             className="sidebar__mobile__hamburger"
@@ -55,19 +70,6 @@ export default function Sidebar() {
           >
             <i className="fas fa-bars"></i>
           </button>
-
-          {/* Logo */}
-          <Link href="/">
-            <a className="sidebar__logo">
-              <Image
-                src="/logo.png"
-                alt="Sell Hustle Logo"
-                height={50}
-                width={50}
-              />
-              <span className="hidden md:block">Sel Hustle</span>
-            </a>
-          </Link>
 
           {/* Collapse */}
           <div className={'sidebar__navigation__collapse ' + collapseShow}>
@@ -164,7 +166,7 @@ export default function Sidebar() {
             <br />
             {/* Divider */}
             <hr className="md:min-w-full" />
-            <div className="h-8" />
+            <div className="h-4 md:h-8" />
             <div className="sidebar__navigation__logout">
               <button type="button" className="flex items-center">
                 <Image

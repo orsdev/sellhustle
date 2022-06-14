@@ -7,11 +7,11 @@ const ProfileStats = () => {
         <Image
           src="/icons/light/box.png"
           alt="Products"
-          height={30}
-          width={30}
+          height={28}
+          width={28}
           objectFit="contain"
         />
-        <hgroup className="block ml-3">
+        <hgroup className="block ml-3 mt-1">
           <h3 className="home__profile__stats__total font-xs">218</h3>
           <h3 className="home__profile__stats__text">Products</h3>
         </hgroup>
@@ -21,11 +21,11 @@ const ProfileStats = () => {
         <Image
           src="/icons/light/user.png"
           alt="Followers"
-          height={30}
-          width={30}
+          height={28}
+          width={28}
           objectFit="contain"
         />
-        <hgroup className="block ml-3">
+        <hgroup className="block ml-3 mt-1">
           <h3 className="home__profile__stats__total font-xs">2,580</h3>
           <h3 className="home__profile__stats__text">Followers</h3>
         </hgroup>

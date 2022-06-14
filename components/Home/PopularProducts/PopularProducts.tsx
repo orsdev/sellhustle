@@ -35,61 +35,12 @@ const Products = [
     price: 100,
     title: 'White Shirt',
     uploaded: '5 min ago'
-  },
-  {
-    id: '06',
-    image: '/product-avatar.png',
-    price: 300,
-    title: 'Short Sleeve',
-    uploaded: '5 min ago'
-  },
-  {
-    id: '07',
-    image: '/product-avatar.png',
-    price: 150,
-    title: 'Tunic',
-    uploaded: '5 min ago'
-  },
-  {
-    id: '08',
-    image: '/product-avatar.png',
-    price: 250,
-    title: 'Pepium Top',
-    uploaded: '5 min ago'
-  },
-  {
-    id: '09',
-    image: '/product-avatar.png',
-    price: 300,
-    title: 'Basic',
-    uploaded: '5 min ago'
-  },
-  {
-    id: '10',
-    image: '/product-avatar.png',
-    price: 360,
-    title: 'Colar Top',
-    uploaded: '5 min ago'
-  },
-  {
-    id: '11',
-    image: '/product-avatar.png',
-    price: 60,
-    title: 'Fitted Cami',
-    uploaded: '5 min ago'
-  },
-  {
-    id: '12',
-    image: '/product-avatar.png',
-    price: 600,
-    title: 'V-neck',
-    uploaded: '5 min ago'
   }
 ]
 
 const PopularProducts = () => {
   return (
-    <div className="home__popular__products mt-8 scrollbar-thin scrollbar-thumb-secondary scrollbar-track-bg overflow-y-scroll">
+    <div className="home__popular__products mt-8">
       <header className="block">
         <h5 className="font-base home__popular__products__heading">
           Popular Products
