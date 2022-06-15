@@ -62,3 +62,8 @@
     @apply text-base font-medium;
   }
 }
+
+// Fixes tailwind base overide
+button.ant-btn.ant-btn-primary {
+  background: #1890ff;
+}

@@ -13,7 +13,6 @@ const FormatTitle = (pathname: string) => {
 const PageTitle = () => {
   const { pathname } = useRouter()
 
-  console.log(pathname)
   return (
     <div className="common__page__title">
       <h1 className="text-left font-medium text-lg text-primary-blue_dark_1">

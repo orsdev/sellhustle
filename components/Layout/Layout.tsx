@@ -5,7 +5,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <Sidebar />
-      <div className="relative md:ml-52 app__layout">{children}</div>
+      <div className="relative md:ml-52 app__layout bg-bg">{children}</div>
     </>
   )
 }

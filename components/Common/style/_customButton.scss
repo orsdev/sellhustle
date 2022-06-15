@@ -1,0 +1,17 @@
+.custom__button {
+  @apply flex justify-evenly items-center;
+  position: relative;
+  min-width: 117px;
+  min-height: 38px;
+  border: 1px solid rgba(0, 29, 110, 0.1);
+  border-radius: 12px;
+
+  &:hover {
+    filter: contrast(0.9);
+  }
+
+  &__add {
+    position: relative;
+    right: 3px;
+  }
+}

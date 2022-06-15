@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import AbandonedCart from '@/components/Home/AbandonedCart/Index'
 import Header from '@/components/Home/Header/Header'
 import PopularProducts from '@/components/Home/PopularProducts/PopularProducts'
@@ -9,6 +10,9 @@ import AppLayout from '@/components/Layout/Layout'
 function Home() {
   return (
     <AppLayout>
+      <Head>
+        <title>Sel Hustle | Home </title>
+      </Head>
       <div className="mx-auto w-full">
         <div className="flex flex-wrap">
           <div className="w-full xl:w-[73%]  mb-12 xl:mb-0 px-7 py-12">

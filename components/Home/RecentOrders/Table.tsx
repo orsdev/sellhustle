@@ -3,6 +3,7 @@ import { Table, Dropdown, Menu } from 'antd'
 import type { ColumnsType } from 'antd/lib/table'
 import dayjs from 'dayjs'
 import Image from 'next/image'
+import { currencyFormatter } from '@/utils/currencyFormatter'
 
 interface DataType {
   key: React.Key
@@ -92,8 +93,7 @@ const columns: ColumnsType<DataType> = [
       return (
         <>
           <span className="font-xs text-primary-blue_dark_1">
-            <b>&#65284;</b>
-            {price}
+            {currencyFormatter(price, 'USD')}
           </span>
         </>
       )
@@ -173,7 +173,6 @@ const OrdersTable = () => {
   const [dataSource, setDataSource] = useState<DataType[]>(data)
 
   const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
-    console.log('selectedRowKeys changed: ', selectedRowKeys)
     setSelectedRowKeys(newSelectedRowKeys)
   }
 
