@@ -29,48 +29,70 @@ const CardLatest: FC<CardLatestProps> = ({
         <Image
           src={image}
           alt={title}
-          height={50}
-          width={50}
+          height={75}
+          width={75}
           className="card__latest__image"
           objectFit="cover"
         />
         <div className="ml-3">
           <button
             type="button"
-            className="font-xs text-primary-blue_dark_1 mb-2 text-left"
+            className="font-base text-primary-blue_dark_1 mb-2 text-left"
             style={{
-              fontWeight: 500
+              fontWeight: 600
             }}
           >
             {title}
           </button>
-          <p className="font-xs">Qty: {quantity}</p>
+          <p className="font-base">
+            Qty:
+            <span className="text-primary-blue_dark_1 font-semibold ml-1">
+              {quantity}
+            </span>
+          </p>
         </div>
       </div>
 
       <div>
-        <p className="font-xs mb-2">Color: {color}</p>
-        <p className="font-xs">Size: {size}</p>
+        <p className="font-base mb-2">
+          <span className="inline-block w-12">Color:</span>
+          <span className="text-primary-blue_dark_1 font-semibold capitalize">
+            {color}
+          </span>
+        </p>
+        <p className="font-base">
+          <span className="inline-block w-12">Size:</span>
+          <span className="text-primary-blue_dark_1 font-semibold">{size}</span>
+        </p>
       </div>
 
       <div>
         <p
-          className="font-xs text-primary-blue_dark_1 mb-2"
+          className="font-base text-primary-blue_dark_1 mb-2"
           style={{
             fontWeight: 600
           }}
         >
           {currencyFormatter(5000, 'USD')}
         </p>
-        <p className="font-xs">Buyer: {buyer}</p>
+        <p className="font-base">
+          Buyer:
+          <span className="text-primary-blue_dark_1 font-semibold ml-1 capitalize">
+            {buyer}
+          </span>
+        </p>
       </div>
 
       <div className="md:text-right">
         <button
-          className="font-xs text-primary-blue_light_3 hover:opacity-70"
+          className="font-base text-primary-blue_light_3 hover:opacity-70"
           onClick={onViewOrder}
         >
           View Order
+          <i
+            className="fa fa-angle-right ml-2 text-secondary"
+            aria-hidden="true"
+          />
         </button>
       </div>
     </div>

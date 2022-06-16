@@ -58,6 +58,7 @@ module.exports = {
           blue_light_3: '#7FB5FF',
           blue_light_4: 'rgba(196, 221, 255, 0.2)',
           green_dark_1: '#3CC13B',
+          grey: '#C9CFDF',
           danger: '#F03738',
           warning: '#F3BB1C',
           success: '#3CC13B'

@@ -1,24 +1,13 @@
+import { useState } from 'react'
 import { Table } from 'antd'
 import { ColumnsType } from 'antd/lib/table'
 import dayjs from 'dayjs'
 import Image from 'next/image'
 import { currencyFormatter } from '@/utils/currencyFormatter'
-import TableWrapper from '@/components/Common/TableWrapper'
-import { useState } from 'react'
-
-interface DataType {
-  id: string
-  orderID: string
-  image: string
-  customer: string
-  item: number
-  date: string
-  title: string
-  price: number
-  status: string
-  paymentMethod: string
-  children?: DataType[]
-}
+import TableWrapper, {
+  OrderDataType,
+  ProductDataType
+} from '@/components/Common/TableWrapper'
 
 const customDate = (duration: number, unit: 'days' | 'years' | 'months') => {
   let _date
@@ -36,14 +25,14 @@ const customDate = (duration: number, unit: 'days' | 'years' | 'months') => {
   return _date
 }
 
-const data: DataType[] = [
+const data: OrderDataType[] | ProductDataType[] = [
   {
     id: '010',
     orderID: '#00004',
     customer: 'Ilesanmi Funmi',
     image: '/product-sm.png',
     item: 1,
-    title: 'V-neck',
+    name: 'V-neck',
     date: customDate(10, 'years'),
     price: 1000,
     status: 'Canceled',
@@ -55,7 +44,7 @@ const data: DataType[] = [
         image: '/product-sm.png',
         customer: 'Ilesanmi Funmi',
         item: 1,
-        title: 'Turtle neck',
+        name: 'Turtle neck',
         date: customDate(10, 'years'),
         price: 200,
         status: 'In Progress',
@@ -67,7 +56,7 @@ const data: DataType[] = [
         customer: 'Adeola Efunsetan',
         item: 2,
         image: '/avatar-lg.png',
-        title: 'V-neck',
+        name: 'V-neck',
         date: customDate(10, 'years'),
         price: 9000,
         status: 'In Progress',
@@ -81,7 +70,7 @@ const data: DataType[] = [
     image: '/product-sm.png',
     customer: 'Oke Busayo',
     item: 4,
-    title: 'Knot Crop',
+    name: 'Knot Crop',
     date: customDate(2, 'years'),
     price: 25000,
     status: 'Available',
@@ -93,7 +82,7 @@ const data: DataType[] = [
         image: '/product-sm.png',
         customer: 'Ajani James',
         item: 5,
-        title: 'Round Neck',
+        name: 'Round Neck',
         date: customDate(10, 'years'),
         price: 200,
         status: 'In Progress',
@@ -107,7 +96,7 @@ const data: DataType[] = [
     customer: 'Jeremiah Olisa',
     image: '/avatar-lg.png',
     item: 3,
-    title: 'Polo',
+    name: 'Polo',
     date: customDate(6, 'years'),
     price: 8000,
     status: 'Completed',
@@ -119,7 +108,7 @@ const data: DataType[] = [
     customer: 'Jeremiah Olisa',
     image: '/avatar-lg.png',
     item: 8,
-    title: 'T shirt',
+    name: 'T shirt',
     date: customDate(6, 'years'),
     price: 5600,
     status: 'In Progress',
@@ -131,7 +120,7 @@ const data: DataType[] = [
     customer: 'Lola Alao',
     image: '/avatar-lg.png',
     item: 7,
-    title: 'Sneakers',
+    name: 'Sneakers',
     date: customDate(6, 'years'),
     price: 15600,
     status: 'Canceled',
@@ -143,7 +132,7 @@ const data: DataType[] = [
     customer: 'David Saul',
     image: '/avatar-lg.png',
     item: 3,
-    title: 'Sneakers',
+    name: 'Sneakers',
     date: customDate(8, 'years'),
     price: 15600,
     status: 'In Progress',
@@ -155,7 +144,7 @@ const data: DataType[] = [
     customer: 'Idinmu Korede',
     image: '/avatar-lg.png',
     item: 7,
-    title: 'Sneakers',
+    name: 'Sneakers',
     date: customDate(60, 'years'),
     price: 15600,
     status: 'Available',
@@ -167,7 +156,7 @@ const data: DataType[] = [
     customer: 'Blessing Favour',
     image: '/avatar-lg.png',
     item: 5,
-    title: 'Sneakers',
+    name: 'Sneakers',
     date: customDate(6, 'years'),
     price: 15600,
     status: 'In Progress',
@@ -186,14 +175,17 @@ const AllOrdersTable = () => {
           getColumnSearch,
           rowSelection,
           dataSource,
-          expandedRowKeys
+          expandedRowKeys,
+          onGetRowID,
+          onRemoveRowID
         }) => {
-          const columns: ColumnsType<DataType> = [
+          const columns: ColumnsType<OrderDataType | ProductDataType> = [
             {
               title: 'Order ID',
               dataIndex: 'orderID',
-              width: 160,
-              render: (id, record) => {
+              width: 150,
+              ...getColumnSearch('orderID'),
+              render: (id, record: any) => {
                 return (
                   <>
                     <div className="all__orders__table__info">
@@ -207,7 +199,7 @@ const AllOrdersTable = () => {
                         >
                           <Image
                             src={record.image}
-                            alt={record.title}
+                            alt={record.name}
                             height={34}
                             width={34}
                             objectFit="contain"
@@ -217,7 +209,7 @@ const AllOrdersTable = () => {
                           type="button"
                           className="font-base ml-2 all__orders__table__title"
                         >
-                          {record.title}
+                          {record.name}
                         </button>
                       </div>
                     </div>
@@ -229,12 +221,12 @@ const AllOrdersTable = () => {
                     </button>
                   </>
                 )
-              },
-              ...getColumnSearch('orderID')
+              }
             },
             {
               title: 'Customer',
               dataIndex: 'customer',
+              width: 140,
               render: (customer: string) => (
                 <span className="text-secondary">{customer}</span>
               ),
@@ -278,6 +270,7 @@ const AllOrdersTable = () => {
             {
               title: 'Price',
               dataIndex: 'price',
+              width: 100,
               sortDirections: ['descend'],
               sorter: (a: any, b: any) => a.price - b.price,
               render: (price) => {
@@ -312,7 +305,7 @@ const AllOrdersTable = () => {
                   value: 'canceled'
                 }
               ],
-              onFilter: (value: any, record) =>
+              onFilter: (value: any, record: any) =>
                 record.status.toLowerCase().indexOf(value.toLowerCase()) === 0,
               render: (status) => {
                 const formattedStatus = status.toLowerCase()
@@ -349,7 +342,7 @@ const AllOrdersTable = () => {
                   value: 'paypal'
                 }
               ],
-              onFilter: (value: any, record) =>
+              onFilter: (value: any, record: any) =>
                 record.paymentMethod
                   .toLowerCase()
                   .indexOf(value.toLowerCase()) === 0,
@@ -363,9 +356,56 @@ const AllOrdersTable = () => {
             <Table
               className="all__orders__table"
               rowKey="id"
-              columns={columns}
+              columns={[
+                ...columns,
+                {
+                  title: '',
+                  width: 100,
+                  render: (_, record) => {
+                    return (
+                      <div className="text-center all__orders__table__icon">
+                        <div className="flex items-center justify-center">
+                          {expandedRowKeys.indexOf(record.id) === -1 && (
+                            <button
+                              className="mr-3 hover:opacity-80"
+                              onClick={() =>
+                                onGetRowID && onGetRowID(record?.id)
+                              }
+                            >
+                              <Image
+                                src="/icons/collapse.png"
+                                alt="Collapse"
+                                height={10}
+                                width={10}
+                                objectFit="contain"
+                              />
+                            </button>
+                          )}
+                          {expandedRowKeys.indexOf(record.id) >= 0 && (
+                            <button
+                              className="hover:opacity-80 flex justify-center items-center bg-primary-blue_light_2 w-7 h-7 rounded-full"
+                              onClick={() =>
+                                onRemoveRowID && onRemoveRowID(record?.id)
+                              }
+                            >
+                              <Image
+                                src="/icons/expand.png"
+                                alt="Expand"
+                                height={10}
+                                width={10}
+                                objectFit="contain"
+                              />
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    )
+                  }
+                }
+              ]}
               rowSelection={{
-                ...rowSelection
+                ...rowSelection,
+                selectedRowKeys: expandedRowKeys
               }}
               expandable={{
                 expandedRowKeys,

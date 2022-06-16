@@ -60,7 +60,10 @@ const data = [
 const LatestOrder = () => {
   return (
     <div className="order__lastest mt-10">
-      <h4 className="order__latest__title">Latest Orders</h4>
+      <div className="flex justify-between items-center px-2 mb-5">
+        <h4 className="order__latest__title">Latest Products</h4>
+        <button className="font-base">Show all</button>
+      </div>
       <div className="order__latest__grid">
         {data &&
           data.map(({ id, image, title, quantity, color, size, buyer }) => (

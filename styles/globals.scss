@@ -67,3 +67,10 @@
 button.ant-btn.ant-btn-primary {
   background: #1890ff;
 }
+
+.ant-switch {
+  @apply bg-primary-grey;
+  &-checked {
+    @apply bg-primary-success;
+  }
+}

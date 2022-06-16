@@ -5,26 +5,43 @@ import { TableRowSelection } from 'antd/lib/table/interface'
 import { SearchOutlined } from '@ant-design/icons'
 import Highlighter from 'react-highlight-words'
 
-interface DataType {
+export interface OrderDataType {
   id: string
   orderID: string
   image: string
   customer: string
   item: number
   date: string
-  title: string
+  name: string
   price: number
   status: string
   paymentMethod: string
-  children?: DataType[]
+  children?: OrderDataType[]
+}
+
+export interface ProductDataType {
+  id: string
+  sku: string
+  category: string
+  published: boolean
+  image: string
+  stock: number
+  name: string
+  price: number
+  children?: ProductDataType[]
 }
 
 type StringOrNumber = string | number
 
-type DataIndex = keyof DataType
+type OrderDataIndex = keyof OrderDataType
+type ProductDataIndex = keyof ProductDataType
 
 type RenderProps = {
-  getColumnSearch(dataIndex: DataIndex): ColumnType<DataType>
+  getColumnSearch(
+    dataIndex: OrderDataIndex | ProductDataIndex
+  ): ColumnType<OrderDataType | ProductDataType>
+  onGetRowID?(id: string): void
+  onRemoveRowID?(id: string): void
   rowSelection: any
   dataSource: any[]
   expandedRowKeys: string[]
@@ -36,7 +53,9 @@ type TableWrapperProps = {
     getColumnSearch,
     rowSelection,
     dataSource,
-    expandedRowKeys
+    expandedRowKeys,
+    onGetRowID,
+    onRemoveRowID
   }: RenderProps) => ReactNode
 }
 
@@ -44,12 +63,24 @@ const TableWrapper: FC<TableWrapperProps> = ({ tableData, render }) => {
   const [searchText, setSearchText] = useState('')
   const [searchedColumn, setSearchedColumn] = useState<StringOrNumber>('')
   const searchInputRef = useRef<InputRef | null>(null)
-  const [dataSource] = useState<DataType[]>(tableData)
+  const [dataSource] = useState<OrderDataType[] | ProductDataType[]>(tableData)
   const [expandedRowKeys, setExpandRowKeys] = useState<string[]>([])
 
-  const rowSelection: TableRowSelection<DataType> = {
+  const onGetRowID = (id: string) => {
+    if (id) {
+      setExpandRowKeys([id])
+    }
+  }
+
+  const onRemoveRowID = (id: string) => {
+    if (id) {
+      const rowsID = expandedRowKeys.filter((rowId) => rowId !== id)
+      setExpandRowKeys(rowsID)
+    }
+  }
+
+  const rowSelection: TableRowSelection<OrderDataType | ProductDataType> = {
     onSelect: (record, selected, selectedRows) => {
-      console.log(record, selected, selectedRows)
       const rowsId = selectedRows.map((item) => item.id)
       setExpandRowKeys(rowsId)
     },
@@ -74,7 +105,9 @@ const TableWrapper: FC<TableWrapperProps> = ({ tableData, render }) => {
     setSearchText('')
   }
 
-  const getColumnSearch = (dataIndex: DataIndex): ColumnType<DataType> => ({
+  const getColumnSearch = (
+    dataIndex: OrderDataIndex | ProductDataIndex
+  ): ColumnType<OrderDataType | ProductDataType> => ({
     filterDropdown: ({
       setSelectedKeys,
       selectedKeys,
@@ -161,7 +194,14 @@ const TableWrapper: FC<TableWrapperProps> = ({ tableData, render }) => {
 
   return (
     <div className="bg-white">
-      {render({ getColumnSearch, rowSelection, dataSource, expandedRowKeys })}
+      {render({
+        getColumnSearch,
+        rowSelection,
+        dataSource,
+        expandedRowKeys,
+        onGetRowID,
+        onRemoveRowID
+      })}
     </div>
   )
 }

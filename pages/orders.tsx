@@ -5,7 +5,7 @@ import OrderStats from '@/components/Orders/Stats/Stats'
 import AllOrders from '@/components/Orders/AllOrders/Index'
 import LatestOrder from '@/components/Orders/LatestOrder/Index'
 
-function Home() {
+const Orders = () => {
   return (
     <AppLayout>
       <Head>
@@ -20,4 +20,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Orders
