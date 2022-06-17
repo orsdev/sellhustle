@@ -1,0 +1,11 @@
+.auth__common__button {
+  @apply bg-primary-blue_dark_2 text-white text-center font-bold;
+  width: 100%;
+  min-height: 60px;
+  border-radius: 8px;
+  transition: all 0.3s;
+
+  &:hover {
+    filter: saturate(10);
+  }
+}

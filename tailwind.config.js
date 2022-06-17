@@ -43,6 +43,12 @@ module.exports = {
           {
             lineHeight: '29px'
           }
+        ],
+        xl: [
+          '40px',
+          {
+            lineHeight: '48px'
+          }
         ]
       },
       colors: {
@@ -59,6 +65,7 @@ module.exports = {
           blue_light_4: 'rgba(196, 221, 255, 0.2)',
           green_dark_1: '#3CC13B',
           grey: '#C9CFDF',
+          grey_light: ' #868B9F',
           danger: '#F03738',
           warning: '#F3BB1C',
           success: '#3CC13B'
