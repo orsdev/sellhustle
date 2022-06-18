@@ -1,0 +1,8 @@
+@import './header';
+@import './allOrdersTable';
+
+.all__orders {
+  @apply mt-7 bg-white p-3 py-4;
+  border-radius: 16px;
+  overflow: hidden;
+}

@@ -1,0 +1,32 @@
+.details__shipping {
+  @apply p-7 bg-white mt-5;
+
+  &__title {
+    @apply text-primary-blue_dark_1;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    gap: 16px;
+
+    p {
+      font-size: 13px;
+    }
+
+    @media (max-width: 470px) {
+      p {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 440px) {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+  }
+}

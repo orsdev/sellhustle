@@ -2,29 +2,38 @@ import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+import type { MenuProps } from 'antd'
+import { Menu } from 'antd'
 
-const MenuNavigation = [
-  {
-    icon: '/icons/dashboard-',
-    title: 'Dashboard',
-    route: '/'
-  },
-  {
-    icon: '/icons/orders-',
-    title: 'Orders',
-    route: '/orders'
-  },
-  {
-    icon: '/icons/product-',
-    title: 'Products',
-    route: '/products'
-  },
-  {
-    icon: '/icons/settings-',
-    title: 'Settings',
-    route: '/settings'
+type MenuItem = Required<MenuProps>['items'][number]
+
+function getItem(
+  label: React.ReactNode,
+  key: React.Key,
+  icon?: React.ReactNode,
+  children?: MenuItem[],
+  type?: 'group'
+): MenuItem {
+  return {
+    key,
+    icon,
+    children,
+    label,
+    type
+  } as MenuItem
+}
+
+const AndDesignPathFormat = (path: string): string[] => {
+  if (path.includes('orders')) {
+    if (path === '/orders/list') {
+      return ['orders', '/orders/list']
+    } else {
+      return ['orders', '/orders/details']
+    }
+  } else {
+    return [path]
   }
-]
+}
 
 const BusinessNavigation = [
   {
@@ -39,9 +48,18 @@ const BusinessNavigation = [
   }
 ]
 
-export default function Sidebar() {
+const Sidebar = () => {
   const [collapseShow, setCollapseShow] = React.useState('hidden')
   const router = useRouter()
+
+  const onClick: MenuProps['onClick'] = (e) => {
+    console.log('click ', e)
+    if (e && e.key) {
+      if (e.key !== '/orders/details') {
+        router.push(e.key)
+      }
+    }
+  }
 
   return (
     <>
@@ -102,36 +120,195 @@ export default function Sidebar() {
 
             {/* Menu Navigation */}
             <h6 className="sidebar__navigation__title">Menu</h6>
-            <ul className="sidebar__navigation__ul">
-              {MenuNavigation.map(({ route, title, icon }) => (
-                <li
-                  className={`sidebar__navigation__list ${
-                    router.pathname === route
-                      ? 'sidebar__navigation__list__active'
-                      : ''
-                  }
-                  `}
-                  key={title}
-                >
-                  <Link href={route}>
-                    <a className="sidebar__navigation__link">
-                      <Image
-                        src={
-                          icon +
-                          `${
-                            router.pathname === route ? 'dark.png' : 'light.png'
-                          }`
-                        }
-                        alt={title}
-                        height={20}
-                        width={20}
-                      />
-                      <span className="inline-block ml-4">{title}</span>
-                    </a>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <div className="sidebar__navigation__menu">
+              <Menu
+                onClick={onClick}
+                defaultSelectedKeys={AndDesignPathFormat(router.pathname)}
+                defaultOpenKeys={AndDesignPathFormat(router.pathname)}
+                mode="inline"
+                inlineCollapsed={false}
+                items={[
+                  getItem(
+                    'Dashboard',
+                    '/',
+                    <>
+                      {router.pathname === '/' ? (
+                        <Image
+                          src={`/icons/dashboard-dark.png`}
+                          alt="Dashboard"
+                          height={20}
+                          width={20}
+                          objectFit="contain"
+                        />
+                      ) : (
+                        <Image
+                          src={`/icons/dashboard-light.png`}
+                          alt="Dashboard"
+                          height={20}
+                          width={20}
+                          objectFit="contain"
+                        />
+                      )}
+                    </>
+                  ),
+                  getItem(
+                    'Orders',
+                    'orders',
+                    <>
+                      {router.pathname === '/orders' ? (
+                        <Image
+                          src={`/icons/orders-dark.png`}
+                          alt="Orders"
+                          height={20}
+                          width={20}
+                          objectFit="contain"
+                        />
+                      ) : (
+                        <Image
+                          src={`/icons/orders-light.png`}
+                          alt="Orders"
+                          height={20}
+                          width={20}
+                          objectFit="contain"
+                        />
+                      )}
+                    </>,
+                    [
+                      getItem('Orders List', '/orders/list'),
+                      getItem('Order Details', '/orders/details')
+                    ]
+                  ),
+                  getItem(
+                    'Customers',
+                    'customers',
+                    <>
+                      {router.pathname === '/customers' ? (
+                        <Image
+                          src={`/icons/avatar-dark.png`}
+                          alt="Customers"
+                          height={20}
+                          width={20}
+                          objectFit="contain"
+                        />
+                      ) : (
+                        <Image
+                          src={`/icons/avatar-light.png`}
+                          alt="Customers"
+                          height={20}
+                          width={20}
+                          objectFit="contain"
+                        />
+                      )}
+                    </>,
+                    [
+                      getItem('Customers List', '/customers/list'),
+                      getItem('Customers Detail', '/customers/detail')
+                    ]
+                  ),
+                  getItem(
+                    'Categories',
+                    'categories',
+                    <>
+                      {router.pathname === '/categories' ? (
+                        <Image
+                          src={`/icons/tree-dark.png`}
+                          alt="Categories"
+                          height={20}
+                          width={20}
+                          objectFit="contain"
+                        />
+                      ) : (
+                        <Image
+                          src={`/icons/tree-light.png`}
+                          alt="Categories"
+                          height={20}
+                          width={20}
+                          objectFit="contain"
+                        />
+                      )}
+                    </>,
+                    [
+                      getItem('Edit Category', '/category/edit'),
+                      getItem('Category List', '/category/list')
+                    ]
+                  ),
+                  getItem(
+                    'Products',
+                    '/products',
+                    <>
+                      {router.pathname === '/products' ? (
+                        <Image
+                          src={`/icons/product-dark.png`}
+                          alt="Products"
+                          height={20}
+                          width={20}
+                          objectFit="contain"
+                        />
+                      ) : (
+                        <Image
+                          src={`/icons/product-light.png`}
+                          alt="Products"
+                          height={20}
+                          width={20}
+                          objectFit="contain"
+                        />
+                      )}
+                    </>,
+                    [
+                      getItem('Product List', '/products/list'),
+                      getItem('Edit Product', '/products/edit')
+                    ]
+                  ),
+                  getItem(
+                    'Settings',
+                    '/settings',
+                    <>
+                      {router.pathname === '/settings' ? (
+                        <Image
+                          src={`/icons/settings-dark.png`}
+                          alt="Settings"
+                          height={20}
+                          width={20}
+                          objectFit="contain"
+                        />
+                      ) : (
+                        <Image
+                          src={`/icons/settings-light.png`}
+                          alt="Settings"
+                          height={20}
+                          width={20}
+                          objectFit="contain"
+                        />
+                      )}
+                    </>
+                  )
+                ]}
+                expandIcon={(item) => {
+                  return (
+                    <>
+                      {!item.isOpen && (
+                        <Image
+                          src="/icons/back.png"
+                          alt="Collapse"
+                          height={10}
+                          width={10}
+                          objectFit="contain"
+                        />
+                      )}
+                      {item.isOpen && (
+                        <Image
+                          src="/icons/down.png"
+                          alt="Expand"
+                          height={10}
+                          width={10}
+                          objectFit="contain"
+                        />
+                      )}
+                    </>
+                  )
+                }}
+              />
+            </div>
 
             <br />
             {/* Divider */}
@@ -185,3 +362,5 @@ export default function Sidebar() {
     </>
   )
 }
+
+export default Sidebar

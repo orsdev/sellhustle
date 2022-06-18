@@ -1,22 +1,16 @@
-import { useRouter } from 'next/router'
+import { FC } from 'react'
 
-const FormatTitle = (pathname: string) => {
-  if (pathname === '/') {
-    return 'Dashboard'
-  } else {
-    const getFirstLetter = pathname.substring(1, 2)
-    const remainingLetters = pathname.substring(2)
-    return getFirstLetter.toUpperCase() + remainingLetters
-  }
+type PageTitleType = {
+  title: string
+  sub?: string
 }
 
-const PageTitle = () => {
-  const { pathname } = useRouter()
-
+const PageTitle: FC<PageTitleType> = ({ title, sub = '' }) => {
   return (
     <div className="common__page__title">
+      {sub && <p className="font-bas mb-3">{sub}</p>}
       <h1 className="text-left font-medium text-lg text-primary-blue_dark_1">
-        {FormatTitle(pathname)}
+        {title}
       </h1>
     </div>
   )

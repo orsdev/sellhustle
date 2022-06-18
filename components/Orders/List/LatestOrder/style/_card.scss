@@ -1,0 +1,27 @@
+.card__latest {
+  @apply bg-white p-7 px-5;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  gap: 30px;
+  column-gap: 15px;
+  border-radius: 16px;
+
+  @media (max-width: 980px) {
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    // justify-items: center;
+  }
+
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+    justify-items: normal;
+  }
+
+  p,
+  button {
+    font-weight: 500;
+  }
+}

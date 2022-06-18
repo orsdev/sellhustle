@@ -1,0 +1,27 @@
+.details__header {
+  @apply flex flex-col base:flex-row justify-between items-center;
+
+  &__btn {
+    @apply flex mt-4 base:mt-0;
+  }
+
+  button {
+    @apply block;
+    width: 88px;
+    height: 38px;
+    border-radius: 8px;
+
+    &:hover {
+      transition: all 0.3s;
+      filter: hue-rotate(30deg);
+    }
+  }
+
+  &__edit {
+    @apply bg-primary-blue_dark_2 text-white;
+  }
+
+  &__delete {
+    @apply text-primary-blue_dark_2;
+  }
+}

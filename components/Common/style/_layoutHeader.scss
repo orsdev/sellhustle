@@ -1,0 +1,46 @@
+.layout__header {
+  @apply flex justify-between items-center;
+
+  @media (max-width: 480px) {
+    @apply flex-col;
+  }
+
+  &__form__container {
+    width: 280px;
+
+    @media (max-width: 340px) {
+      width: 99%;
+    }
+
+    @media (max-width: 480px) {
+      @apply mt-3;
+    }
+  }
+
+  &__form {
+    form {
+      @apply w-full bg-white p-4 flex items-center;
+      border-radius: 8px;
+      height: 50px;
+    }
+
+    label {
+      @apply flex items-center justify-center mr-2;
+    }
+
+    input {
+      @apply h-full w-full;
+      border-color: transparent;
+
+      &:focus {
+        border: none;
+        box-shadow: none;
+        outline: none;
+      }
+
+      &::placeholder {
+        @apply text-xs text-secondary font-normal;
+      }
+    }
+  }
+}

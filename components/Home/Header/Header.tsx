@@ -4,7 +4,7 @@ import SearchInput from '@/components/Common/SearchInput'
 const Header = () => {
   return (
     <header className="home__header">
-      <PageTitle />
+      <PageTitle title="Dashboard" />
       <div className="w-6" />
       <div className="home__header__input">
         <SearchInput
