@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Timeline } from 'antd'
 import Image from 'next/image'
+import { Timeline } from 'antd'
 
 enum Status {
   'PLACED' = 1,
