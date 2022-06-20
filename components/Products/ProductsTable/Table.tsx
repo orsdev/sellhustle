@@ -3,7 +3,7 @@ import { ColumnsType } from 'antd/lib/table'
 import Image from 'next/image'
 import { currencyFormatter } from '@/utils/currencyFormatter'
 import TableWrapper, {
-  OrderDataType,
+  DataTypes,
   ProductDataType
 } from '@/components/Common/TableWrapper'
 import { useState } from 'react'
@@ -142,7 +142,7 @@ const TableProducts = () => {
           dataSource,
           expandedRowKeys
         }) => {
-          const columns: ColumnsType<ProductDataType | OrderDataType> = [
+          const columns: ColumnsType<DataTypes> = [
             {
               title: 'SKU',
               dataIndex: 'sku',

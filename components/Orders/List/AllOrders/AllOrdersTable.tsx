@@ -5,28 +5,10 @@ import dayjs from 'dayjs'
 import Image from 'next/image'
 import Router from 'next/router'
 import { currencyFormatter } from '@/utils/currencyFormatter'
-import TableWrapper, {
-  OrderDataType,
-  ProductDataType
-} from '@/components/Common/TableWrapper'
+import TableWrapper, { DataTypes } from '@/components/Common/TableWrapper'
+import { customDate } from '@/utils/customDate'
 
-const customDate = (duration: number, unit: 'days' | 'years' | 'months') => {
-  let _date
-
-  if (unit === 'days') {
-    _date = dayjs(new Date()).subtract(duration, unit).format('DD MMM YYYY')
-  } else if (unit === 'years') {
-    _date = dayjs(new Date()).subtract(duration, unit).format('DD MMM YYYY')
-  } else if (unit === 'months') {
-    _date = dayjs(new Date()).subtract(duration, unit).format('DD MMM YYYY')
-  } else {
-    _date = dayjs(new Date()).format('DD MMM YYYY')
-  }
-
-  return _date
-}
-
-const data: OrderDataType[] | ProductDataType[] = [
+const data: DataTypes[] = [
   {
     id: '010',
     orderID: '#00004',
@@ -180,7 +162,7 @@ const AllOrdersTable = () => {
           onGetRowID,
           onRemoveRowID
         }) => {
-          const columns: ColumnsType<OrderDataType | ProductDataType> = [
+          const columns: ColumnsType<DataTypes> = [
             {
               title: 'Order ID',
               dataIndex: 'orderID',

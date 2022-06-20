@@ -31,15 +31,28 @@ export interface ProductDataType {
   children?: ProductDataType[]
 }
 
+export interface CustomerDataType {
+  id: string
+  name: string
+  registered: string
+  mail: string
+  country: string
+  phone: string | number
+  order: string | number
+  spent: number
+}
+
 type StringOrNumber = string | number
 
 type OrderDataIndex = keyof OrderDataType
 type ProductDataIndex = keyof ProductDataType
+type CustomerDataIndex = keyof CustomerDataType
+
+type DataIndex = OrderDataIndex | ProductDataIndex | CustomerDataIndex
+export type DataTypes = OrderDataType | ProductDataType | CustomerDataType
 
 type RenderProps = {
-  getColumnSearch(
-    dataIndex: OrderDataIndex | ProductDataIndex
-  ): ColumnType<OrderDataType | ProductDataType>
+  getColumnSearch(dataIndex: DataIndex): ColumnType<DataTypes>
   onGetRowID?(id: string): void
   onRemoveRowID?(id: string): void
   rowSelection: any
@@ -63,7 +76,7 @@ const TableWrapper: FC<TableWrapperProps> = ({ tableData, render }) => {
   const [searchText, setSearchText] = useState('')
   const [searchedColumn, setSearchedColumn] = useState<StringOrNumber>('')
   const searchInputRef = useRef<InputRef | null>(null)
-  const [dataSource] = useState<OrderDataType[] | ProductDataType[]>(tableData)
+  const [dataSource] = useState<DataTypes[]>(tableData)
   const [expandedRowKeys, setExpandRowKeys] = useState<string[]>([])
 
   const onGetRowID = (id: string) => {
@@ -79,7 +92,7 @@ const TableWrapper: FC<TableWrapperProps> = ({ tableData, render }) => {
     }
   }
 
-  const rowSelection: TableRowSelection<OrderDataType | ProductDataType> = {
+  const rowSelection: TableRowSelection<DataTypes> = {
     onSelect: (record, selected, selectedRows) => {
       const rowsId = selectedRows.map((item) => item.id)
       setExpandRowKeys(rowsId)
@@ -105,9 +118,7 @@ const TableWrapper: FC<TableWrapperProps> = ({ tableData, render }) => {
     setSearchText('')
   }
 
-  const getColumnSearch = (
-    dataIndex: OrderDataIndex | ProductDataIndex
-  ): ColumnType<OrderDataType | ProductDataType> => ({
+  const getColumnSearch = (dataIndex: DataIndex): ColumnType<DataTypes> => ({
     filterDropdown: ({
       setSelectedKeys,
       selectedKeys,

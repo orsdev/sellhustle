@@ -1,0 +1,21 @@
+.customers__stats__card {
+  @apply bg-white p-5 flex items-center justify-between;
+  border: 1px solid rgba(0, 29, 110, 0.1);
+  border-radius: 16px;
+
+  &__border__green {
+    @apply border border-solid border-green-600;
+  }
+
+  @media (max-width: 400px) {
+    @apply flex-col items-start;
+  }
+
+  &__title {
+    margin-bottom: 3px;
+  }
+
+  &__value {
+    @apply font-semibold;
+  }
+}

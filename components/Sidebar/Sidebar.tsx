@@ -30,6 +30,12 @@ const AndDesignPathFormat = (path: string): string[] => {
     } else {
       return ['orders', '/orders/details']
     }
+  } else if (path.includes('customers')) {
+    if (path === '/customers/list') {
+      return ['customers', '/customers/list']
+    } else {
+      return ['customers', '/customers/details']
+    }
   } else {
     return [path]
   }
@@ -53,9 +59,8 @@ const Sidebar = () => {
   const router = useRouter()
 
   const onClick: MenuProps['onClick'] = (e) => {
-    console.log('click ', e)
     if (e && e.key) {
-      if (e.key !== '/orders/details') {
+      if (e.key !== '/orders/details' && e.key !== '/customers/details') {
         router.push(e.key)
       }
     }
