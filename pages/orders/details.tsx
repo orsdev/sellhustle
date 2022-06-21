@@ -8,7 +8,7 @@ import Shipping from '@/components/Orders/Details/Shipping'
 import OrderTimeline from '@/components/Orders/Details/OrderTimeline'
 import Partners from '@/components/Orders/Details/Partners'
 
-const Orders = () => {
+const OrderDetails = () => {
   const { query } = useRouter()
   const [orderID, setOrderID] = useState<string>('')
 
@@ -17,7 +17,7 @@ const Orders = () => {
       if (query?.id) {
         setOrderID(query.id as string)
       } else {
-        Router.push('/orders/list')
+        Router.push('/orders')
       }
     }
   }, [query])
@@ -50,4 +50,4 @@ const Orders = () => {
   )
 }
 
-export default Orders
+export default OrderDetails

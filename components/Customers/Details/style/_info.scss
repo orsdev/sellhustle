@@ -1,0 +1,37 @@
+.customers {
+  &__details__info {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 20px;
+
+    @media (max-width: 1150px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__info__data,
+  &__info__address {
+    @apply bg-white py-10 pb-8 px-7;
+    border-radius: 16px;
+  }
+
+  &__info__heading {
+    @apply text-primary-blue_dark_1;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  &__info__body {
+    &__value {
+      @apply text-primary-blue_dark_1 mt-2;
+      font-weight: 600;
+    }
+  }
+
+  &__address {
+    &__value {
+      @apply text-primary-blue_dark_1 mt-2;
+      font-weight: 600;
+    }
+  }
+}

@@ -34,12 +34,14 @@ export interface ProductDataType {
 export interface CustomerDataType {
   id: string
   name: string
-  registered: string
+  date: string
   mail: string
-  country: string
+  country?: string
   phone: string | number
   order: string | number
-  spent: number
+  price: number
+  status?: string
+  paymentMethod?: string
 }
 
 type StringOrNumber = string | number

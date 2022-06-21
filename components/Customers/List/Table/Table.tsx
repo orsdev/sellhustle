@@ -15,82 +15,78 @@ const data: CustomerDataType[] = [
   {
     id: '#00004',
     name: 'Joan Dyer',
-    registered: customDate(10, 'years'),
+    date: customDate(10, 'years'),
     mail: 'joan@gmail.com',
     country: 'Germany',
     order: '02',
     phone: '203-111-1802',
-    spent: 2000
+    price: 2000
   },
   {
     id: '#51004',
     name: 'Anna Wilson',
-    registered: customDate(5, 'years'),
+    date: customDate(5, 'years'),
     mail: 'Annawilson@gmail.com',
     country: 'U.S.A',
     order: '06',
     phone: '203-111-1802',
-    spent: 1000
+    price: 1000
   },
   {
     id: '#1945',
     name: 'Jacob Lee',
-    registered: customDate(7, 'years'),
+    date: customDate(7, 'years'),
     mail: 'Jacob@gmail.com',
     country: 'U.K',
     order: '07',
     phone: '203-111-1802',
-    spent: 64000
+    price: 64000
   },
   {
     id: '#37094',
     name: 'Saly Grahan',
-    registered: customDate(16, 'years'),
+    date: customDate(16, 'years'),
     mail: 'Sally@gmail.com',
     country: 'Scotland',
     order: '08',
     phone: '203-111-1802',
-    spent: 12000
+    price: 12000
   },
   {
     id: '#30304',
     name: 'Nonton Kapersky',
-    registered: customDate(30, 'years'),
+    date: customDate(30, 'years'),
     mail: 'Nonton@gmail.com',
     country: 'Austria',
     order: '34',
     phone: '203-111-1802',
-    spent: 24000
+    price: 24000
   },
   {
     id: '#03084',
     name: 'Wilson Charity',
-    registered: customDate(2, 'years'),
+    date: customDate(2, 'years'),
     mail: 'Wilson@gmail.com',
     country: 'Barbados',
     order: '05',
     phone: '203-111-1802',
-    spent: 23000
+    price: 23000
   },
   {
     id: '#02004',
     name: 'Henry Love',
-    registered: customDate(7, 'years'),
+    date: customDate(7, 'years'),
     mail: 'Henry@gmail.com',
     country: 'Germany',
     order: '13',
     phone: '203-111-1802',
-    spent: 34000
+    price: 34000
   }
 ]
 
 const CustomersTable = () => {
   const [current, setCurrent] = useState<number>(1)
   const [pageSize, setPageSize] = useState<number>(7)
-
-  const onPublish = (checked: boolean) => {
-    console.log(`switch to ${checked}`)
-  }
 
   return (
     <div>
@@ -108,7 +104,18 @@ const CustomersTable = () => {
               width: 100,
               ...getColumnSearch('id'),
               render: (id) => {
-                return <p className="font-xs text-secondary">{id}</p>
+                return (
+                  <button
+                    className="font-xs text-secondary cursor-pointer"
+                    onClick={() =>
+                      Router.push(
+                        '/customers/details?id= ' + encodeURIComponent(id)
+                      )
+                    }
+                  >
+                    {id}
+                  </button>
+                )
               }
             },
             {
@@ -119,40 +126,16 @@ const CustomersTable = () => {
                 return (
                   <button
                     type="button"
-                    className="ml-4 customers__table__title"
+                    className="ml-4 customers__table__title cursor-pointer"
                     onClick={() =>
-                      // Router.push(
-                      //   '/customers/details?id= ' + encodeURIComponent(record.id)
-                      // )
-                      console.log(name)
+                      Router.push(
+                        '/customers/details?id= ' +
+                          encodeURIComponent(record.id)
+                      )
                     }
                   >
                     {name}
                   </button>
-                )
-              }
-            },
-            {
-              title: 'Registered',
-              dataIndex: 'registered',
-              sortDirections: ['descend'],
-              sorter: (a: any, b: any) => dayjs(a.date).diff(dayjs(b.date)),
-              render: (date) => {
-                return (
-                  <>
-                    <div className="flex items-center">
-                      <Image
-                        src="/icons/light/calendar.png"
-                        alt="Calendar"
-                        height={16}
-                        width={16}
-                        objectFit="contain"
-                      />
-                      <span className="text-secondary font-base ml-1">
-                        {date}
-                      </span>
-                    </div>
-                  </>
                 )
               }
             },
@@ -166,21 +149,16 @@ const CustomersTable = () => {
                     type="button"
                     className="ml-4 customers__table__mail"
                     onClick={() =>
-                      // Router.push(
-                      //   '/customers/details?id= ' + encodeURIComponent(record.id)
-                      // )
-                      console.log(mail)
+                      Router.push(
+                        '/customers/details?id= ' +
+                          encodeURIComponent(record.id)
+                      )
                     }
                   >
                     {mail}
                   </button>
                 )
               }
-            },
-            {
-              title: 'Country',
-              dataIndex: 'country',
-              ...getColumnSearch('country')
             },
             {
               title: 'Phone',
@@ -191,12 +169,6 @@ const CustomersTable = () => {
                   <button
                     type="button"
                     className="ml-4 customers__table__phone"
-                    onClick={() =>
-                      // Router.push(
-                      //   '/customers/details?id= ' + encodeURIComponent(record.id)
-                      // )
-                      console.log(phone)
-                    }
                   >
                     {phone}
                   </button>
@@ -215,14 +187,14 @@ const CustomersTable = () => {
             },
             {
               title: 'Spent',
-              dataIndex: 'spent',
+              dataIndex: 'price',
               sortDirections: ['descend'],
-              sorter: (a: any, b: any) => a.spent - b.spent,
-              render: (spent) => {
+              sorter: (a: any, b: any) => a.price - b.price,
+              render: (price) => {
                 return (
                   <>
                     <span className="font-xs text-primary-blue_dark_1">
-                      {currencyFormatter(spent, 'USD')}
+                      {currencyFormatter(price, 'USD')}
                     </span>
                   </>
                 )
@@ -247,10 +219,10 @@ const CustomersTable = () => {
                           <button
                             className="mr-3 hover:opacity-80"
                             onClick={() =>
-                              // Router.push(
-                              //   '/customers/details?id= ' + encodeURIComponent(record.id)
-                              // )
-                              console.log(_)
+                              Router.push(
+                                '/customers/details?id= ' +
+                                  encodeURIComponent(record.id)
+                              )
                             }
                           >
                             <Image
@@ -294,7 +266,7 @@ const CustomersTable = () => {
                 onShowSizeChange: (current, value) => setPageSize(value),
                 onChange: (page) => setCurrent(page)
               }}
-              scroll={{ x: 1400 }}
+              scroll={{ x: 900 }}
             />
           )
         }}
