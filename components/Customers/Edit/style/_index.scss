@@ -1,0 +1,18 @@
+@import './header';
+@import './overview';
+@import './note';
+@import './location';
+
+.customer__edit {
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 20px;
+    align-items: start;
+    padding-bottom: 20px;
+
+    @media (max-width: 1150px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

@@ -23,11 +23,11 @@ const CustomerDetails = () => {
   return (
     <AppLayout>
       <Head>
-        <title>Sel Hustle | Home </title>
+        <title>Sel Hustle | Customer Details </title>
       </Head>
       <div className="mx-auto w-full">
         <div className="px-7 pt-12">
-          <Header name="Jacob Henry" />
+          <Header name="Jacob Henry" id={orderID} />
         </div>
         <div className="w-full p-7">
           <Info />

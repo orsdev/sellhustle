@@ -2,81 +2,37 @@ import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import type { MenuProps } from 'antd'
-import { Menu } from 'antd'
-
-type MenuItem = Required<MenuProps>['items'][number]
-
-function getItem(
-  label: React.ReactNode,
-  key: React.Key,
-  icon?: React.ReactNode,
-  children?: MenuItem[],
-  type?: 'group'
-): MenuItem {
-  return {
-    key,
-    icon,
-    children,
-    label,
-    type
-  } as MenuItem
-}
-
-const AndDesignPathFormat = (path: string): string[] => {
-  if (path.includes('orders')) {
-    if (path === '/orders/list') {
-      return ['orders', '/orders/list']
-    } else {
-      return ['orders', '/orders/details']
-    }
-  } else if (path.includes('customers')) {
-    if (path === '/customers/list') {
-      return ['customers', '/customers/list']
-    } else {
-      return ['customers', '/customers/details']
-    }
-  } else {
-    return [path]
-  }
-}
 
 const MenuNavigation = [
   {
     icon: '/icons/dashboard-',
     title: 'Dashboard',
-    route: '/',
-    subRoute: '/'
+    route: '/dashboard'
   },
   {
     icon: '/icons/orders-',
     title: 'Orders',
-    route: '/orders',
-    subRoute: '/orders/details'
+    route: '/orders'
   },
   {
     icon: '/icons/avatar-',
     title: 'Customers',
-    route: '/customers',
-    subRoute: '/customers/details'
+    route: '/customers'
   },
   {
     icon: '/icons/tree-',
     title: 'Categories',
-    route: '/categories',
-    subRoute: '/categories/details'
+    route: '/categories'
   },
   {
     icon: '/icons/product-',
     title: 'Products',
-    route: '/products',
-    subRoute: '/products/details'
+    route: '/products'
   },
   {
     icon: '/icons/settings-',
     title: 'Settings',
-    route: '/settings',
-    subRoute: '/settings'
+    route: '/settings'
   }
 ]
 
@@ -159,10 +115,10 @@ const Sidebar = () => {
             {/* Menu Navigation */}
             <h6 className="sidebar__navigation__title">Menu</h6>
             <ul className="sidebar__navigation__ul">
-              {MenuNavigation.map(({ route, subRoute, title, icon }) => (
+              {MenuNavigation.map(({ route, title, icon }) => (
                 <li
                   className={`sidebar__navigation__list ${
-                    router.pathname === route || router.pathname === subRoute
+                    router.pathname.includes(route)
                       ? 'sidebar__navigation__list__active'
                       : ''
                   }
@@ -175,8 +131,7 @@ const Sidebar = () => {
                         src={
                           icon +
                           `${
-                            router.pathname === route ||
-                            router.pathname === subRoute
+                            router.pathname.includes(route)
                               ? 'dark.png'
                               : 'light.png'
                           }`
@@ -199,7 +154,7 @@ const Sidebar = () => {
             {/* Business Navigation */}
             <h6 className="sidebar__navigation__title">Business</h6>
             <ul className="sidebar__navigation__ul">
-              {BusinessNavigation.map(({ route, subRoute, title, icon }) => (
+              {BusinessNavigation.map(({ route, title, icon }) => (
                 <li className="sidebar__navigation__list" key={title}>
                   <Link href={route}>
                     <a className="sidebar__navigation__link">
@@ -207,8 +162,7 @@ const Sidebar = () => {
                         src={
                           icon +
                           `${
-                            router.pathname === route ||
-                            router.pathname === subRoute
+                            router.pathname.includes(route)
                               ? 'dark.png'
                               : 'light.png'
                           }`

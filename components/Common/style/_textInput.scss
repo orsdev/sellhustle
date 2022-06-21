@@ -1,0 +1,21 @@
+.common__text__field {
+  &__input {
+    border-radius: 8px;
+    height: 56px;
+    font-size: 15px;
+    width: 100%;
+    padding: 0 15px;
+    color: rgba(0, 0, 0, 0.747);
+
+    &:focus {
+      border: 1px solid rgba(128, 128, 128, 0.774);
+      box-shadow: none;
+      outline: none;
+    }
+  }
+
+  &__label {
+    @apply text-primary-blue_dark_1 mb-4 block;
+    font-size: 14px;
+  }
+}

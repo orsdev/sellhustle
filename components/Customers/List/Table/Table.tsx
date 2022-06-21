@@ -9,7 +9,6 @@ import TableWrapper, {
 } from '@/components/Common/TableWrapper'
 import { customDate } from '@/utils/customDate'
 import Router from 'next/router'
-import dayjs from 'dayjs'
 
 const data: CustomerDataType[] = [
   {

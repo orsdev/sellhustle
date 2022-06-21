@@ -25,7 +25,7 @@ const OrderDetails = () => {
   return (
     <AppLayout>
       <Head>
-        <title>Sel Hustle | Home </title>
+        <title>Sel Hustle | Order Details </title>
       </Head>
       <div className="mx-auto w-full">
         <div className="px-7 pt-12">
