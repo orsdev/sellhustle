@@ -2,6 +2,26 @@ import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+import type { MenuProps } from 'antd'
+import { Menu } from 'antd'
+
+type MenuItem = Required<MenuProps>['items'][number]
+
+function getItem(
+  label: React.ReactNode,
+  key: React.Key,
+  icon?: React.ReactNode,
+  children?: MenuItem[],
+  type?: 'group'
+): MenuItem {
+  return {
+    key,
+    icon,
+    children,
+    label,
+    type
+  } as MenuItem
+}
 
 const MenuNavigation = [
   {
@@ -18,16 +38,6 @@ const MenuNavigation = [
     icon: '/icons/avatar-',
     title: 'Customers',
     route: '/customers'
-  },
-  {
-    icon: '/icons/tree-',
-    title: 'Categories',
-    route: '/categories'
-  },
-  {
-    icon: '/icons/product-',
-    title: 'Products',
-    route: '/products'
   },
   {
     icon: '/icons/settings-',
@@ -51,9 +61,35 @@ const BusinessNavigation = [
   }
 ]
 
+const AndDesignPathFormat = (path: string) => {
+  if (path.includes('products')) {
+    if (path === '/products/all') {
+      return ['products', '/products/all']
+    } else if (path === '/products/categories/list') {
+      return ['products', '/products/categories/list']
+    } else if (path === '/products/categories/edit') {
+      return ['products', '/products/categories/list']
+    } else if (path === '/products/collections') {
+      return ['products', '/products/collections']
+    }
+  } else {
+    return [path]
+  }
+
+  return []
+}
+
 const Sidebar = () => {
   const [collapseShow, setCollapseShow] = React.useState('hidden')
   const router = useRouter()
+
+  const onClickProduct: MenuProps['onClick'] = (e) => {
+    if (e && e.key) {
+      if (e.key.includes('products')) {
+        router.push(e.key)
+      }
+    }
+  }
 
   return (
     <>
@@ -147,6 +183,70 @@ const Sidebar = () => {
               ))}
             </ul>
 
+            {/* Ant Design Menu */}
+            <div className="sidebar__navigation__menu">
+              <Menu
+                onClick={onClickProduct}
+                defaultSelectedKeys={AndDesignPathFormat(router.pathname)}
+                defaultOpenKeys={AndDesignPathFormat(router.pathname)}
+                mode="inline"
+                inlineCollapsed={false}
+                items={[
+                  getItem(
+                    'Products',
+                    '/products',
+                    <>
+                      {router.pathname.includes('/products') ? (
+                        <Image
+                          src={`/icons/product-dark.png`}
+                          alt="Products"
+                          height={20}
+                          width={20}
+                          objectFit="contain"
+                        />
+                      ) : (
+                        <Image
+                          src={`/icons/product-light.png`}
+                          alt="Products"
+                          height={20}
+                          width={20}
+                          objectFit="contain"
+                        />
+                      )}
+                    </>,
+                    [
+                      getItem('All Products', '/products/all'),
+                      getItem('Categories', '/products/categories/list'),
+                      getItem('Collections', '/products/collections')
+                    ]
+                  )
+                ]}
+                expandIcon={(item) => {
+                  return (
+                    <>
+                      {!item.isOpen && (
+                        <Image
+                          src="/icons/back.png"
+                          alt="Collapse"
+                          height={10}
+                          width={10}
+                          objectFit="contain"
+                        />
+                      )}
+                      {item.isOpen && (
+                        <Image
+                          src="/icons/down.png"
+                          alt="Expand"
+                          height={10}
+                          width={10}
+                          objectFit="contain"
+                        />
+                      )}
+                    </>
+                  )
+                }}
+              />
+            </div>
             <br />
             {/* Divider */}
             <hr className="my-4 md:min-w-full" />

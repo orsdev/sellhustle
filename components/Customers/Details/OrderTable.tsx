@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Table, Switch } from 'antd'
+import { Table } from 'antd'
 import { ColumnsType } from 'antd/lib/table'
 import Image from 'next/image'
 import { currencyFormatter } from '@/utils/currencyFormatter'

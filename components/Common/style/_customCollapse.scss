@@ -1,0 +1,37 @@
+.custom__collapse {
+  &__heading {
+    @apply text-primary-blue_dark_1;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .ant-collapse {
+    border: none;
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+
+    &-item {
+      border: none;
+    }
+
+    &-header {
+      padding: 0 !important;
+    }
+
+    &-content {
+      border: none;
+
+      &-box {
+        @apply text-primary-blue_dark_1;
+        opacity: 0.5;
+        padding: 0;
+        margin-top: 18px;
+      }
+    }
+  }
+
+  p.font-xs {
+    font-size: 12px;
+  }
+}

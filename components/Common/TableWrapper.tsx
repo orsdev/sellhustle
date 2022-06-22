@@ -23,9 +23,11 @@ export interface ProductDataType {
   id: string
   sku: string
   category: string
+  date?: string
   published: boolean
   image: string
   stock: number
+  status?: string
   name: string
   price: number
   children?: ProductDataType[]

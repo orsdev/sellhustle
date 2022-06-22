@@ -1,0 +1,50 @@
+.edit__subcategory {
+  &__table {
+    @apply bg-white py-10 pb-8 px-7;
+    border-radius: 16px;
+
+    .ant-table {
+      thead th {
+        @apply text-secondary select-none;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13.5px;
+        line-height: 15px;
+      }
+
+      tbody tr,
+      tbody td {
+        @apply text-primary-blue_dark_1;
+        font-weight: 600;
+      }
+    }
+
+    .ant-pagination-item-link {
+      @apply flex justify-center items-center;
+      border-radius: 8px;
+    }
+
+    .ant-pagination-prev,
+    .ant-pagination-next {
+      &[aria-disabled='false'] {
+        .ant-pagination-item-link {
+          @apply bg-primary-blue_light_3 text-white;
+        }
+      }
+    }
+
+    .ant-pagination-total-text {
+      @apply hidden xs:inline-block text-secondary;
+    }
+  }
+
+  &__header {
+    @apply flex flex-col base:flex-row justify-between items-center;
+  }
+
+  &__heading {
+    @apply text-primary-blue_dark_1;
+    font-size: 18px;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,16 @@
+.categories__list__header {
+  @apply flex flex-col base:flex-row justify-between items-center;
+
+  &__btn {
+    @apply flex mt-4 base:mt-0;
+  }
+
+  button {
+    @apply block;
+
+    &:hover {
+      transition: all 0.3s;
+      filter: hue-rotate(30deg);
+    }
+  }
+}

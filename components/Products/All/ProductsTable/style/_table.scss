@@ -1,0 +1,79 @@
+.table__products {
+  border-radius: 12px;
+
+  .ant-table {
+    thead th {
+      @apply text-secondary select-none;
+      text-align: center;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13.5px;
+      line-height: 15px;
+    }
+
+    tbody tr,
+    tbody td {
+      text-align: center;
+      font-size: 13.5px;
+    }
+  }
+
+  &__title {
+    @apply text-primary-blue_dark_1;
+  }
+
+  .ant-pagination-item-link {
+    @apply flex justify-center items-center;
+    border-radius: 8px;
+  }
+
+  .ant-pagination-prev,
+  .ant-pagination-next {
+    &[aria-disabled='false'] {
+      .ant-pagination-item-link {
+        @apply bg-primary-blue_light_3 text-white;
+      }
+    }
+  }
+
+  .ant-pagination-total-text {
+    @apply hidden xs:inline-block text-secondary;
+  }
+
+  .ant-table-row-selected td {
+    background-color: transparent !important;
+  }
+
+  .ant-table-row-selected ~ :not(.ant-table-row-level-0) {
+    // Hide  Children checkboxes
+    .ant-table-selection-column {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      z-index: -2;
+    }
+
+    .ant-table-cell-with-append {
+      border-left: 1px solid #7fb5ff;
+    }
+
+    td {
+      background: rgba(238, 245, 255, 0.3);
+      padding: 16px 12px;
+    }
+  }
+
+  &__image {
+    @apply rounded-lg;
+    width: 34px;
+    height: 34px;
+  }
+
+  &__info {
+    @apply flex;
+  }
+
+  .font-base {
+    font-size: 13px;
+  }
+}

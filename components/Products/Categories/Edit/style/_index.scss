@@ -1,0 +1,33 @@
+@import './header';
+@import './generalInfo';
+@import './media';
+@import './seo';
+@import './newMeta';
+@import '../Tabs/style';
+
+.category__edit {
+  &__body {
+    display: flex;
+    padding-bottom: 20px;
+
+    @media (max-width: 1200px) {
+      flex-direction: column;
+    }
+
+    &__left {
+      flex: 1;
+    }
+
+    &__right {
+      width: 350px;
+      margin-left: 20px;
+
+      @media (max-width: 1200px) {
+        flex: 1;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 20px;
+      }
+    }
+  }
+}

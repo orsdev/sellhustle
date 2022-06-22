@@ -1,0 +1,12 @@
+.edit__category__seo {
+  @apply bg-white py-10 pb-8 px-7 mt-4;
+  border-radius: 16px;
+
+  textarea {
+    &:focus {
+      border: 1px solid rgba(128, 128, 128, 0.774);
+      box-shadow: none;
+      outline: none;
+    }
+  }
+}
