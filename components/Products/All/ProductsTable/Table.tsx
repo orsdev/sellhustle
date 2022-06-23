@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import Router from 'next/router'
 import { Table, Switch } from 'antd'
 import { ColumnsType } from 'antd/lib/table'
 import Image from 'next/image'
@@ -6,7 +8,6 @@ import TableWrapper, {
   DataTypes,
   ProductDataType
 } from '@/components/Common/TableWrapper'
-import { useState } from 'react'
 
 const data: ProductDataType[] = [
   {
@@ -175,6 +176,12 @@ const TableProducts = () => {
                       <button
                         type="button"
                         className="font-base ml-4 table__products__title"
+                        onClick={() =>
+                          Router.push(
+                            '/products/edit?id= ' +
+                              encodeURIComponent(record.id)
+                          )
+                        }
                       >
                         {name}
                       </button>
@@ -259,7 +266,15 @@ const TableProducts = () => {
                     return (
                       <div className="text-center">
                         <div className="flex items-center justify-center">
-                          <button className="mr-3 hover:opacity-80">
+                          <button
+                            className="mr-3 hover:opacity-80"
+                            onClick={() =>
+                              Router.push(
+                                '/products/edit?id= ' +
+                                  encodeURIComponent(record.id)
+                              )
+                            }
+                          >
                             <Image
                               src="/icons/pencil.png"
                               alt="Edit"

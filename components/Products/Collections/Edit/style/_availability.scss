@@ -1,0 +1,76 @@
+.collections__availability {
+  @apply bg-white py-10 pb-8 px-7;
+  border-radius: 16px;
+
+  &__header {
+    @apply flex base:flex-row justify-between items-center;
+  }
+
+  &__heading {
+    @apply text-primary-blue_dark_1;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  p.font-xs {
+    font-size: 12px;
+    color: #001d6e;
+    margin-top: 20px;
+    margin-bottom: 17px;
+    opacity: 0.5;
+  }
+
+  button {
+    width: 86px;
+    height: 38px;
+    display: block;
+    margin-right: 14px;
+    border: 1px solid #4f4f4f;
+    border-radius: 8px;
+    transition: all 0.6s;
+    position: relative;
+
+    &:active {
+      top: -1px;
+    }
+
+    @media (max-width: 380px) {
+      width: 100px;
+    }
+  }
+
+  &__collapse {
+    margin-top: 20px;
+
+    &__heading {
+      @apply text-primary-blue_dark_1;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .ant-collapse {
+      border: none;
+      background-color: transparent;
+      border-radius: 0;
+      padding: 0;
+
+      &-item {
+        border: none;
+      }
+
+      &-header {
+        padding: 0 !important;
+      }
+
+      &-content {
+        border: none;
+
+        &-box {
+          @apply text-primary-blue_dark_1;
+          padding: 0;
+          margin-top: 18px;
+        }
+      }
+    }
+  }
+}

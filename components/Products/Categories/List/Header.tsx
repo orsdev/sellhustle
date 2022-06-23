@@ -1,5 +1,3 @@
-import Router from 'next/router'
-
 const Header = () => {
   return (
     <header className="categories__list__header">

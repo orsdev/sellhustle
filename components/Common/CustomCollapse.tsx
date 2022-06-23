@@ -16,7 +16,7 @@ const CustomCollapse: FC<Props> = ({ title, content }) => {
         expandIcon={({ isActive }) => (
           <CaretRightOutlined rotate={isActive ? 90 : 0} />
         )}
-        expandIconPosition="right"
+        expandIconPosition="end"
       >
         <Panel
           header={<h3 className="custom__collapse__heading">{title}</h3>}

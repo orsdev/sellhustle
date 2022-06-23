@@ -1,0 +1,32 @@
+.product__edit__organization {
+  @apply bg-white py-10 pb-8 px-7;
+  border-radius: 16px;
+
+  &__heading {
+    @apply text-primary-blue_dark_1;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  label {
+    @apply text-primary-blue_dark_1 mb-4 block;
+    font-size: 14px;
+  }
+
+  select {
+    border-radius: 8px;
+    min-height: 56px;
+    font-size: 15px;
+    width: 100%;
+    padding: 0 15px;
+    color: rgba(0, 0, 0, 0.747);
+    border: 1px solid rgba(0, 29, 110, 0.1);
+    font-size: 12px;
+
+    &:focus {
+      border: 1px solid rgba(128, 128, 128, 0.5);
+      box-shadow: none;
+      outline: none;
+    }
+  }
+}

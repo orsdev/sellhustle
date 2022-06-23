@@ -65,12 +65,16 @@ const AndDesignPathFormat = (path: string) => {
   if (path.includes('products')) {
     if (path === '/products/all') {
       return ['products', '/products/all']
+    } else if (path === '/products/edit') {
+      return ['products', '/products/all']
     } else if (path === '/products/categories/list') {
       return ['products', '/products/categories/list']
     } else if (path === '/products/categories/edit') {
       return ['products', '/products/categories/list']
-    } else if (path === '/products/collections') {
-      return ['products', '/products/collections']
+    } else if (path === '/products/collections/list') {
+      return ['products', '/products/collections/list']
+    } else if (path === '/products/collections/edit') {
+      return ['products', '/products/collections/list']
     }
   } else {
     return [path]
@@ -217,7 +221,7 @@ const Sidebar = () => {
                     [
                       getItem('All Products', '/products/all'),
                       getItem('Categories', '/products/categories/list'),
-                      getItem('Collections', '/products/collections')
+                      getItem('Collections', '/products/collections/list')
                     ]
                   )
                 ]}

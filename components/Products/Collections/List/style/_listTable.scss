@@ -1,0 +1,114 @@
+.collections__list__table {
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    @apply text-primary-blue_dark_1;
+  }
+
+  .ant-tabs-tab .ant-tabs-tab-btn {
+    @apply text-primary-blue_dark_1;
+  }
+
+  .ant-tabs-ink-bar {
+    @apply bg-primary-blue_dark_1;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .ant-table {
+    thead th {
+      @apply text-secondary select-none;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13.5px;
+      line-height: 15px;
+
+      &:last-child {
+        text-align: center;
+      }
+    }
+
+    tbody tr,
+    tbody td {
+      @apply text-primary-blue_dark_1;
+      font-weight: 600;
+    }
+  }
+
+  .ant-pagination-item-link {
+    @apply flex justify-center items-center;
+    border-radius: 8px;
+  }
+
+  .ant-pagination-prev,
+  .ant-pagination-next {
+    &[aria-disabled='false'] {
+      .ant-pagination-item-link {
+        @apply bg-primary-blue_light_3 text-white;
+      }
+    }
+  }
+
+  .ant-pagination-total-text {
+    @apply hidden xs:inline-block text-secondary;
+  }
+
+  &__body {
+    margin-top: 18px;
+    @apply bg-white py-10 pb-8 px-7 mt-4;
+    border-radius: 16px;
+  }
+
+  &__header {
+    @apply flex flex-col base:flex-row justify-between items-center;
+  }
+
+  &__heading {
+    @apply text-primary-blue_dark_1;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  &__filter {
+    display: flex;
+
+    @media (max-width: 380px) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    input {
+      display: block;
+      width: calc(100% - 100px);
+      height: 38px;
+      border: 1px solid #4f4f4f;
+      border-radius: 8px;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 15px;
+      color: #4f4f4f;
+      padding-left: 16px;
+
+      &:focus {
+        border: 1px solid #3d3d3d;
+        outline: none;
+      }
+
+      @media (max-width: 380px) {
+        margin-top: 20px;
+        width: 100%;
+      }
+    }
+
+    button {
+      width: 86px;
+      height: 38px;
+      display: block;
+      margin-right: 14px;
+      border: 1px solid #4f4f4f;
+      border-radius: 8px;
+
+      @media (max-width: 380px) {
+        width: 100px;
+      }
+    }
+  }
+}

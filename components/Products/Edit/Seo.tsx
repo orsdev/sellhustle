@@ -2,7 +2,7 @@ import FormSeo from '@/components/Common/FormSeo'
 
 const Seo = () => {
   return (
-    <div className="edit__category__seo cm-border">
+    <div className="product__edit__seo cm-border">
       <FormSeo />
     </div>
   )
