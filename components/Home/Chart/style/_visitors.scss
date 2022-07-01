@@ -38,4 +38,12 @@
       display: revert;
     }
   }
+
+  .apexcharts-yaxis-label {
+    display: none;
+
+    &:nth-child(2n) {
+      display: revert;
+    }
+  }
 }

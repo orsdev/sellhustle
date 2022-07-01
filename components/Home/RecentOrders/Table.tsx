@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import { Table, Dropdown, Menu } from 'antd'
+import { Key, useState } from 'react'
+import { Table, Dropdown } from 'antd'
 import type { ColumnsType } from 'antd/lib/table'
 import dayjs from 'dayjs'
 import Image from 'next/image'
+import Router from 'next/router'
 import { currencyFormatter } from '@/utils/currencyFormatter'
 
 interface DataType {
-  key: React.Key
-  orderID: number
+  orderID: number | string
   image: string
   fullName: string
   firstName: string
@@ -23,13 +23,13 @@ const customDate = (duration: number, unit: 'days' | 'years' | 'months') => {
   let _date
 
   if (unit === 'days') {
-    _date = dayjs(new Date()).subtract(duration, unit).format('DD/MMM/YYYY')
+    _date = dayjs(new Date()).subtract(duration, unit).format('DD/mm/YYYY')
   } else if (unit === 'years') {
-    _date = dayjs(new Date()).subtract(duration, unit).format('DD/MMM/YYYY')
+    _date = dayjs(new Date()).subtract(duration, unit).format('DD/mm/YYYY')
   } else if (unit === 'months') {
-    _date = dayjs(new Date()).subtract(duration, unit).format('DD/MMM/YYYY')
+    _date = dayjs(new Date()).subtract(duration, unit).format('DD/mm/YYYY')
   } else {
-    _date = dayjs(new Date()).format('DD MMM YYYY')
+    _date = dayjs(new Date()).format('DD/mm/YYYY')
   }
 
   return _date
@@ -39,6 +39,7 @@ const columns: ColumnsType<DataType> = [
   {
     title: 'Order ID',
     dataIndex: 'orderID',
+    width: 110,
     render: (id: string) => {
       return (
         <button
@@ -53,7 +54,7 @@ const columns: ColumnsType<DataType> = [
   {
     title: 'Customer',
     dataIndex: 'fullName',
-    width: 180,
+    width: 200,
     render: (fullName, record) => {
       return (
         <>
@@ -65,6 +66,9 @@ const columns: ColumnsType<DataType> = [
             <button
               type="button"
               className="font-base text-primary-blue_dark_1 ml-3"
+              style={{
+                fontWeight: 400
+              }}
             >
               {fullName}
             </button>
@@ -76,8 +80,7 @@ const columns: ColumnsType<DataType> = [
   {
     title: 'Purchased',
     dataIndex: 'purchased',
-    sortDirections: ['descend'],
-    sorter: (a: any, b: any) => dayjs(a.purchased).diff(dayjs(b.purchased)),
+    width: 150,
     render: (purchased) => {
       return (
         <span className="text-secondary font-base ml-1">
@@ -89,8 +92,7 @@ const columns: ColumnsType<DataType> = [
   {
     title: 'Date',
     dataIndex: 'date',
-    sortDirections: ['descend'],
-    sorter: (a: any, b: any) => dayjs(a.date).diff(dayjs(b.date)),
+    width: 150,
     render: (date) => {
       return (
         <>
@@ -104,15 +106,14 @@ const columns: ColumnsType<DataType> = [
   {
     title: 'Price',
     dataIndex: 'price',
-    sortDirections: ['descend'],
-    sorter: (a: any, b: any) => a.price - b.price,
+    width: 150,
     render: (price) => {
       return (
         <>
           <span
             className="font-xs text-primary-blue_dark_1"
             style={{
-              fontWeight: 600
+              fontWeight: 500
             }}
           >
             {currencyFormatter(price, 'USD')}
@@ -144,7 +145,8 @@ const columns: ColumnsType<DataType> = [
         <span
           className={`${color} font-xs p-1 px-2 rounded-md inline-block text-center`}
           style={{
-            minWidth: '80px'
+            minWidth: '80px',
+            fontSize: '13px'
           }}
         >
           {status}
@@ -156,7 +158,6 @@ const columns: ColumnsType<DataType> = [
 
 const data: DataType[] = [
   {
-    key: 0,
     orderID: 23342,
     fullName: 'Adam Butcher',
     firstName: 'Adam',
@@ -169,7 +170,6 @@ const data: DataType[] = [
     status: 'Available'
   },
   {
-    key: 1,
     orderID: 54432,
     fullName: 'Dean John',
     firstName: 'Dean',
@@ -182,7 +182,6 @@ const data: DataType[] = [
     status: 'Canceled'
   },
   {
-    key: 2,
     orderID: 24432,
     fullName: 'Pence Mike',
     firstName: 'Mike',
@@ -195,7 +194,6 @@ const data: DataType[] = [
     status: 'Completed'
   },
   {
-    key: 3,
     orderID: 64832,
     fullName: 'Jane Doe',
     firstName: 'Doe',
@@ -208,7 +206,6 @@ const data: DataType[] = [
     status: 'In Progress'
   },
   {
-    key: 4,
     orderID: 74412,
     title: 'Tube Top',
     purchased: 7,
@@ -223,10 +220,10 @@ const data: DataType[] = [
 ]
 
 const OrdersTable = () => {
-  const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([])
+  const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([])
   const [dataSource, setDataSource] = useState<DataType[]>(data)
 
-  const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
+  const onSelectChange = (newSelectedRowKeys: Key[]) => {
     setSelectedRowKeys(newSelectedRowKeys)
   }
 
@@ -235,84 +232,139 @@ const OrdersTable = () => {
     onChange: onSelectChange
   }
 
-  const handleDelete = (key: React.Key) => {
-    const newData = dataSource.filter((item) => item.key !== key)
+  const handleDeleteOrder = (orderID: string | number) => {
+    const newData = dataSource.filter(
+      (item: DataType) => item.orderID !== orderID
+    )
     setDataSource(newData)
   }
 
   return (
-    <div className="mt-7 recent__orders__table">
+    <div className="mt-3 recent__orders__table px-1">
       <Table
         rowSelection={rowSelection}
         columns={[
           ...columns,
           {
-            title: 'Action',
+            title: '',
             key: 'operation',
             fixed: 'right',
-            width: 100,
+            width: 110,
             className: 'recent__orders__table__action',
             render: (_, record) => {
               return (
-                <div className="text-center">
+                <div className="text-right">
                   <Dropdown
+                    trigger={['click']}
                     overlay={
                       <>
-                        <Menu
-                          items={[
-                            {
-                              key: 'edit',
-                              label: (
-                                <button className="recent__orders__table__edit">
-                                  <Image
-                                    src="/icons/light/edit-xs.png"
-                                    alt="Edit Record"
-                                    height={10}
-                                    width={10}
-                                    objectFit="contain"
-                                  />
-                                  <span className="ml-2">Edit</span>
-                                </button>
-                              )
-                            },
-                            {
-                              key: 'delete',
-                              label: (
-                                <button
-                                  className="recent__orders__table__delete"
-                                  onClick={() => handleDelete(record.key)}
-                                >
-                                  <Image
-                                    src="/icons/light/delete-xs.png"
-                                    alt="Deleted Record"
-                                    height={10}
-                                    width={10}
-                                    objectFit="contain"
-                                  />
-                                  <span className="ml-2">Delete</span>
-                                </button>
+                        <div
+                          className="recent__orders__table__dropdown"
+                          key="dropdown"
+                        >
+                          <button
+                            className="recent__orders__table__dropdown__item"
+                            onClick={() =>
+                              Router.push(
+                                '/orders/details?id= ' +
+                                  encodeURIComponent(record.orderID)
                               )
                             }
-                          ]}
-                        />
+                          >
+                            <Image
+                              src="/icons/eye.png"
+                              alt="Order Details"
+                              height={16}
+                              width={16}
+                              objectFit="contain"
+                            />
+                            <span className="ml-2">Order Details</span>
+                          </button>
+                          <button className="recent__orders__table__dropdown__item">
+                            <Image
+                              src="/icons/truck.png"
+                              alt="Delivered"
+                              height={16}
+                              width={16}
+                              objectFit="contain"
+                            />
+                            <span className="ml-2">Mark as Delivered</span>
+                          </button>
+                          <button className="recent__orders__table__dropdown__item">
+                            <Image
+                              src="/icons/cash.png"
+                              alt="Paid"
+                              height={16}
+                              width={16}
+                              objectFit="contain"
+                            />
+                            <span className="ml-2">Mark as Paid</span>
+                          </button>
+                          <button className="recent__orders__table__dropdown__item">
+                            <Image
+                              src="/icons/invoice.png"
+                              alt="Send Invoice"
+                              height={16}
+                              width={16}
+                              objectFit="contain"
+                            />
+                            <span className="ml-2">Send Invoice</span>
+                          </button>
+                          <button
+                            className="recent__orders__table__dropdown__item"
+                            onClick={() => handleDeleteOrder(record.orderID)}
+                          >
+                            <Image
+                              src="/icons/remove.png"
+                              alt="Deleted"
+                              height={16}
+                              width={16}
+                              objectFit="contain"
+                            />
+                            <span className="ml-2">Remove Order</span>
+                          </button>
+                        </div>
                       </>
                     }
                     placement="bottom"
-                    arrow
-                    className="ml-10"
                   >
-                    <button className="text-secondary -ml-5">
-                      <i className="fa fa-ellipsis-h" aria-hidden="true" />
-                    </button>
+                    <div className="flex relative items-center">
+                      <div className="recent__orders__table__action__icons">
+                        <div className="mr-5">
+                          <Image
+                            src="/icons/truck.png"
+                            alt="Truck"
+                            height={16}
+                            width={16}
+                            objectFit="contain"
+                          />
+                        </div>
+                        <div>
+                          <Image
+                            src="/icons/eye.png"
+                            alt="View"
+                            height={16}
+                            width={16}
+                            objectFit="contain"
+                          />
+                        </div>
+                      </div>
+                      <div className="mb-1">
+                        <button className="text-secondary">
+                          <i className="fa fa-ellipsis-h" aria-hidden="true" />
+                        </button>
+                      </div>
+                    </div>
                   </Dropdown>
                 </div>
               )
             }
           }
         ]}
+        rowKey="orderID"
         dataSource={dataSource}
         pagination={false}
-        scroll={{ x: 940 }}
+        scroll={{ x: 975 }}
       />
     </div>
   )

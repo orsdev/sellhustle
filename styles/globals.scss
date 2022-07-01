@@ -55,11 +55,13 @@
   }
 
   .font-xs {
-    @apply text-xs font-normal;
+    @apply font-normal;
+    font-size: 13px;
   }
 
   .font-base {
-    @apply text-base font-medium;
+    @apply font-medium;
+    font-size: 14px;
   }
 }
 

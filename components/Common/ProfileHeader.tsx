@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react'
 import Image from 'next/image'
 import { DownOutlined } from '@ant-design/icons'
-import { Dropdown, Menu } from 'antd'
+import { Dropdown } from 'antd'
 import SearchInput from './SearchInput'
 
 const ProfileHeader = ({
@@ -10,8 +10,10 @@ const ProfileHeader = ({
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
 }) => {
   return (
-    <header className="profile__header bg-white py-3 px-8 cm-border">
-      <SearchInput onChange={onChange} />
+    <header className="profile__header bg-white py-3 px-8">
+      <div className="profile__header__search">
+        <SearchInput onChange={onChange} />
+      </div>
       <div className="profile__header__right">
         <div className="flex items-center">
           <div className="profile__header__message">
@@ -40,34 +42,61 @@ const ProfileHeader = ({
           </div>
         </div>
         <div className="profile__header__profile">
-          <div className="profile__header__avatar">
-            <Image
-              src="/avatar-profile.png"
-              alt="Avatar"
-              height={38}
-              width={38}
-              objectFit="contain"
-            />
+          <div className="profile__header__avatar profile__header__avatar__light">
+            MA
           </div>
           <div className="profile__header__name">
             <h6 className="profile__header__role font-xs">Admin</h6>
             <Dropdown
               overlay={
                 <>
-                  <Menu className="profile__header__dropdown__menu">
-                    <Menu.Item className="profile__header__dropdown__item">
+                  <div className="profile__header__dropdown__menu">
+                    <div className="profile__header__avatar__dropdown flex items-center">
+                      <h5 className="profile__header__avatar profile__header__avatar__dark">
+                        MA
+                      </h5>
+                      <div className="ml-1">
+                        <h6
+                          className="font-xs text-primary-blue_dark_4"
+                          style={{
+                            fontWeight: 500
+                          }}
+                        >
+                          Miracle Ayodele
+                        </h6>
+                        <h6
+                          className="opacity-70"
+                          style={{
+                            fontSize: '12px'
+                          }}
+                        >
+                          ayo@gmail.com
+                        </h6>
+                      </div>
+                    </div>
+
+                    <button
+                      className="profile__header__dropdown__item"
+                      key="view"
+                    >
                       View Profile
-                    </Menu.Item>
-                    <Menu.Item className="profile__header__dropdown__item">
+                    </button>
+                    <button
+                      className="profile__header__dropdown__item"
+                      key="settings"
+                    >
                       Account Settings
-                    </Menu.Item>
+                    </button>
                     <div className="my-3">
                       <hr />
                     </div>
-                    <Menu.Item className="profile__header__dropdown__item">
+                    <button
+                      className="profile__header__dropdown__item"
+                      key="logoff"
+                    >
                       Sign Out
-                    </Menu.Item>
-                  </Menu>
+                    </button>
+                  </div>
                 </>
               }
               className="profile__header__dropdown"

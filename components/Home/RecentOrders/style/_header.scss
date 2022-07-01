@@ -1,5 +1,5 @@
 .recent__orders__header {
-  @apply flex flex-col xs:flex-row justify-between items-center;
+  @apply flex flex-col xs:flex-row justify-between items-center p-7 pb-0;
 
   &__title {
     @apply text-primary-blue_dark_1 mb-1 xs:mb-0;

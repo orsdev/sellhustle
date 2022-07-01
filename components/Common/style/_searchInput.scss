@@ -1,6 +1,6 @@
 .common__search__form {
   form {
-    @apply w-full bg-white p-4 flex items-center;
+    @apply w-full bg-white pl-4 flex items-center;
     border-radius: 8px;
     height: 50px;
   }
@@ -10,12 +10,11 @@
   }
 
   input {
-    @apply h-full w-full;
+    @apply h-full w-full block px-1;
     border-color: transparent;
 
     &:focus {
       border: none;
-      box-shadow: none;
       outline: none;
     }
 

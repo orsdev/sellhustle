@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import Header from '@/components/Home/Header'
-import RecentOrders from '@/components/Home/RecentOrders/Index'
 import AppLayout from '@/components/Layout/Layout'
 import ProfileHeader from '@/components/Common/ProfileHeader'
 
@@ -18,6 +17,11 @@ const VisitorsChart = dynamic(
   {
     ssr: false
   }
+)
+
+const RecentOrders = dynamic(
+  () => import('../components/Home/RecentOrders/Index'),
+  { ssr: false }
 )
 
 function Home() {

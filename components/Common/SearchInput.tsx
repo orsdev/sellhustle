@@ -10,14 +10,14 @@ const SearchInput = ({
   placeholder = 'Search for anything'
 }: SearchInputProps) => {
   return (
-    <div className="common__search__form shadow-sm">
+    <div className="common__search__form">
       <form>
         <label htmlFor="search">
           <Image
-            src="/icons/overlay/search.png"
+            src="/icons/light/search.png"
             alt="Search"
-            height={38}
-            width={38}
+            height={16}
+            width={16}
           />
         </label>
         <input

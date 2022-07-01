@@ -106,8 +106,9 @@ const Sidebar = () => {
                 <Image
                   src="/logo.png"
                   alt="Sell Hustle Logo"
-                  height={50}
-                  width={50}
+                  height={40}
+                  width={40}
+                  objectFit="contain"
                 />
                 <span className="hidden md:block">Sel Hustle</span>
               </a>
@@ -134,8 +135,9 @@ const Sidebar = () => {
                       <Image
                         src="/logo.png"
                         alt="Sell Hustle Logo"
-                        height={50}
-                        width={50}
+                        height={40}
+                        width={40}
+                        objectFit="contain"
                       />
                     </a>
                   </Link>
@@ -177,8 +179,8 @@ const Sidebar = () => {
                           }`
                         }
                         alt={title}
-                        height={20}
-                        width={20}
+                        height={18}
+                        width={18}
                       />
                       <span className="inline-block ml-4">{title}</span>
                     </a>
@@ -204,16 +206,16 @@ const Sidebar = () => {
                         <Image
                           src={`/icons/product-dark.png`}
                           alt="Products"
-                          height={20}
-                          width={20}
+                          height={18}
+                          width={18}
                           objectFit="contain"
                         />
                       ) : (
                         <Image
                           src={`/icons/product-light.png`}
                           alt="Products"
-                          height={20}
-                          width={20}
+                          height={18}
+                          width={18}
                           objectFit="contain"
                         />
                       )}
@@ -251,9 +253,9 @@ const Sidebar = () => {
                 }}
               />
             </div>
-            <br />
+
             {/* Divider */}
-            <hr className="my-4 md:min-w-full" />
+            <hr className="my-4 md:min-w-full block" />
 
             {/* Business Navigation */}
             <h6 className="sidebar__navigation__title">Business</h6>
@@ -272,8 +274,8 @@ const Sidebar = () => {
                           }`
                         }
                         alt={title}
-                        height={21}
-                        width={21}
+                        height={20}
+                        width={20}
                         objectFit="contain"
                       />
                       <span className="inline-block ml-4">{title}</span>
@@ -282,23 +284,7 @@ const Sidebar = () => {
                 </li>
               ))}
             </ul>
-
-            <br />
-            {/* Divider */}
-            <hr className="md:min-w-full" />
             <div className="h-4 md:h-8" />
-            <div className="sidebar__navigation__logout">
-              <button type="button" className="flex items-center">
-                <Image
-                  src="/icons/logout.png"
-                  alt="Signout"
-                  height={19}
-                  width={18}
-                  objectFit="contain"
-                />
-                <span className="inline-block ml-4">Log Out</span>
-              </button>
-            </div>
           </div>
         </div>
       </nav>

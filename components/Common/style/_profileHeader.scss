@@ -1,5 +1,5 @@
 .profile__header {
-  @apply flex items-center justify-between;
+  @apply flex items-center justify-between relative py-2;
   border-right: none;
   border-left: none;
 
@@ -15,8 +15,30 @@
     @apply flex-col;
   }
 
+  &__search {
+    @apply shadow-sm;
+    width: calc(100% - 300px);
+
+    input:focus {
+      @apply shadow-md;
+    }
+
+    @media (max-width: 900px) {
+      width: 100%;
+    }
+
+    @media (max-width: 767px) {
+      width: calc(100% - 300px);
+    }
+
+    @media (max-width: 650px) {
+      width: 100%;
+    }
+  }
+
   &__right {
-    @apply flex items-center;
+    @apply flex items-center justify-end;
+    width: 300px;
 
     @media (max-width: 900px) {
       @apply mt-5;
@@ -61,10 +83,33 @@
   }
 
   &__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 100%;
     height: 38px;
     width: 38px;
     margin-right: 16px;
+    font-size: 14px;
+    font-weight: 500;
+
+    &__light {
+      background-color: #efecff;
+    }
+
+    &__dark {
+      height: 46px;
+      width: 46px;
+      background-color: #9d72ff;
+      color: #fff;
+      margin-right: 0;
+    }
+  }
+
+  &__avatar__dropdown {
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    background: #f5f6fa;
   }
 
   &__role {
@@ -73,9 +118,10 @@
   }
 
   &__dropdown__menu {
-    min-width: 150px;
-    padding: 0 5px;
-    padding-top: 10px;
+    @apply bg-white relative shadow-md;
+    top: 10px;
+    width: 250px;
+    padding-top: 0;
   }
 
   &__dropdown__name {
@@ -83,7 +129,15 @@
   }
 
   &__dropdown__item {
-    @apply text-primary-blue_dark_3;
+    @apply text-primary-blue_dark_3 block w-full;
     font-size: 12px;
+    padding: 10px 20px;
+    margin-bottom: 1px;
+    text-align: left;
+    transition: all 0.3s;
+
+    &:hover {
+      @apply bg-slate-50;
+    }
   }
 }

@@ -7,6 +7,7 @@
       font-weight: 400;
       font-size: 13.2px;
       line-height: 15px;
+      left: -24px;
 
       // Hide antd select box on thead
       .ant-table-selection {
@@ -24,9 +25,41 @@
       }
     }
 
-    // This centers antd thead sort icon
-    .ant-table-column-sorter {
-      margin-top: 5px;
+    tbody {
+      // Apply style to antd tbody orderID
+      .ant-table-cell:nth-child(2) {
+        left: -24px;
+        z-index: 10;
+        word-break: break-all;
+      }
+
+      // Omit OrderID column
+      .ant-table-cell:not(:nth-child(-n + 2)) {
+        left: -24px;
+        word-break: break-all;
+      }
+
+      // Apply style to tbody select boxes
+      td.ant-table-selection-column {
+        position: relative;
+        z-index: 20;
+        background-color: transparent;
+      }
+
+      // Apply style to checked(selected) tr row
+      .ant-table-row-selected > td {
+        background: #e6f7ff48;
+      }
+    }
+
+    tbody tr:nth-child(even) .recent__orders__table__name {
+      background-color: #e2fbf47e;
+      color: #39e4b9;
+    }
+
+    tbody tr:nth-child(odd) .recent__orders__table__name {
+      background: #e1edfe;
+      color: #2b7dfb;
     }
 
     tbody tr,
@@ -37,6 +70,44 @@
 
   &__action {
     background-color: white !important;
+    right: 20px !important;
+
+    @media (max-width: 900px) {
+      right: 0 !important;
+    }
+  }
+
+  &__dropdown {
+    @apply shadow-md bg-white py-2 relative;
+    width: 200px;
+    left: -20px;
+  }
+
+  &__dropdown__item {
+    @apply text-primary-blue_dark_4 w-full flex items-center;
+    font-size: 12px;
+    padding: 12px 20px;
+    text-align: left;
+    transition: all 0.3s;
+
+    &:hover {
+      @apply bg-slate-50;
+    }
+  }
+
+  // Hide icons on action column
+  &__action__icons {
+    @apply flex items-center relative -left-4;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+    padding-left: 8px;
+  }
+
+  // Show icons on action column
+  tr:hover &__action__icons {
+    visibility: visible;
+    opacity: 1;
   }
 
   &__name {
@@ -44,6 +115,11 @@
     width: 34px;
     height: 34px;
     background: #efecff;
+    font-size: 12px;
+  }
+
+  .font-base {
+    font-weight: 400;
   }
 
   &__info {
