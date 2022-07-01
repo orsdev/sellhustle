@@ -3,7 +3,7 @@ import OrdersTable from './Table'
 
 const RecentOrders = () => {
   return (
-    <div className="home__recent__orders cm-border-radius">
+    <div className="home__recent__orders">
       <Header />
       <OrdersTable />
     </div>

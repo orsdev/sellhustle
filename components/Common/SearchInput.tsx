@@ -2,12 +2,15 @@ import Image from 'next/image'
 import { ChangeEvent } from 'react'
 
 type SearchInputProps = {
-  placeholder: string
+  placeholder?: string
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
 }
-const SearchInput = ({ placeholder, onChange }: SearchInputProps) => {
+const SearchInput = ({
+  onChange,
+  placeholder = 'Search for anything'
+}: SearchInputProps) => {
   return (
-    <div className="common__search__form">
+    <div className="common__search__form shadow-sm">
       <form>
         <label htmlFor="search">
           <Image

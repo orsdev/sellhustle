@@ -60,6 +60,8 @@ module.exports = {
         primary: {
           blue_dark_1: '#001D6E',
           blue_dark_2: '#0544DD',
+          blue_dark_3: '#1A439B',
+          blue_dark_4: '#36517B',
           blue_light_1: '#C4DDFF',
           blue_light_2: '#EEF5FF',
           blue_light_3: '#7FB5FF',

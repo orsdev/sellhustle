@@ -1,11 +1,24 @@
 import Head from 'next/head'
-import AbandonedCart from '@/components/Home/AbandonedCart/Index'
-import Header from '@/components/Home/Header/Header'
-import PopularProducts from '@/components/Home/PopularProducts/PopularProducts'
-import Profile from '@/components/Home/Profile/Index'
+import dynamic from 'next/dynamic'
+import Header from '@/components/Home/Header'
 import RecentOrders from '@/components/Home/RecentOrders/Index'
-import Stats from '@/components/Home/Stats/Stats'
 import AppLayout from '@/components/Layout/Layout'
+import ProfileHeader from '@/components/Common/ProfileHeader'
+
+const SalesChart = dynamic(() => import('../components/Home/Chart/Sales'), {
+  ssr: false
+})
+
+const OrdersChart = dynamic(() => import('../components/Home/Chart/Orders'), {
+  ssr: false
+})
+
+const VisitorsChart = dynamic(
+  () => import('../components/Home/Chart/Visitors'),
+  {
+    ssr: false
+  }
+)
 
 function Home() {
   return (
@@ -14,16 +27,22 @@ function Home() {
         <title>Sel Hustle | Dashboard </title>
       </Head>
       <div className="mx-auto w-full">
-        <div className="flex flex-wrap">
-          <div className="w-full xl:w-[73%]  mb-12 xl:mb-0 px-7 py-12">
+        <div className="w-full">
+          <ProfileHeader
+            onChange={(event) => console.log(event.target.value)}
+          />
+          <div className="w-full px-7 py-12 pt-6">
             <Header />
-            <Stats />
-            <AbandonedCart />
+            <div className="flex flex-col lg:flex-row mt-6">
+              <div className="lg:w-[60%]">
+                <SalesChart />
+              </div>
+              <div className="lg:w-[40%] lg:pl-4 mt-5 lg:mt-0">
+                <OrdersChart />
+                <VisitorsChart />
+              </div>
+            </div>
             <RecentOrders />
-          </div>
-          <div className="w-full xl:w-[27%] p-7 bg-white cm-border-left">
-            <Profile />
-            <PopularProducts />
           </div>
         </div>
       </div>

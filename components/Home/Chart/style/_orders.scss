@@ -1,0 +1,14 @@
+.home__orders__chart {
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 20px 0;
+  padding-bottom: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    position: relative;
+    padding: 0 30px;
+  }
+}

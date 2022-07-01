@@ -2,10 +2,31 @@
   .ant-table {
     thead th {
       @apply text-secondary select-none;
+      background-color: transparent;
       font-style: normal;
       font-weight: 400;
-      font-size: 13.5px;
+      font-size: 13.2px;
       line-height: 15px;
+
+      // Hide antd select box on thead
+      .ant-table-selection {
+        display: none;
+      }
+
+      // Move antd first thead to the left
+      &.ant-table-cell:nth-child(2) {
+        left: -30px;
+      }
+
+      // Remove antd thead divider/separator
+      &::before {
+        display: none;
+      }
+    }
+
+    // This centers antd thead sort icon
+    .ant-table-column-sorter {
+      margin-top: 5px;
     }
 
     tbody tr,
@@ -14,10 +35,15 @@
     }
   }
 
-  &__image {
-    @apply rounded-lg;
+  &__action {
+    background-color: white !important;
+  }
+
+  &__name {
+    @apply rounded-full flex justify-center items-center uppercase;
     width: 34px;
     height: 34px;
+    background: #efecff;
   }
 
   &__info {

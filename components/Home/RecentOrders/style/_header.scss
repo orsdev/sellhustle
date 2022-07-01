@@ -1,17 +1,18 @@
 .recent__orders__header {
-  @apply flex justify-between items-center;
+  @apply flex flex-col xs:flex-row justify-between items-center;
 
   &__title {
-    @apply text-primary-blue_dark_1;
+    @apply text-primary-blue_dark_1 mb-1 xs:mb-0;
     font-weight: 500;
     font-size: 18px;
     line-height: 24px;
   }
 
   &__showall {
-    @apply bg-primary-blue_light_2 rounded-xl py-3 px-4 transition-all hover:bg-primary-blue_light_1;
+    @apply bg-primary-blue_light_2 rounded-md py-3 px-4 transition-all hover:bg-primary-blue_light_1;
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
+    width: 110px;
   }
 }
