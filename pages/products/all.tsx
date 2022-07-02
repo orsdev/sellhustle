@@ -1,11 +1,11 @@
 import Head from 'next/head'
-import AppLayout from '@/components/Layout/Layout'
 import Products from '@/components/Products/All/Products'
 import LayoutHeader from '@/components/Common/LayoutHeader'
+import MainLayout from '@/components/Layout/Main'
 
 const ProductsList = () => {
   return (
-    <AppLayout>
+    <MainLayout>
       <Head>
         <title>Sel Hustle | Products </title>
       </Head>
@@ -15,7 +15,7 @@ const ProductsList = () => {
           <Products />
         </div>
       </div>
-    </AppLayout>
+    </MainLayout>
   )
 }
 

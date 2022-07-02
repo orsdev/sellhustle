@@ -3,58 +3,40 @@
   border-right: none;
   border-left: none;
 
-  @media (max-width: 900px) {
-    @apply flex-col;
+  &__mobile {
+    @apply xs:w-[200px];
   }
 
-  @media (max-width: 767px) {
-    @apply flex-row;
-  }
-
-  @media (max-width: 650px) {
-    @apply flex-col;
+  &__logo {
+    @apply hidden xs:block;
   }
 
   &__search {
-    @apply shadow-sm;
-    width: calc(100% - 300px);
+    @apply hidden sm:flex items-center;
+    flex: 1;
+    height: 40px;
+  }
 
-    input:focus {
-      @apply shadow-md;
-    }
-
-    @media (max-width: 900px) {
+  &__search {
+    input {
+      display: block;
+      height: 100%;
       width: 100%;
-    }
+      border: none;
+      padding: 0.4375rem 0.7rem;
+      font-size: 0.8125rem;
+      font-weight: 400;
 
-    @media (max-width: 767px) {
-      width: calc(100% - 300px);
-    }
-
-    @media (max-width: 650px) {
-      width: 100%;
+      &:focus {
+        box-shadow: none;
+        border: none;
+        outline: none;
+      }
     }
   }
 
   &__right {
-    @apply flex items-center justify-end;
-    width: 300px;
-
-    @media (max-width: 900px) {
-      @apply mt-5;
-    }
-
-    @media (max-width: 767px) {
-      @apply mt-0;
-    }
-
-    @media (max-width: 650px) {
-      @apply mt-5;
-    }
-
-    @media (max-width: 400px) {
-      @apply flex-col w-full items-start;
-    }
+    @apply flex items-center justify-end cursor-pointer lg:w-[300px];
   }
 
   &__message {
@@ -74,12 +56,7 @@
   }
 
   &__profile {
-    @apply flex;
-
-    @media (max-width: 400px) {
-      margin-top: 15px;
-      align-self: flex-end;
-    }
+    @apply flex items-center;
   }
 
   &__avatar {
@@ -113,7 +90,7 @@
   }
 
   &__role {
-    @apply text-primary-blue_dark_3 mb-1;
+    @apply text-primary-blue_dark_3;
     font-size: 12px;
   }
 
@@ -124,8 +101,8 @@
     padding-top: 0;
   }
 
-  &__dropdown__name {
-    @apply flex items-center font-medium text-primary-blue_dark_4;
+  &__profile__button {
+    @apply hidden lg:block text-primary-blue_dark_4;
   }
 
   &__dropdown__item {

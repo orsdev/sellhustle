@@ -1,8 +1,7 @@
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import Header from '@/components/Home/Header'
-import AppLayout from '@/components/Layout/Layout'
-import ProfileHeader from '@/components/Common/ProfileHeader'
+import MainLayout from '@/components/Layout/Main'
 
 const SalesChart = dynamic(() => import('../components/Home/Chart/Sales'), {
   ssr: false
@@ -26,15 +25,12 @@ const RecentOrders = dynamic(
 
 function Home() {
   return (
-    <AppLayout>
+    <MainLayout>
       <Head>
         <title>Sel Hustle | Dashboard </title>
       </Head>
       <div className="mx-auto w-full">
         <div className="w-full">
-          <ProfileHeader
-            onChange={(event) => console.log(event.target.value)}
-          />
           <div className="w-full px-7 py-12 pt-6">
             <Header />
             <div className="flex flex-col lg:flex-row mt-6">
@@ -50,7 +46,7 @@ function Home() {
           </div>
         </div>
       </div>
-    </AppLayout>
+    </MainLayout>
   )
 }
 

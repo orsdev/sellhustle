@@ -1,12 +1,12 @@
 import Head from 'next/head'
-import AppLayout from '@/components/Layout/Layout'
 import LayoutHeader from '@/components/Common/LayoutHeader'
 import CustomersTable from '@/components/Customers/List/Table/Table'
 import CustomerStats from '@/components/Customers/List/Stats/Stats'
+import MainLayout from '@/components/Layout/Main'
 
 const CustomersList = () => {
   return (
-    <AppLayout>
+    <MainLayout>
       <Head>
         <title>Sel Hustle | Customers List </title>
       </Head>
@@ -22,7 +22,7 @@ const CustomersList = () => {
           <CustomersTable />
         </div>
       </div>
-    </AppLayout>
+    </MainLayout>
   )
 }
 

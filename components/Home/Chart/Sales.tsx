@@ -40,7 +40,7 @@ function Chart() {
       <div
         className="relative"
         style={{
-          height: '190px'
+          height: '198px'
         }}
       >
         <ReactApexChart

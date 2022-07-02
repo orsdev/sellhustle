@@ -7,7 +7,7 @@ export const dateFormatter = (duration: number) =>
 
 const options = {
   height: '100%',
-  type: 'area' as any,
+  type: 'line' as any,
   options: {
     chart: {
       toolbar: {
@@ -118,7 +118,7 @@ const VisitorsChart = () => {
     series: [
       {
         name: 'Total Visitors',
-        data: [37, 35, 44, 28, 36, 24, 65, 31, 37, 39]
+        data: [35, 38, 44, 28, 36, 24, 55, 31, 37, 32]
       }
     ]
   })
@@ -129,11 +129,11 @@ const VisitorsChart = () => {
       <div
         className="relative"
         style={{
-          height: '120px'
+          height: '130px'
         }}
       >
         <ReactApexChart
-          type="area"
+          type="line"
           options={options.options}
           series={chartSeries.series}
           height={'100%'}

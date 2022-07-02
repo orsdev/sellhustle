@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Router, { useRouter } from 'next/router'
-import AppLayout from '@/components/Layout/Layout'
 import Header from '@/components/Customers/Details/Header'
 import Info from '@/components/Customers/Details/Info'
 import OrderTable from '@/components/Customers/Details/OrderTable'
+import MainLayout from '@/components/Layout/Main'
 
 const CustomerDetails = () => {
   const { query } = useRouter()
@@ -21,7 +21,7 @@ const CustomerDetails = () => {
   }, [query])
 
   return (
-    <AppLayout>
+    <MainLayout>
       <Head>
         <title>Sel Hustle | Customer Details </title>
       </Head>
@@ -34,7 +34,7 @@ const CustomerDetails = () => {
           <OrderTable />
         </div>
       </div>
-    </AppLayout>
+    </MainLayout>
   )
 }
 

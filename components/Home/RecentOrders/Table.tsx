@@ -106,7 +106,7 @@ const columns: ColumnsType<DataType> = [
   {
     title: 'Price',
     dataIndex: 'price',
-    width: 150,
+    width: 140,
     render: (price) => {
       return (
         <>
@@ -125,6 +125,7 @@ const columns: ColumnsType<DataType> = [
   {
     title: 'Status',
     dataIndex: 'status',
+    width: 120,
     render: (status) => {
       const formattedStatus = status.toLowerCase()
       let color = 'text-primary-green_dark_1 bg-green-100'
@@ -240,7 +241,7 @@ const OrdersTable = () => {
   }
 
   return (
-    <div className="mt-3 recent__orders__table px-1">
+    <div className="mt-3 recent__orders__table">
       <Table
         rowSelection={rowSelection}
         columns={[
@@ -248,7 +249,7 @@ const OrdersTable = () => {
           {
             title: '',
             key: 'operation',
-            fixed: 'right',
+            // fixed: 'right',
             width: 110,
             className: 'recent__orders__table__action',
             render: (_, record) => {

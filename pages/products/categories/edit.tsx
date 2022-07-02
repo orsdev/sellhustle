@@ -1,17 +1,17 @@
 import Head from 'next/head'
-import AppLayout from '@/components/Layout/Layout'
 import CategoryEdit from '@/components/Products/Categories/Edit/Index'
+import MainLayout from '@/components/Layout/Main'
 
 const Edit = () => {
   return (
-    <AppLayout>
+    <MainLayout>
       <Head>
         <title>Sel Hustle | Edit Category</title>
       </Head>
       <div className="mx-auto w-full px-7">
         <CategoryEdit />
       </div>
-    </AppLayout>
+    </MainLayout>
   )
 }
 
