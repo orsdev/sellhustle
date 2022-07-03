@@ -1,11 +1,15 @@
 .recent__orders__table {
-  padding-left: 16px;
-
   .ant-table {
     background-color: transparent !important;
 
     &-container::after {
       background-color: transparent !important;
+      box-shadow: none !important;
+    }
+
+    &-container::before {
+      background-color: transparent !important;
+      box-shadow: none !important;
     }
 
     table {
@@ -23,12 +27,10 @@
       font-weight: 400;
       font-size: 13.2px;
       line-height: 15px;
-      left: -15px;
 
       // Move OrderID thead td to the left
       &:nth-child(2) {
-        padding-left: 0;
-        left: -20px;
+        padding-left: 5px;
       }
 
       // Hide antd select box on thead
@@ -45,14 +47,15 @@
     tbody {
       // Apply style to antd tbody orderID
       .ant-table-cell:nth-child(2) {
-        left: -24px;
-        z-index: 10;
-        word-break: break-all;
+        button {
+          position: relative;
+          left: -24px;
+          word-break: break-all;
+        }
       }
 
       // Omit OrderID column
       .ant-table-cell:not(:nth-child(-n + 2)) {
-        left: -24px;
         word-break: break-all;
       }
 
@@ -60,7 +63,6 @@
       td.ant-table-selection-column {
         position: relative;
         z-index: 20;
-        background-color: transparent;
       }
 
       // Apply style to checked(selected) tr row
@@ -153,21 +155,5 @@
 
   .font-base {
     font-size: 13px;
-  }
-
-  &__delete,
-  &__edit {
-    @apply text-secondary py-2 px-3;
-    width: 90px;
-    font-size: 12px;
-    border-radius: 5px;
-  }
-
-  &__edit {
-    @apply bg-primary-blue_light_4 mb-1;
-  }
-
-  &__delete {
-    @apply bg-red-100 mb-1;
   }
 }

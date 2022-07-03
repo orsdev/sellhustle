@@ -81,6 +81,7 @@ const ProfileHeader = ({ onChange }: Props) => {
           </div>
         </div>
         <Dropdown
+          trigger={['click']}
           overlay={
             <>
               <div className="profile__header__dropdown__menu">

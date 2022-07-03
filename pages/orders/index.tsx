@@ -1,29 +1,14 @@
 import Head from 'next/head'
-import OrderStats from '@/components/Orders/List/Stats/Stats'
-import AllOrders from '@/components/Orders/List/AllOrders/Index'
-import LatestOrder from '@/components/Orders/List/LatestOrder/Index'
-import LayoutHeader from '@/components/Common/LayoutHeader'
 import MainLayout from '@/components/Layout/Main'
+import SalesOrder from '@/components/Orders/Sales/Index'
 
 const OrdersList = () => {
   return (
     <MainLayout>
       <Head>
-        <title>Sel Hustle | Orders List </title>
+        <title>Sel Hustle | Orders </title>
       </Head>
-      <div className="px-7 py-7">
-        <LayoutHeader
-          title="Orders List"
-          placeholder="Search for the orders"
-          showSearchForm={true}
-          onChange={(event) => console.log(event.target.value)}
-        />
-        <div className="mt-[30px]">
-          <OrderStats />
-          <AllOrders />
-          <LatestOrder />
-        </div>
-      </div>
+      <SalesOrder />
     </MainLayout>
   )
 }

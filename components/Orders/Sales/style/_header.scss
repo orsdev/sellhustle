@@ -1,0 +1,19 @@
+.sales__order__header {
+  @apply flex flex-col xs:flex-row justify-between mb-6 xs:items-center;
+
+  &__button {
+    @apply text-bg self-end mt-3 xs:mt-0;
+    width: 131px;
+    height: 46px;
+    background: #0544dd;
+    border: 1px solid rgba(0, 29, 110, 0.1);
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: lighten(#0544dd, 5%);
+    }
+  }
+}
