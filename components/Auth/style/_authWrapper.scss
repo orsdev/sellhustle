@@ -36,9 +36,9 @@
   }
 
   &__bg {
-    @apply hidden lg:block self-start;
-    flex: 1;
+    @apply hidden lg:block self-start lg:w-[55%];
     height: 100%;
+    justify-self: center;
 
     h4 {
       font-weight: 600;
@@ -53,16 +53,30 @@
   }
 
   &__slider {
-    width: 650px;
-    margin: auto;
     position: relative;
-    top: 190px;
 
     img {
       width: 100%;
+      height: 473px;
       position: relative;
-      top: -60px;
       left: -40px;
+      transform: scale(0.88);
+    }
+  }
+
+  &__swiper {
+    overflow-y: revert !important;
+    overflow-x: clip !important;
+    width: 100%;
+    margin: auto;
+    position: relative;
+    top: 100px;
+
+    .swiper-horizontal > .swiper-pagination-bullets,
+    .swiper-pagination-bullets.swiper-pagination-horizontal,
+    .swiper-pagination-custom,
+    .swiper-pagination-fraction {
+      bottom: -31px;
     }
   }
 }

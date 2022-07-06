@@ -1,5 +1,13 @@
-import Link from 'next/link'
 import { ReactNode } from 'react'
+import Link from 'next/link'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/pagination'
+
+// import required modules
+import { Pagination } from 'swiper'
 
 type Props = {
   children: ReactNode
@@ -30,18 +38,54 @@ const AuthWrapper = ({ children }: Props) => {
         </footer>
       </div>
       <div className="auth__wrapper__bg">
-        <div className="auth__wrapper__slider text-center">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/slider/one.png" alt="Dashboard" />
+        <Swiper
+          pagination={true}
+          modules={[Pagination]}
+          className="auth__wrapper__swiper"
+        >
+          <SwiperSlide>
+            <div className="auth__wrapper__slider text-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/slider/one.png" alt="Dashboard" />
 
-          <div className="-mt-6">
-            <h4>Sel Hustle</h4>
-            <p className="text-secondary mt-2 w-[430px] mx-auto">
-              You can start to create your products easily with its
-              user-friendly design & most completed responsive layout
-            </p>
-          </div>
-        </div>
+              <div className="-mt-3">
+                <h4>Sel Hustle</h4>
+                <p className="text-secondary mt-2 w-[430px] mx-auto">
+                  You can start to create your products easily with its
+                  user-friendly design & most completed responsive layout
+                </p>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="auth__wrapper__slider text-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/slider/one.png" alt="Dashboard" />
+
+              <div className="-mt-3">
+                <h4>Sel Hustle</h4>
+                <p className="text-secondary mt-2 w-[430px] mx-auto">
+                  You can start to create your products easily with its
+                  user-friendly design & most completed responsive layout
+                </p>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="auth__wrapper__slider text-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/slider/one.png" alt="Dashboard" />
+
+              <div className="-mt-3">
+                <h4>Sel Hustle</h4>
+                <p className="text-secondary mt-2 w-[430px] mx-auto">
+                  You can start to create your products easily with its
+                  user-friendly design & most completed responsive layout
+                </p>
+              </div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
       </div>
     </div>
   )
