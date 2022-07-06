@@ -1,6 +1,6 @@
 .customers__order__table {
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 6px;
+  padding-bottom: 0;
   padding-top: 30px;
   background-color: #fff;
 
@@ -9,67 +9,5 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 24px;
-  }
-
-  .ant-table {
-    thead th {
-      @apply text-secondary select-none;
-      text-align: center;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 13.5px;
-      line-height: 15px;
-    }
-
-    tbody tr,
-    tbody td {
-      text-align: center;
-      font-size: 13.5px;
-    }
-  }
-
-  .ant-pagination-item-link {
-    @apply flex justify-center items-center;
-    border-radius: 8px;
-  }
-
-  .ant-pagination-prev,
-  .ant-pagination-next {
-    &[aria-disabled='false'] {
-      .ant-pagination-item-link {
-        @apply bg-primary-blue_light_3 text-white;
-      }
-    }
-  }
-
-  .ant-pagination-total-text {
-    @apply hidden xs:inline-block text-secondary;
-  }
-
-  .ant-table-row-selected td {
-    background-color: transparent !important;
-  }
-
-  .ant-table-row-selected ~ :not(.ant-table-row-level-0) {
-    // Hide  Children checkboxes
-    .ant-table-selection-column {
-      visibility: hidden;
-      opacity: 0;
-      position: absolute;
-      z-index: -2;
-    }
-
-    .ant-table-cell-with-append {
-      border-left: 1px solid #7fb5ff;
-    }
-
-    td {
-      background: rgba(238, 245, 255, 0.3);
-      padding: 16px 12px;
-    }
-  }
-
-  .font-base {
-    font-size: 13px;
   }
 }

@@ -1,6 +1,6 @@
 .product__edit__organization {
   @apply bg-white py-10 pb-8 px-7;
-  border-radius: 16px;
+  border-radius: 6px;
 
   &__heading {
     @apply text-primary-blue_dark_1;
@@ -13,20 +13,38 @@
     font-size: 14px;
   }
 
-  select {
-    border-radius: 8px;
-    min-height: 56px;
-    font-size: 15px;
-    width: 100%;
-    padding: 0 15px;
-    color: rgba(0, 0, 0, 0.747);
-    border: 1px solid rgba(0, 29, 110, 0.1);
-    font-size: 12px;
+  .select__inner {
+    &__control {
+      @apply text-primary-blue_dark_1;
+      height: 44px;
+      border: 1px solid rgba(0, 29, 110, 0.1);
+      border-radius: 4px;
+      min-height: 56px;
+      font-size: 15px;
 
-    &:focus {
-      border: 1px solid rgba(128, 128, 128, 0.5);
-      box-shadow: none;
-      outline: none;
+      &:hover {
+        border: 1px solid #dbdfea;
+      }
+
+      &--menu-is-open {
+        box-shadow: none;
+      }
+
+      &--is-focused {
+        box-shadow: none;
+      }
+    }
+
+    &__placeholder {
+      padding-left: 8px;
+      font-weight: 400;
+      font-size: 15px;
+      color: #001d6e;
+      opacity: 0.6;
+    }
+
+    &__indicator-separator {
+      display: none;
     }
   }
 }

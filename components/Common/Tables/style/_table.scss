@@ -1,0 +1,205 @@
+.table__container {
+  @apply bg-transparent pb-0 mb-5;
+
+  // Ant Design Style Overide
+  .ant-table {
+    background-color: transparent !important;
+
+    table {
+      border-spacing: 0 1px !important;
+    }
+
+    &-wrapper.table__hover {
+      tr:hover {
+        box-shadow: 0px 0px 1px 3px rgba(221, 210, 255, 0.42);
+        border: none;
+      }
+
+      tr:hover .table__container__action {
+        background: #fafafa !important;
+      }
+    }
+
+    &-wrapper.table__nohover {
+      tr:hover {
+        box-shadow: none;
+        border: none;
+        background-color: transparent !important;
+      }
+
+      .ant-table-tbody > tr.ant-table-row:hover > td,
+      .ant-table-tbody > tr > td.ant-table-cell-row-hover {
+        background-color: transparent !important;
+      }
+    }
+
+    &-container::after {
+      background-color: transparent !important;
+      box-shadow: none !important;
+    }
+
+    &-container::before {
+      background-color: transparent !important;
+      box-shadow: none !important;
+    }
+
+    colgroup {
+      background-color: white !important;
+    }
+
+    thead {
+      background: #fbfbfb;
+    }
+
+    thead th {
+      @apply text-secondary select-none;
+      background-color: transparent;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13.2px;
+      line-height: 15px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-top: 1px solid rgba(0, 29, 110, 0.1);
+
+      // Remove antd thead divider/separator
+      &::before {
+        display: none;
+      }
+
+      // Apply style to antd thead orderID
+      &.ant-table-cell:nth-child(2) {
+        padding-left: 5px;
+      }
+
+      // add padding antd select box on thead
+      .ant-table-selection {
+        padding-left: 18px;
+      }
+    }
+
+    tbody {
+      // Apply style to antd tbody orderID
+      .ant-table-cell:nth-child(2) {
+        button {
+          position: relative;
+          left: -20px;
+          word-break: break-all;
+        }
+      }
+
+      // Apply style to tbody select boxes
+      td.ant-table-selection-column {
+        position: relative;
+        padding-left: 20px;
+      }
+
+      // Apply style to checked(selected) tr row
+      .ant-table-row-selected > td {
+        background: transparent;
+      }
+    }
+
+    tbody tr:nth-child(even) .table__container__name {
+      background-color: #e2fbf47e;
+      color: #39e4b9;
+    }
+
+    tbody tr:nth-child(odd) .table__container__name {
+      background: #e1edfe;
+      color: #2b7dfb;
+    }
+
+    tbody tr,
+    tbody td {
+      font-size: 13px;
+    }
+
+    .ant-table-cell-fix-right-first::after {
+      box-shadow: inset -10px 0 8px -8px rgb(0 0 0 / 2%) !important;
+    }
+  }
+
+  &__action {
+    background-color: white;
+  }
+
+  &__dropdown {
+    @apply shadow-md bg-white py-2 relative;
+    width: 200px;
+    left: -20px;
+  }
+
+  &__dropdown__item {
+    @apply text-primary-blue_dark_4 w-full flex items-center;
+    font-size: 12px;
+    padding: 12px 20px;
+    text-align: left;
+    transition: all 0.3s;
+
+    &:hover {
+      @apply bg-slate-50;
+    }
+  }
+
+  // Hide icons on action column
+  &__action__icons {
+    @apply flex items-center absolute opacity-0 visible;
+    padding-left: 8px;
+    top: 3px;
+    transition: all 0.8s ease;
+
+    &__view {
+      left: -38px;
+    }
+
+    &__mail {
+      left: -10px;
+    }
+  }
+
+  // Show icons on action column
+  tr:hover &__action__icons {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__name {
+    @apply rounded-full flex justify-center items-center uppercase;
+    width: 34px;
+    height: 34px;
+    background: #efecff;
+    font-size: 12px;
+  }
+
+  .font-base {
+    font-weight: 400;
+  }
+
+  &__info {
+    @apply flex;
+  }
+
+  .font-base {
+    font-size: 13px;
+  }
+
+  &__pagination__prev,
+  &__pagination__next {
+    min-width: 32px;
+    height: 32px;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    padding: 0 6px;
+    color: rgba(11, 25, 45, 0.5);
+    font-size: 12px;
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    opacity: 0.9;
+    margin-bottom: 0 !important;
+    background-color: #fff;
+  }
+}

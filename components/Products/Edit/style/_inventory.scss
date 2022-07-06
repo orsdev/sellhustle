@@ -1,11 +1,15 @@
 .product__inventory {
   @apply bg-white py-10 pb-8 px-7 mt-7;
-  border-radius: 16px;
+  border-radius: 6px;
 
   &__heading {
     @apply text-primary-blue_dark_1;
     font-size: 18px;
     font-weight: 600;
+  }
+
+  input {
+    @apply text-primary-blue_dark_1 font-normal;
   }
 
   .field__label {
@@ -14,15 +18,15 @@
   }
 
   .ant-input-number {
-    border-radius: 8px !important;
+    @apply text-primary-blue_dark_1 font-normal;
+    border-radius: 4px !important;
     height: 56px;
     font-size: 15px;
     width: 100%;
-    color: rgba(0, 0, 0, 0.747);
     border: 1px solid rgba(0, 29, 110, 0.1);
 
-    &:focus {
-      border: 1px solid rgba(128, 128, 128, 0.5);
+    &-focused {
+      @apply border border-solid border-primary-blue_dark_1;
       box-shadow: none;
       outline: none;
     }

@@ -1,0 +1,21 @@
+.cm__submit__button {
+  @apply w-full bg-primary-blue_dark_2;
+  height: 51px;
+  border: 1px solid rgba(0, 29, 110, 0.1);
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #ffffff;
+  transition: background 0.3s;
+
+  &:hover {
+    background: lighten(#0544dd, 10%);
+  }
+
+  &:disabled {
+    @apply select-none cursor-not-allowed;
+    opacity: 0.65;
+  }
+}

@@ -1,5 +1,7 @@
 .customer__details__header {
-  @apply flex flex-col base:flex-row justify-between items-center;
+  &__container {
+    @apply flex flex-col base:flex-row justify-between items-center;
+  }
 
   &__btn {
     @apply flex mt-4 base:mt-0;

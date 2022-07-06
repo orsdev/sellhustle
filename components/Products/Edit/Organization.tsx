@@ -1,3 +1,4 @@
+import Select from 'react-select'
 import Dropzone from '@/components/Common/Dropzone'
 
 const Organization = () => {
@@ -7,36 +8,42 @@ const Organization = () => {
       <div className="mt-7">
         <div>
           <label htmlFor="category">Category</label>
-          <select name="category" id="category">
-            <option value="" disabled selected>
-              Select Category
-            </option>
-            <option value="Category 1">Category 1</option>
-            <option value="Category 2">Category 2</option>
-          </select>
+          <Select
+            options={[
+              { value: 'Category 1', label: 'Category 1' },
+              { value: 'Category 2', label: 'Category 2' }
+            ]}
+            name="category"
+            classNamePrefix="select__inner"
+            placeholder="Select a category"
+          />
         </div>
 
         <div className="my-7">
           <label htmlFor="type" id="type">
             Product Type
           </label>
-          <select name="type" id="type">
-            <option value="" disabled selected>
-              Select Product Type
-            </option>
-            <option value="Category 1">Type 1</option>
-            <option value="Category 2">Type 2</option>
-          </select>
+          <Select
+            options={[
+              { value: 'Type 1', label: 'Type 1' },
+              { value: 'Type 2', label: 'Type 2' }
+            ]}
+            name="type"
+            classNamePrefix="select__inner"
+            placeholder="Select product type"
+          />
         </div>
         <div>
           <label htmlFor="collection">Collection</label>
-          <select name="collection" id="collection">
-            <option value="" disabled selected>
-              Select Collection
-            </option>
-            <option value="Category 1">Collection 1</option>
-            <option value="Category 2">Collection 2</option>
-          </select>
+          <Select
+            options={[
+              { value: 'Collection 1', label: 'Collection 1' },
+              { value: 'Collection 2', label: 'Collection 2' }
+            ]}
+            name="type"
+            classNamePrefix="select__inner"
+            placeholder="Select collection"
+          />
         </div>
       </div>
 

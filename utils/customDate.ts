@@ -8,13 +8,13 @@ export const customDate = (
   let _date
 
   if (unit === 'days') {
-    _date = dayjs(new Date()).subtract(duration, unit).format('DD MMM YYYY')
+    _date = dayjs(new Date()).subtract(duration, unit).format('DD/MM/YYYY')
   } else if (unit === 'years') {
-    _date = dayjs(new Date()).subtract(duration, unit).format('DD MMM YYYY')
+    _date = dayjs(new Date()).subtract(duration, unit).format('DD/MM/YYYY')
   } else if (unit === 'months') {
-    _date = dayjs(new Date()).subtract(duration, unit).format('DD MMM YYYY')
+    _date = dayjs(new Date()).subtract(duration, unit).format('DD/MM/YYYY')
   } else {
-    _date = dayjs(new Date()).format('DD MMM YYYY')
+    _date = dayjs(new Date()).format('DD/MM/YYYY')
   }
 
   return _date

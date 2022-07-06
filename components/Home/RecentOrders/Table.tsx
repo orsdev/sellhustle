@@ -136,10 +136,10 @@ const columns: ColumnsType<DataType> = [
 
       return (
         <span
-          className={`${color} font-xs p-1 px-2 rounded-md inline-block text-center`}
+          className={`${color} font-xs py-[3px] px-[7px] rounded-md inline-block text-center`}
           style={{
             minWidth: '80px',
-            fontSize: '13px'
+            fontSize: '12px'
           }}
         >
           {status}

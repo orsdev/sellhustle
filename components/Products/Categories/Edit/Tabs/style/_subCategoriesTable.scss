@@ -1,23 +1,7 @@
 .edit__subcategory {
   &__table {
-    @apply bg-white py-10 pb-8 px-7;
-    border-radius: 16px;
-
-    .ant-table {
-      thead th {
-        @apply text-secondary select-none;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 13.5px;
-        line-height: 15px;
-      }
-
-      tbody tr,
-      tbody td {
-        @apply text-primary-blue_dark_1;
-        font-weight: 600;
-      }
-    }
+    @apply bg-white py-10 pb-2;
+    border-radius: 6px;
 
     .ant-pagination-item-link {
       @apply flex justify-center items-center;

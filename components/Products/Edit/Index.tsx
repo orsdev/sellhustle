@@ -7,7 +7,7 @@ import Seo from './Seo'
 const EditProduct = () => {
   return (
     <div className="product__edit">
-      <div className="pt-12">
+      <div className="pt-6">
         <Header onSaveDraft={() => {}} onPublished={() => {}} />
       </div>
       <div className="w-full mt-5">

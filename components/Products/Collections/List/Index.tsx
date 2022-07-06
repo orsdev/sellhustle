@@ -1,14 +1,14 @@
 import Header from './Header'
-import ListTable from './ListTable'
+import TableList from './TableList'
 
 const CollectionsList = () => {
   return (
     <div className="collections__list">
-      <div className="pt-12">
+      <div className="pt-6">
         <Header onSaveDraft={() => {}} onPublished={() => {}} />
       </div>
-      <div className="w-full mt-5">
-        <ListTable />
+      <div className="w-full mt-5 bg-white">
+        <TableList />
       </div>
     </div>
   )

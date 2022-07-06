@@ -2,8 +2,11 @@
   width: 100%;
 
   textarea {
+    @apply text-primary-blue_dark_1 font-normal;
+    border-radius: 4px;
+
     &:focus {
-      border: 1px solid rgba(128, 128, 128, 0.774);
+      @apply border border-solid border-primary-blue_dark_1;
       box-shadow: none;
       outline: none;
     }

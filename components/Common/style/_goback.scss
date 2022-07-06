@@ -1,0 +1,9 @@
+.cm__goback {
+  button {
+    @apply flex items-center text-primary-blue_dark_1;
+
+    span {
+      font-weight: 400;
+    }
+  }
+}

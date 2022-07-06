@@ -18,3 +18,72 @@
     pointer-events: none;
   }
 }
+
+.edit__category {
+  &__table {
+    .ant-table {
+      thead th {
+        @apply text-secondary select-none;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13.2px;
+        line-height: 15px;
+
+        &-container::after {
+          background-color: transparent !important;
+          box-shadow: none !important;
+        }
+
+        &-container::before {
+          background-color: transparent !important;
+          box-shadow: none !important;
+        }
+
+        // Remove antd thead divider/separator
+        &::before {
+          display: none;
+        }
+      }
+
+      // Apply style to checked(selected) tr row
+      .ant-table-row-selected > td {
+        background: transparent;
+      }
+
+      // add padding antd select box on thead
+      .ant-table-selection {
+        padding-left: 16px;
+      }
+
+      // Apply style to tbody select boxes
+      td.ant-table-selection-column {
+        position: relative;
+        padding-left: 20px;
+      }
+
+      tr:hover {
+        box-shadow: none;
+        border: none;
+        background-color: transparent !important;
+      }
+
+      .ant-table-tbody > tr.ant-table-row:hover > td,
+      .ant-table-tbody > tr > td.ant-table-cell-row-hover {
+        background-color: transparent !important;
+      }
+
+      tbody {
+        tr,
+        td {
+          @apply text-primary-blue_dark_1;
+          font-size: 13px;
+          font-weight: 500;
+        }
+
+        tr:last-child td {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

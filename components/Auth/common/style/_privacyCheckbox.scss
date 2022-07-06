@@ -1,0 +1,17 @@
+.privacy__checkbox {
+  label {
+    &[data-labelerror='true'] {
+      p {
+        color: #f03738 !important;
+      }
+
+      span {
+        @apply text-secondary;
+      }
+
+      input {
+        outline: 1px solid #e85347 !important;
+      }
+    }
+  }
+}

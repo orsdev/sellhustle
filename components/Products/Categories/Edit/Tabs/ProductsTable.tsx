@@ -1,6 +1,6 @@
+import React, { useState } from 'react'
 import { Table } from 'antd'
 import type { ColumnsType } from 'antd/lib/table'
-import React, { useState } from 'react'
 
 const data = [
   {
@@ -37,21 +37,25 @@ const columns: ColumnsType<any[]> = [
   },
   {
     title: 'Subcategory',
-    dataIndex: 'subCategory',
-    sortDirections: ['descend'],
-    sorter: (a: any, b: any) => a.subCategory - b.subCategory
+    dataIndex: 'subCategory'
   },
   {
     title: 'No. of Products',
     dataIndex: 'noOfProducts',
     sortDirections: ['descend'],
-    sorter: (a: any, b: any) => a.noOfProducts - b.noOfProducts
+    className: 'text-center',
+    sorter: (a: any, b: any) => a.noOfProducts - b.noOfProducts,
+    render: (value) => {
+      return (
+        <>
+          <span className="pl-4">{value}</span>
+        </>
+      )
+    }
   }
 ]
 
 const ProductTable = () => {
-  const [current, setCurrent] = useState<number>(1)
-  const [pageSize] = useState<number>(10)
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([])
   const [dataSource] = useState<any[]>(data)
 
@@ -66,7 +70,7 @@ const ProductTable = () => {
 
   return (
     <div className="edit__product__table cm-border">
-      <header className="edit__product__header mb-7">
+      <header className="edit__product__header mb-4 px-7">
         <h3 className="edit__product__heading">All Products</h3>
         <button className="font-xs text-primary-blue_dark_2 text-right mt-4 base:mt-0">
           <i className="fa fa-plus mr-2" aria-hidden="true" />
@@ -77,14 +81,8 @@ const ProductTable = () => {
         rowSelection={rowSelection}
         columns={columns}
         dataSource={dataSource}
-        pagination={{
-          current,
-          className: 'px-2',
-          total: data.length,
-          showTotal: (total) => `1 - ${pageSize} of ${total} items`,
-          pageSize,
-          onChange: (page) => setCurrent(page)
-        }}
+        className="edit__category__table"
+        pagination={false}
         scroll={{ x: 500 }}
       />
     </div>

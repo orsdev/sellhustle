@@ -1,10 +1,8 @@
 import TableProducts from './Table'
-import TableHeader from './TableHeader'
 
 const ProductTable = () => {
   return (
-    <div className="products__table">
-      <TableHeader />
+    <div className="products__table pb-4">
       <TableProducts />
     </div>
   )

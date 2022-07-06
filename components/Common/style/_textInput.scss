@@ -1,6 +1,6 @@
 .common__text__field {
   &__input {
-    border-radius: 8px;
+    border-radius: 4px;
     height: 56px;
     font-size: 15px;
     width: 100%;
@@ -8,7 +8,7 @@
     color: rgba(0, 0, 0, 0.747);
 
     &:focus {
-      border: 1px solid rgba(128, 128, 128, 0.774);
+      @apply border border-solid border-primary-blue_dark_1;
       box-shadow: none;
       outline: none;
     }

@@ -8,7 +8,7 @@ import CategoriesTab from './Tabs/Index'
 const CategoryEdit = () => {
   return (
     <div className="category__edit">
-      <div className="pt-12">
+      <div className="pt-6">
         <Header onSaveDraft={() => {}} onPublished={() => {}} />
       </div>
       <div className="w-full mt-5">
