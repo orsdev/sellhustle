@@ -119,7 +119,7 @@ const columns: any = [
               }}
               onClick={() =>
                 Router.push(
-                  '/products/edit?id= ' + encodeURIComponent(record.id)
+                  '/products/edit?id= ' + encodeURIComponent(record.orderID)
                 )
               }
             >

@@ -37,10 +37,10 @@ const OrderDetails = () => {
             <Shipping />
           </div>
           <div className="w-full xl:w-[25%]">
-            <div className="bg-white cm-border rounded-2xl base:pl-4">
+            <div className="bg-white cm-border rounded-md base:pl-4">
               <OrderTimeline />
             </div>
-            <div className="bg-white cm-border rounded-2xl base:pl-4 mt-5">
+            <div className="bg-white cm-border rounded-md base:pl-4 mt-5">
               <Partners />
             </div>
           </div>

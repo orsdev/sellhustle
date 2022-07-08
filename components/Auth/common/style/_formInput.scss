@@ -54,6 +54,11 @@
       }
     }
 
+    &[data-error='true']:valid {
+      background: rgba(232, 83, 71, 0.1);
+      color: #f03738;
+    }
+
     &:focus {
       outline: none;
     }

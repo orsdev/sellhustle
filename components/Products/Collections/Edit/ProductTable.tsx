@@ -73,8 +73,6 @@ const columns: ColumnsType<DataTypes[]> = [
 ]
 
 const ProductTable = () => {
-  const [current, setCurrent] = useState<number>(1)
-  const [pageSize] = useState<number>(10)
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([])
   const [dataSource] = useState<any[]>(data)
 
@@ -118,15 +116,8 @@ const ProductTable = () => {
           }
         ]}
         dataSource={dataSource}
-        pagination={{
-          current,
-          className: 'px-2',
-          total: data.length,
-          showTotal: (total) => `1 - ${pageSize} of ${total} items`,
-          pageSize,
-          onChange: (page) => setCurrent(page)
-        }}
         scroll={{ x: 500 }}
+        pagination={false}
       />
     </div>
   )

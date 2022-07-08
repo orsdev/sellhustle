@@ -18,19 +18,31 @@
       @apply text-secondary select-none;
       font-style: normal;
       font-weight: 400;
-      font-size: 13.5px;
+      font-size: 13px;
       line-height: 15px;
+      background-color: transparent;
 
       &:last-child {
         text-align: center;
+      }
+
+      // Remove antd thead divider/separator
+      &::before {
+        display: none;
       }
     }
 
     tbody tr,
     tbody td {
       @apply text-primary-blue_dark_1;
-      font-weight: 600;
+      font-weight: 500;
       font-size: 13px;
+    }
+
+    tbody {
+      tr:last-child td {
+        border-bottom: none;
+      }
     }
   }
 

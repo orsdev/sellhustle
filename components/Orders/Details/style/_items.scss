@@ -25,6 +25,16 @@
     tbody td {
       font-size: 13px;
     }
+
+    &-container::after {
+      background-color: transparent !important;
+      box-shadow: none !important;
+    }
+
+    &-container::before {
+      background-color: transparent !important;
+      box-shadow: none !important;
+    }
   }
 
   &__table {

@@ -35,3 +35,13 @@
     background: #e8e8e8;
   }
 }
+
+.register {
+  .ant-input-affix-wrapper-focused {
+    box-shadow: none;
+  }
+
+  .ant-input-affix-wrapper:hover {
+    border: 1px solid #dbdfea;
+  }
+}

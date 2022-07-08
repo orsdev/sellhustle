@@ -113,7 +113,7 @@ const data: DataType[] = [
 
 const Items = () => {
   return (
-    <div className="details__item cm-border-radius">
+    <div className="details__item cm-border rounded-md">
       <h4 className="details__item__title mb-8">Order Items</h4>
       <Table
         columns={columns}

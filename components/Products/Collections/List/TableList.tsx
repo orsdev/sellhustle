@@ -1,3 +1,4 @@
+import Router from 'next/router'
 import TableContainerFive from '@/components/Common/Tables/TableContainerFive'
 
 type DataTypes = {
@@ -32,17 +33,24 @@ const columns: any = [
   {
     title: 'Collection Name',
     dataIndex: 'collectionName',
-    render: (value: string) => {
+    render: (value: string, record: any) => {
       return (
         <>
-          <span
-            className="capitalize font-xs text-primary-blue_dark_1 relative -left-3"
+          <button
+            className="capitalize font-xs text-primary-blue_dark_1 relative"
+            onClick={() =>
+              Router.push(
+                '/products/collections/edit?id= ' +
+                  encodeURIComponent(record.orderID)
+              )
+            }
             style={{
-              fontWeight: 400
+              fontWeight: 400,
+              left: '-12px'
             }}
           >
             {value}
-          </span>
+          </button>
         </>
       )
     }

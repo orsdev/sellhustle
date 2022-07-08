@@ -2,7 +2,7 @@ import React from 'react'
 
 const Shipping = () => {
   return (
-    <div className="details__shipping cm-border-radius">
+    <div className="details__shipping cm-border rounded-md">
       <h4 className="details__shipping__title mb-8">Shipping Details</h4>
       <div className="details__shipping__body">
         <p className="font-xs">Jessica Moore</p>

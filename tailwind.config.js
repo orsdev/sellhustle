@@ -54,7 +54,7 @@ module.exports = {
       },
       colors: {
         highlight: '#F5BD4F',
-        bg: '#F5F5F5',
+        bg: '#F5F6FA',
         secondary: 'rgba(11, 25, 45, 0.5)',
         accent: '#FBFBFB',
         primary: {

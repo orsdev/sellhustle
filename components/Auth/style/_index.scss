@@ -6,3 +6,19 @@
 @import '../Register/style';
 @import '../EmailVerification/style';
 @import '../Business/style';
+
+// Error Popover classes
+.email-popover-hidden,
+.password-popover-hidden,
+.category-popover-hidden,
+.name-popover-hidden,
+.country-popover-hidden {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+//add styling Ant design popover
+.ant-popover-inner {
+  border-radius: 8px;
+}

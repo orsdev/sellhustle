@@ -1,6 +1,6 @@
 .customer__location {
   @apply bg-white py-10 pb-8 px-7;
-  border-radius: 16px;
+  border-radius: 6px;
 
   &__heading {
     @apply text-primary-blue_dark_1;
@@ -16,6 +16,7 @@
     padding: 0 15px;
     color: rgba(0, 0, 0, 0.747);
     border: 1px solid rgba(0, 29, 110, 0.1);
+    background-color: #fff;
 
     &:focus {
       border: 1px solid rgba(128, 128, 128, 0.774);

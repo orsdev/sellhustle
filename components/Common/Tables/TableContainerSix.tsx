@@ -1,4 +1,5 @@
 import { FC, Key, useState } from 'react'
+import Router from 'next/router'
 import Image from 'next/image'
 import { Dropdown } from 'antd'
 import Table, { ColumnsType } from 'antd/lib/table'
@@ -12,7 +13,7 @@ type TableContainerProps = {
   pagination?: boolean
 }
 
-const TableContainerFour: FC<TableContainerProps> = ({
+const TableContainerSix: FC<TableContainerProps> = ({
   columns,
   data,
   headerTitle,
@@ -47,7 +48,7 @@ const TableContainerFour: FC<TableContainerProps> = ({
           {
             title: '',
             key: 'operation',
-            width: 98,
+            width: 50,
             className: 'table__container__action',
             render: (_, record) => {
               return (
@@ -60,7 +61,15 @@ const TableContainerFour: FC<TableContainerProps> = ({
                           className="table__container__dropdown"
                           key="dropdown"
                         >
-                          <button className="table__container__dropdown__item">
+                          <button
+                            className="table__container__dropdown__item"
+                            onClick={() =>
+                              Router.push(
+                                '/products/categories/edit?id= ' +
+                                  encodeURIComponent(record.orderID)
+                              )
+                            }
+                          >
                             <Image
                               src="/icons/edit.png"
                               alt="Edit Row"
@@ -88,12 +97,10 @@ const TableContainerFour: FC<TableContainerProps> = ({
                     }
                     placement="bottom"
                   >
-                    <div className="flex relative items-center">
-                      <div className="mb-1 relative  -right-[35px]">
-                        <button className="text-secondary ">
-                          <i className="fa fa-ellipsis-h" aria-hidden="true" />
-                        </button>
-                      </div>
+                    <div className="mb-1 relative text-right pr-5">
+                      <button className="text-secondary ">
+                        <i className="fa fa-ellipsis-h" aria-hidden="true" />
+                      </button>
                     </div>
                   </Dropdown>
                 </div>
@@ -135,4 +142,4 @@ const TableContainerFour: FC<TableContainerProps> = ({
   )
 }
 
-export default TableContainerFour
+export default TableContainerSix

@@ -1,7 +1,10 @@
+import { useState } from 'react'
 import { CountryDropdown } from 'react-country-region-selector'
 import TextInput from '@/components/Common/TextInput'
 
 const Location = () => {
+  const [countryValue, setCountryValue] = useState('')
+
   return (
     <div className="customer__location mt-5">
       <h3 className="customer__location__heading mb-10">Primary Address</h3>
@@ -49,8 +52,8 @@ const Location = () => {
             name="country"
             defaultOptionLabel="Select Country"
             priorityOptions={['US']}
-            value={''}
-            onChange={(value) => console.log(value)}
+            value={countryValue}
+            onChange={(value) => setCountryValue(value)}
           />
         </div>
         <TextInput
