@@ -1,7 +1,10 @@
 import Router from 'next/router'
 import Image from 'next/image'
+import Table, { ColumnsType } from 'antd/lib/table'
+import { useState } from 'react'
+import { Dropdown } from 'antd'
 import { currencyFormatter } from '@/utils/currencyFormatter'
-import TableContainerFour from '@/components/Common/Tables/TableContainerFour'
+import TableRender from '@/components/Common/Tables/TableRender'
 
 interface DataType {
   orderID: number | string
@@ -88,92 +91,193 @@ const data: DataType[] = [
   }
 ]
 
-const columns: any = [
-  {
-    title: 'Name',
-    dataIndex: 'title',
-    render: (title: string, record: any) => {
-      return (
-        <div className="flex items-center">
-          <div
-            className="mr-7"
-            style={{
-              width: '50px',
-              height: '50px'
-            }}
-          >
-            <Image
-              src={record.image}
-              alt={record.title}
-              height={50}
-              width={50}
-              objectFit="contain"
-            />
-          </div>
-          <div>
-            <button
-              type="button"
-              className="font-base text-primary-blue_dark_1"
-              style={{
-                fontWeight: 500
-              }}
-              onClick={() =>
-                Router.push(
-                  '/products/edit?id= ' + encodeURIComponent(record.orderID)
-                )
-              }
-            >
-              {title}
-            </button>
-          </div>
-        </div>
-      )
-    }
-  },
-  {
-    title: 'SKU',
-    dataIndex: 'sku',
-    width: 95,
-    render: (sku: string) => <span className="text-secondary">{sku}</span>
-  },
-  {
-    title: 'Stock',
-    dataIndex: 'stock',
-    width: 95,
-    render: (stock: string) => <span className="text-secondary">{stock}</span>
-  },
-  {
-    title: 'Price',
-    dataIndex: 'price',
-    width: 150,
-    render: (price: number) => {
-      return (
-        <>
-          <span className="font-xs text-primary-blue_dark_1">
-            {currencyFormatter(price, 'USD')}
-          </span>
-        </>
-      )
-    }
-  },
-  {
-    title: 'Category',
-    dataIndex: 'category',
-    width: 180,
-    render: (category: string) => (
-      <span className="text-secondary font-xs">{category}</span>
-    )
-  }
-]
-
 const TableProducts = () => {
+  const [dataSource, setDataSource] = useState<any[]>(data)
+
+  const handleDelete = (orderID: string | number) => {
+    const newData = dataSource.filter((item: any) => item.orderID !== orderID)
+    setDataSource(newData)
+  }
+
   return (
     <div className="bg-white">
-      <TableContainerFour
-        columns={columns}
-        data={data}
-        pagination={true}
-        headerTitle="All Products"
+      <TableRender
+        title="All Products"
+        render={({ rowSelection }) => {
+          const columns: ColumnsType<any[]> = [
+            {
+              title: <span className="relative -left-1">Name</span>,
+              dataIndex: 'title',
+              render: (title: string, record: any) => {
+                return (
+                  <div className="flex items-center relative -left-[22px] pl-3">
+                    <div
+                      className="mr-1"
+                      style={{
+                        width: '50px',
+                        height: '50px'
+                      }}
+                    >
+                      <Image
+                        src={record.image}
+                        alt={record.title}
+                        height={50}
+                        width={50}
+                        objectFit="contain"
+                      />
+                    </div>
+                    <div>
+                      <button
+                        type="button"
+                        className="font-base text-primary-blue_dark_1"
+                        style={{
+                          fontWeight: 500
+                        }}
+                        onClick={() =>
+                          Router.push(
+                            '/products/edit?id= ' +
+                              encodeURIComponent(record.orderID)
+                          )
+                        }
+                      >
+                        {title}
+                      </button>
+                    </div>
+                  </div>
+                )
+              }
+            },
+            {
+              title: 'SKU',
+              dataIndex: 'sku',
+              width: 95,
+              render: (sku: string) => (
+                <span className="text-secondary">{sku}</span>
+              )
+            },
+            {
+              title: 'Stock',
+              dataIndex: 'stock',
+              width: 95,
+              render: (stock: string) => (
+                <span className="text-secondary">{stock}</span>
+              )
+            },
+            {
+              title: 'Price',
+              dataIndex: 'price',
+              width: 150,
+              render: (price: number) => {
+                return (
+                  <>
+                    <span className="font-xs text-primary-blue_dark_1">
+                      {currencyFormatter(price, 'USD')}
+                    </span>
+                  </>
+                )
+              }
+            },
+            {
+              title: 'Category',
+              dataIndex: 'category',
+              width: 180,
+              render: (category: string) => (
+                <span className="text-secondary font-xs">{category}</span>
+              )
+            },
+            {
+              title: '',
+              key: 'operation',
+              width: 98,
+              className: 'cm__table__action',
+              render: (_, record: any) => {
+                return (
+                  <div className="text-center">
+                    <Dropdown
+                      trigger={['click']}
+                      overlay={
+                        <>
+                          <div className="cm__table__dropdown" key="dropdown">
+                            <button className="cm__table__dropdown__item">
+                              <Image
+                                src="/icons/edit.png"
+                                alt="Edit Row"
+                                height={16}
+                                width={16}
+                                objectFit="contain"
+                              />
+                              <span className="ml-2">Edit Selected</span>
+                            </button>
+                            <button
+                              className="cm__table__dropdown__item"
+                              onClick={() => handleDelete(record.orderID)}
+                            >
+                              <Image
+                                src="/icons/remove.png"
+                                alt="Delete Row"
+                                height={16}
+                                width={16}
+                                objectFit="contain"
+                              />
+                              <span className="ml-2">Remove Selected</span>
+                            </button>
+                          </div>
+                        </>
+                      }
+                      placement="bottom"
+                    >
+                      <div className="flex relative items-center">
+                        <div className="mb-1 relative  -right-[35px]">
+                          <button className="text-secondary ">
+                            <i
+                              className="fa fa-ellipsis-h"
+                              aria-hidden="true"
+                            />
+                          </button>
+                        </div>
+                      </div>
+                    </Dropdown>
+                  </div>
+                )
+              }
+            }
+          ]
+
+          return (
+            <Table
+              rowSelection={rowSelection}
+              className="cm__table__hover"
+              columns={columns}
+              rowKey="orderID"
+              dataSource={dataSource}
+              scroll={{ x: 985 }}
+              pagination={{
+                total: Math.floor(dataSource.length * 4),
+                showSizeChanger: false,
+                pageSize: 10,
+                position: ['bottomLeft'],
+                className: 'cm__table__pagination pl-2 py-5 pt-1',
+                itemRender: (_: any, type: string, originalElement: any) => {
+                  if (type === 'prev') {
+                    return (
+                      <button className=" cm__table__pagination__prev">
+                        Prev
+                      </button>
+                    )
+                  }
+                  if (type === 'next') {
+                    return (
+                      <button className="cm__table__pagination__next">
+                        Next
+                      </button>
+                    )
+                  }
+                  return originalElement
+                }
+              }}
+            />
+          )
+        }}
       />
     </div>
   )

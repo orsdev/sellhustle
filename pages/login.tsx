@@ -1,26 +1,16 @@
 import Head from 'next/head'
-import AuthLayout from '@/components/Auth/AuthLayout'
-import FormTitle from '@/components/Auth/common/FormTitle'
-import LoginForm from '@/components/Auth/Login/Form'
-import LoginHeader from '@/components/Auth/Login/Header'
+import AuthWrapper from '@/components/Auth/AuthWrapper'
+import Login from '@/components/Auth/Login/Login'
 
-const Login = () => {
+const index = () => {
   return (
-    <>
+    <AuthWrapper>
       <Head>
-        <title>Sel Hustle | Login </title>
+        <title>Login | Sel Hustle </title>
       </Head>
-      <AuthLayout>
-        <div>
-          <LoginHeader />
-          <div className="mt-8">
-            <FormTitle title="Sign In" />
-            <LoginForm />
-          </div>
-        </div>
-      </AuthLayout>
-    </>
+      <Login />
+    </AuthWrapper>
   )
 }
 
-export default Login
+export default index

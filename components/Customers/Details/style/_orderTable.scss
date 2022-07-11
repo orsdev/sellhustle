@@ -1,8 +1,8 @@
 .customers__order__table {
   border-radius: 6px;
   padding-bottom: 0;
-  padding-top: 30px;
   background-color: #fff;
+  border-top: none;
 
   .customers__order__title {
     @apply text-primary-blue_dark_1;

@@ -1,4 +1,4 @@
-.table__container {
+.cm__table {
   @apply bg-transparent pb-0 mb-5;
 
   // Ant Design Style Overide
@@ -9,7 +9,7 @@
       border-spacing: 0 1px !important;
     }
 
-    &-wrapper.table__hover {
+    &-wrapper.cm__table__hover {
       tr:hover {
         box-shadow: 0px 0px 1px 3px rgba(221, 210, 255, 0.42);
         border: none;
@@ -20,7 +20,7 @@
       }
     }
 
-    &-wrapper.table__nohover {
+    &-wrapper.cm__table__nohover {
       tr:hover {
         box-shadow: none;
         border: none;
@@ -60,16 +60,10 @@
       line-height: 15px;
       padding-top: 10px;
       padding-bottom: 10px;
-      border-top: 1px solid rgba(0, 29, 110, 0.1);
 
       // Remove antd thead divider/separator
       &::before {
         display: none;
-      }
-
-      // Apply style to antd thead orderID
-      &.ant-table-cell:nth-child(2) {
-        padding-left: 5px;
       }
 
       // add padding antd select box on thead
@@ -79,15 +73,6 @@
     }
 
     tbody {
-      // Apply style to antd tbody orderID
-      .ant-table-cell:nth-child(2) {
-        button {
-          position: relative;
-          left: -20px;
-          word-break: break-all;
-        }
-      }
-
       // Apply style to tbody select boxes
       td.ant-table-selection-column {
         position: relative;
@@ -100,12 +85,12 @@
       }
     }
 
-    tbody tr:nth-child(even) .table__container__name {
+    tbody tr:nth-child(even) .cm__table__name {
       background-color: #e2fbf47e;
       color: #39e4b9;
     }
 
-    tbody tr:nth-child(odd) .table__container__name {
+    tbody tr:nth-child(odd) .cm__table__name {
       background: #e1edfe;
       color: #2b7dfb;
     }
@@ -119,10 +104,6 @@
     .ant-table-cell-fix-right-first::after {
       box-shadow: inset -10px 0 8px -8px rgb(0 0 0 / 2%) !important;
     }
-  }
-
-  &__action {
-    background-color: white;
   }
 
   &__dropdown {
@@ -187,6 +168,7 @@
 
   &__pagination__prev,
   &__pagination__next {
+    @apply text-secondary;
     min-width: 32px;
     height: 32px;
     border: 1px solid #d9d9d9;
@@ -194,6 +176,10 @@
     padding: 0 6px;
     color: rgba(11, 25, 45, 0.5);
     font-size: 12px;
+  }
+
+  &__pagination__prev {
+    @apply ml-5;
   }
 
   &__pagination {

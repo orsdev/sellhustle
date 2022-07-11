@@ -1,7 +1,8 @@
-import { ColumnsType } from 'antd/lib/table'
+import Table, { ColumnsType } from 'antd/lib/table'
 import { currencyFormatter } from '@/utils/currencyFormatter'
 import { customDate } from '@/utils/customDate'
-import TableContainerThree from '@/components/Common/Tables/TableContainerThree'
+import { useState } from 'react'
+import TableRender from '@/components/Common/Tables/TableRender'
 
 const data: any[] = [
   {
@@ -90,16 +91,16 @@ const data: any[] = [
   }
 ]
 
-const columns: ColumnsType<any> = [
+const columns: ColumnsType<any[]> = [
   {
-    title: 'Order ID',
+    title: <span className="relative -left-5">Order ID</span>,
     dataIndex: 'orderID',
     width: 100,
     render: (id: string) => {
       return (
         <button
           type="button"
-          className="font-base text-primary-blue_dark_1 ml-3 z-50 relative"
+          className="font-base text-primary-blue_dark_1 ml-3 z-50 relative -left-[30px]"
         >
           #{id}
         </button>
@@ -185,24 +186,66 @@ const columns: ColumnsType<any> = [
     }
   },
   {
-    title: 'Payment Method',
+    title: <span className="relative left-4">Payment Method</span>,
     dataIndex: 'paymentMethod',
     width: 120,
     className: 'text-center',
     render: (payment: string) => (
       <span className="text-secondary">{payment}</span>
     )
+  },
+  {
+    title: '',
+    key: 'operation',
+    width: 50,
+    className: 'bg-white'
   }
 ]
 
 const OrderTable = () => {
+  const [dataSource] = useState<any[]>(data)
+
   return (
     <div className="customers__order__table mt-5 cm-border">
-      <TableContainerThree
-        columns={columns}
-        data={data}
-        pagination={true}
-        headerTitle="Customer Order"
+      <TableRender
+        title="Customer Order"
+        showFilters={false}
+        render={({ rowSelection }) => {
+          return (
+            <Table
+              rowSelection={rowSelection}
+              className="cm__table__nohover"
+              columns={columns}
+              rowKey="orderID"
+              dataSource={dataSource}
+              scroll={{ x: 985 }}
+              pagination={{
+                total: Math.floor(dataSource.length * 4),
+                showSizeChanger: false,
+                pageSize: 10,
+                position: ['bottomLeft'],
+                className: 'cm__table__pagination pl-2',
+                itemRender: (_: any, type: string, originalElement: any) => {
+                  if (type === 'prev') {
+                    return (
+                      <button className=" cm__table__pagination__prev">
+                        Prev
+                      </button>
+                    )
+                  }
+                  if (type === 'next') {
+                    return (
+                      <button className="cm__table__pagination__next">
+                        Next
+                      </button>
+                    )
+                  }
+                  return originalElement
+                }
+              }}
+            />
+          )
+        }}
       />
     </div>
   )

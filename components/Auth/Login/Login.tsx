@@ -5,93 +5,40 @@ import Router from 'next/router'
 import { Popover } from 'antd'
 import AuthHeader from '../common/AuthHeader'
 import FormHeader from '../common/FormHeader'
-import { EmailInput, PasswordInput, TextInput } from '../common/FormInputs'
-import PrivacyCheckbox from '../common/PrivacyCheckbox'
+import { EmailInput, PasswordInput } from '../common/FormInputs'
 import SubmitButton from '../common/SubmitButton'
 
-interface RegisterFormikValues {
-  fullName: string
+interface LoginFormikValues {
   email: string
-  checked: boolean
   password: string
 }
 
 const ValidationSchema = Yup.object({
-  fullName: Yup.string().required('Please enter your full name.'),
   email: Yup.string()
     .email(
       'The email you entered is incorrect. Please enter a valid email address to continue'
     )
     .required('Email is required'),
-  checked: Yup.boolean().oneOf([true, null]),
   password: Yup.string().required('enter your password')
 })
 
-const Register = () => {
-  const formik = useFormik<RegisterFormikValues>({
+const Login = () => {
+  const formik = useFormik<LoginFormikValues>({
     initialValues: {
-      fullName: '',
       email: '',
-      checked: false,
       password: ''
     },
     validationSchema: ValidationSchema,
-    onSubmit: (values: RegisterFormikValues) => {
-      Router.push('/email-verification')
+    onSubmit: (values: LoginFormikValues) => {
+      Router.push('/dashboard')
     }
   })
 
   return (
-    <div className="register">
+    <div className="login">
       <AuthHeader />
-      <FormHeader heading="Register" text="Create New Sel Hustle Account" />
+      <FormHeader heading="Login" text="Welcome back to Sel Hustle" />
       <form onSubmit={formik.handleSubmit}>
-        {/* Full Name */}
-        <Popover
-          placement="topLeft"
-          trigger={'hover'}
-          overlayStyle={{
-            paddingBottom: '25px'
-          }}
-          overlayClassName={
-            formik.touched.fullName &&
-            (formik.errors.fullName?.length as number) > 0
-              ? 'name-popover-visible bottom-1'
-              : 'name-popover-hidden'
-          }
-          content={
-            <>
-              {formik.touched.fullName &&
-                (formik.errors.fullName?.length as number) > 0 && (
-                  <div
-                    style={{
-                      maxWidth: '350px'
-                    }}
-                  >
-                    <p className="font-xs text-primary-blue_dark_1">
-                      {formik.errors.fullName}
-                    </p>
-                  </div>
-                )}
-            </>
-          }
-        >
-          <div>
-            <TextInput
-              labelTitle="Name"
-              name="fullName"
-              placeholder="Enter your name"
-              value={formik.values.fullName}
-              hasError={
-                formik.touched.fullName &&
-                (formik.errors.fullName?.length as number) > 0
-              }
-              onChange={formik.handleChange}
-            />
-          </div>
-        </Popover>
-        <div className="mt-7" />
-
         {/* Email */}
         <Popover
           placement="topLeft"
@@ -181,28 +128,25 @@ const Register = () => {
             />
           </div>
         </Popover>
+        <p className="font-xs text-secondary mt-4 text-right">
+          Forgot your passwod?
+          <Link href="/forgot-password">
+            <a className="text-primary-blue_dark_2 font-semibold inline-block ml-2">
+              Reset here?
+            </a>
+          </Link>
+        </p>
         <div className="mt-7" />
-        <PrivacyCheckbox
-          hasError={
-            formik.touched.checked &&
-            (formik.errors.checked?.length as number) > 0
-          }
-          onChange={(event) =>
-            formik.setFieldValue('checked', event.target.checked)
-          }
-          checked={formik.values.checked}
-        />
+        <SubmitButton title="Login" />
         <div className="mt-7" />
-        <SubmitButton title="Register Now" />
-        <div className="mt-7" />
-        <h4 className="register__overline text-secondary">
+        <h4 className="login__overline text-secondary">
           <span className="font-xs">or</span>
         </h4>
         <div className="mt-4" />
         <p className="text-secondary text-center font-base">
-          Already have an account?
-          <Link href="/login">
-            <a className="ml-1 text-primary-blue_dark_2">Sign in instead</a>
+          Don&lsquo;t have an account?
+          <Link href="/registration">
+            <a className="ml-1 text-primary-blue_dark_2">Create new here</a>
           </Link>
         </p>
       </form>
@@ -210,4 +154,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default Login

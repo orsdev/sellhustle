@@ -1,0 +1,33 @@
+.employee__list__header {
+  @apply flex flex-col xs:flex-row justify-between mb-6 xs:items-center;
+
+  button {
+    @apply self-end mt-3 xs:mt-0;
+    width: 131px;
+    height: 46px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s;
+  }
+
+  &__button-import {
+    background-color: #fff;
+    margin-right: 10px;
+    color: #616161;
+
+    &:hover {
+      background-color: lighten(#fff, 5%);
+    }
+  }
+
+  &__button-add {
+    color: #fff;
+    background: #0544dd;
+    border: 1px solid rgba(0, 29, 110, 0.1);
+
+    &:hover {
+      background-color: lighten(#0544dd, 5%);
+    }
+  }
+}

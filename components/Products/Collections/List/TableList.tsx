@@ -1,5 +1,7 @@
 import Router from 'next/router'
-import TableContainerFive from '@/components/Common/Tables/TableContainerFive'
+import { useState } from 'react'
+import Table, { ColumnsType } from 'antd/lib/table'
+import TableRender from '@/components/Common/Tables/TableRender'
 
 type DataTypes = {
   orderID: string
@@ -29,9 +31,9 @@ const data: DataTypes[] = [
   }
 ]
 
-const columns: any = [
+const columns: ColumnsType<any> = [
   {
-    title: 'Collection Name',
+    title: <span className="relative -left-3">Collection Name </span>,
     dataIndex: 'collectionName',
     render: (value: string, record: any) => {
       return (
@@ -93,17 +95,57 @@ const columns: any = [
         </>
       )
     }
+  },
+  {
+    title: '',
+    key: 'operation',
+    width: 70
   }
 ]
 
 const TableList = () => {
+  const [dataSource] = useState<any[]>(data)
+
   return (
     <div className="bg-white">
-      <TableContainerFive
-        columns={columns}
-        data={data}
-        pagination={true}
-        headerTitle="All Collections"
+      <TableRender
+        title="All Collections"
+        render={({ rowSelection }) => {
+          return (
+            <Table
+              rowSelection={rowSelection}
+              className="cm__table__hover"
+              columns={columns}
+              rowKey="orderID"
+              dataSource={dataSource}
+              scroll={{ x: 985 }}
+              pagination={{
+                total: Math.floor(dataSource.length * 4),
+                showSizeChanger: false,
+                pageSize: 10,
+                position: ['bottomLeft'],
+                className: 'cm__table__pagination pl-2 py-5 pt-1',
+                itemRender: (_: any, type: string, originalElement: any) => {
+                  if (type === 'prev') {
+                    return (
+                      <button className=" cm__table__pagination__prev">
+                        Prev
+                      </button>
+                    )
+                  }
+                  if (type === 'next') {
+                    return (
+                      <button className="cm__table__pagination__next">
+                        Next
+                      </button>
+                    )
+                  }
+                  return originalElement
+                }
+              }}
+            />
+          )
+        }}
       />
     </div>
   )

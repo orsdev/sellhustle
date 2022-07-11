@@ -1,2 +1,47 @@
-@import './header';
-@import './form';
+.login__overline {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  span {
+    position: relative;
+    z-index: 10;
+    display: block;
+    width: 80px;
+    background-color: white;
+  }
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    flex: 1;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 1px;
+    content: '';
+    background: #e8e8e8;
+  }
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    flex: 1;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 1px;
+    content: '';
+    background: #e8e8e8;
+  }
+}
+
+.login {
+  .ant-input-affix-wrapper-focused {
+    box-shadow: none;
+  }
+
+  .ant-input-affix-wrapper:hover {
+    border: 1px solid #dbdfea;
+  }
+}

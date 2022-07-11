@@ -1,24 +1,16 @@
 import Head from 'next/head'
-import AuthLayout from '@/components/Auth/AuthLayout'
-import FormTitle from '@/components/Auth/common/FormTitle'
-import ResetForm from '@/components/Auth/Reset/Form'
+import AuthWrapper from '@/components/Auth/AuthWrapper'
+import ResetForm from '@/components/Auth/Reset/Reset'
 
-const Login = () => {
+const index = () => {
   return (
-    <>
+    <AuthWrapper>
       <Head>
-        <title>Sel Hustle | Forgot Password </title>
+        <title>Forgot Password | Sel Hustle </title>
       </Head>
-      <AuthLayout>
-        <div>
-          <div className="mt-8">
-            <FormTitle title="Reset your password" borderDirection="right" />
-            <ResetForm />
-          </div>
-        </div>
-      </AuthLayout>
-    </>
+      <ResetForm />
+    </AuthWrapper>
   )
 }
 
-export default Login
+export default index
