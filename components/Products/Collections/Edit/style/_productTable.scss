@@ -32,6 +32,11 @@
       }
     }
 
+    &-container::after {
+      background-color: transparent !important;
+      box-shadow: none !important;
+    }
+
     tbody tr,
     tbody td {
       @apply text-primary-blue_dark_1;

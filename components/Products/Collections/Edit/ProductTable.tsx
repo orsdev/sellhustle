@@ -93,7 +93,6 @@ const ProductTable = () => {
           ...columns,
           {
             title: 'Actions',
-            fixed: 'right',
             width: 90,
             render: (_, record) => {
               return (
@@ -116,7 +115,7 @@ const ProductTable = () => {
           }
         ]}
         dataSource={dataSource}
-        scroll={{ x: 500 }}
+        scroll={{ x: 570 }}
         pagination={false}
       />
     </div>

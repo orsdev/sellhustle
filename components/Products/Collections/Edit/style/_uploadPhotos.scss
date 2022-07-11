@@ -7,4 +7,25 @@
     font-size: 18px;
     font-weight: 600;
   }
+
+  &__upload {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+    grid-template-rows: repeat(2, 190px);
+    gap: 6px;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: 160px 160px 160px;
+      gap: 10px;
+    }
+
+    @media (max-width: 620px) {
+      justify-content: center;
+      grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+    }
+
+    @media (max-width: 430px) {
+      grid-template-columns: 1fr;
+    }
+  }
 }

@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <header className="employee__list__header">
       <h1 className="text-left font-semibold text-lg text-primary-blue_dark_1">
-        Employee List
+        User List
       </h1>
       <div className="flex items-center">
         <button className="employee__list__header__button-import">

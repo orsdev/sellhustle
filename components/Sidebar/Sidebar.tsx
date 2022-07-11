@@ -56,7 +56,7 @@ const BusinessNavigation = [
   },
   {
     icon: '/icons/user-',
-    title: 'Employee',
+    title: 'Users',
     route: '/employee',
     subRoute: '/employee'
   }

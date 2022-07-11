@@ -127,11 +127,11 @@ const EmployeeList = () => {
       <Header />
       <div className="bg-white">
         <TableRender
-          title="All Employees"
+          title="All Users"
           render={({ rowSelection, selectedRowKeys, setSelectedRowKeys }) => {
             const columns = [
               {
-                title: <span className="relative -left-2">Employee Name </span>,
+                title: <span className="relative -left-2">User Name </span>,
                 dataIndex: 'fullName',
                 width: 220,
                 render: (fullName: string, record: any) => {
@@ -152,7 +152,7 @@ const EmployeeList = () => {
                             }}
                             onClick={() =>
                               Router.push(
-                                '/employee/details?id= ' +
+                                '/user/details?id= ' +
                                   encodeURIComponent(record.orderID)
                               )
                             }
@@ -344,7 +344,7 @@ const EmployeeList = () => {
                                 className="cm__table__dropdown__item"
                                 onClick={() =>
                                   Router.push(
-                                    '/employee/details?id= ' +
+                                    '/user/details?id= ' +
                                       encodeURIComponent(record.orderID)
                                   )
                                 }

@@ -1,5 +1,5 @@
 import Select from 'react-select'
-import Dropzone from '@/components/Common/Dropzone'
+import ImageUpload from '@/components/Common/ImageUpload'
 
 const Organization = () => {
   return (
@@ -49,9 +49,22 @@ const Organization = () => {
 
       {/* Media */}
       <h3 className="product__edit__organization__heading mt-11">Image</h3>
-      <p className="text-primary-blue_dark_1 my-7 text-xs">Upload Photos</p>
-      <div className="mt-7">
-        <Dropzone />
+      <p className="text-primary-blue_dark_1 my-7 mb-5 text-xs">
+        Upload Photos
+      </p>
+      <div className="product__edit__media">
+        <div className="media__first">
+          <ImageUpload />
+        </div>
+        <div className="media__second">
+          <ImageUpload />
+        </div>
+        <div className="media__third">
+          <ImageUpload />
+        </div>
+        <div className="media__fourth">
+          <ImageUpload />
+        </div>
       </div>
     </div>
   )
