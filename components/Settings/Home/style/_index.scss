@@ -1,0 +1,35 @@
+.settings__home {
+  &__body {
+    @apply mt-5 bg-white px-8 py-12;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    min-height: 48px;
+    width: 48px;
+    height: 48px;
+    background: #f5f6fa;
+    border-radius: 3.2px;
+    margin-right: 20px;
+  }
+
+  &__item {
+    display: flex;
+    cursor: pointer;
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+    justify-content: space-between;
+    gap: 20px;
+    row-gap: 60px;
+
+    @media (max-width: 400px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

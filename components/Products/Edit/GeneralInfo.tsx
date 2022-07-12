@@ -1,13 +1,26 @@
-import { useState } from 'react'
-import { TagsInput } from 'react-tag-input-component'
+import { KeyboardEvent, useState } from 'react'
 import { InputNumber } from 'antd'
 import TextInput from '@/components/Common/TextInput'
+import TagInput from '@/components/Common/Tags'
 
 const GeneralInfo = () => {
-  const [tags, setTags] = useState<string[]>([])
   const [price, setPrice] = useState<string | number>('')
+  const [tags, setTags] = useState<string[]>([])
 
-  const onChange = (value: number | string) => {
+  const removeTagData = (indexToRemove: number) => {
+    setTags([...tags.filter((_, index) => index !== indexToRemove)])
+  }
+
+  const addTagData = (event: KeyboardEvent<HTMLInputElement>) => {
+    const target = event.target as HTMLInputElement
+
+    if (target.value !== '') {
+      setTags([...tags, target.value])
+      target.value = ''
+    }
+  }
+
+  const onChangePrice = (value: number | string) => {
     setPrice(value)
   }
 
@@ -42,11 +55,10 @@ const GeneralInfo = () => {
               Tags
             </label>
             <div>
-              <TagsInput
-                value={tags}
-                onChange={setTags}
-                name="tags"
-                placeHolder="Enter tags"
+              <TagInput
+                tags={tags}
+                addTag={addTagData}
+                removeTag={removeTagData}
               />
             </div>
             <small>Press enter key to separate tags</small>
@@ -61,7 +73,7 @@ const GeneralInfo = () => {
                 `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
               }
               parser={(value) => value!.replace(/\$\s?|(,*)/g, '')}
-              onChange={onChange}
+              onChange={onChangePrice}
             />
           </div>
         </div>

@@ -7,11 +7,13 @@
   // Overide ant design tabs style
   .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     @apply text-primary-blue_dark_1;
+    opacity: 1;
   }
 
   // Overide ant design tabs style
   .ant-tabs-tab .ant-tabs-tab-btn {
     @apply text-primary-blue_dark_1;
+    opacity: 0.6;
   }
 
   // Overide ant design tabs style

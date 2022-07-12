@@ -1,0 +1,20 @@
+.settings__header {
+  &__container {
+    @apply flex flex-col xs:flex-row justify-between items-center;
+  }
+  &__btn {
+    @apply mt-4 xs:mt-0;
+
+    button {
+      @apply block bg-primary-blue_light_3 text-white;
+      width: 88px;
+      height: 38px;
+      border-radius: 6px;
+
+      &:hover {
+        transition: all 0.3s;
+        filter: hue-rotate(30deg);
+      }
+    }
+  }
+}

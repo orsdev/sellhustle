@@ -1,0 +1,12 @@
+@import './header';
+@import './storeDetails';
+@import './storeAddress';
+@import './formats';
+@import './currency';
+
+.settings__general {
+  &__wrapper {
+    @apply bg-white py-9 px-7;
+    border-radius: 6px;
+  }
+}

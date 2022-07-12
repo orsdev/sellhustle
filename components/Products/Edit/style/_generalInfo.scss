@@ -29,50 +29,6 @@
     font-size: 14px;
   }
 
-  .input__tags {
-    input {
-      width: 100%;
-      font-size: 12px;
-      padding: 5px 0;
-
-      &::placeholder {
-        color: #001d6e;
-        opacity: 0.6;
-        font-size: 15px;
-      }
-    }
-  }
-  // tag styling
-  .rti--container {
-    @apply text-primary-blue_dark_1 font-normal;
-    border-radius: 4px;
-    min-height: 56px;
-    font-size: 15px;
-    width: 100%;
-    padding: 0 15px;
-    color: rgba(0, 0, 0, 0.747);
-    border: 1px solid rgba(0, 29, 110, 0.1);
-
-    &:focus-within {
-      @apply border border-solid border-primary-blue_dark_1;
-    }
-
-    .rti--tag {
-      @apply text-primary-blue_dark_2;
-      min-width: 65px;
-      min-height: 33px;
-      background: #eef5ff;
-      border-radius: 6px;
-      margin: 5px;
-      font-size: 12px;
-      padding: 2px 4px;
-
-      span {
-        margin-right: 4px;
-      }
-    }
-  }
-
   // Pricing styling
   .ant-input-number {
     border-radius: 4px !important;

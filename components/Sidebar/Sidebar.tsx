@@ -39,11 +39,6 @@ const MenuNavigation = [
     icon: '/icons/avatar-',
     title: 'Customers',
     route: '/customers'
-  },
-  {
-    icon: '/icons/settings-',
-    title: 'Settings',
-    route: '/settings'
   }
 ]
 
@@ -59,6 +54,14 @@ const BusinessNavigation = [
     title: 'Users',
     route: '/user',
     subRoute: '/user'
+  }
+]
+
+const SettingsNavigation = [
+  {
+    icon: '/icons/settings-',
+    title: 'Settings',
+    route: '/settings'
   }
 ]
 
@@ -238,6 +241,41 @@ const Sidebar = () => {
           <h6 className="sidebar__navigation__title">Business</h6>
           <ul className="sidebar__navigation__ul">
             {BusinessNavigation.map(({ route, title, icon }) => (
+              <li
+                className={`sidebar__navigation__list ${
+                  router.pathname.includes(route)
+                    ? 'sidebar__navigation__list__active'
+                    : ''
+                }
+                  `}
+                key={title}
+              >
+                <Link href={route}>
+                  <a className="sidebar__navigation__link">
+                    <Image
+                      src={
+                        icon +
+                        `${
+                          router.pathname.includes(route)
+                            ? 'dark.png'
+                            : 'light.png'
+                        }`
+                      }
+                      alt={title}
+                      height={20}
+                      width={20}
+                      objectFit="contain"
+                    />
+                    <span className="inline-block ml-4">{title}</span>
+                  </a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Settings Navigation */}
+          <ul className="sidebar__navigation__ul mt-10">
+            {SettingsNavigation.map(({ route, title, icon }) => (
               <li
                 className={`sidebar__navigation__list ${
                   router.pathname.includes(route)
