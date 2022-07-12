@@ -1,0 +1,27 @@
+.user__security {
+  @apply bg-white;
+  padding: 30px 25px;
+  padding-right: 50px;
+  height: 100%;
+
+  @media (max-width: 992px) {
+    border: none;
+  }
+
+  .ant-switch {
+    &-checked {
+      @apply bg-primary-blue_dark_2;
+    }
+  }
+
+  .btn {
+    @apply block;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    min-height: 38px;
+    background: #0544dd;
+    color: #fff;
+    border: 1px solid rgba(0, 29, 110, 0.1);
+    border-radius: 4px;
+  }
+}

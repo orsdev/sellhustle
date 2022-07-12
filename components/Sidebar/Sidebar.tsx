@@ -57,8 +57,8 @@ const BusinessNavigation = [
   {
     icon: '/icons/user-',
     title: 'Users',
-    route: '/employee',
-    subRoute: '/employee'
+    route: '/user',
+    subRoute: '/user'
   }
 ]
 
@@ -238,7 +238,15 @@ const Sidebar = () => {
           <h6 className="sidebar__navigation__title">Business</h6>
           <ul className="sidebar__navigation__ul">
             {BusinessNavigation.map(({ route, title, icon }) => (
-              <li className="sidebar__navigation__list" key={title}>
+              <li
+                className={`sidebar__navigation__list ${
+                  router.pathname.includes(route)
+                    ? 'sidebar__navigation__list__active'
+                    : ''
+                }
+                  `}
+                key={title}
+              >
                 <Link href={route}>
                   <a className="sidebar__navigation__link">
                     <Image

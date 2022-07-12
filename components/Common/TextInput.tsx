@@ -1,5 +1,5 @@
 import { spawn } from 'child_process'
-import { FC } from 'react'
+import { CSSProperties, FC } from 'react'
 
 type TextInputProps = {
   onChange: (event: any) => void
@@ -8,6 +8,7 @@ type TextInputProps = {
   labelTitle: string
   placeholder?: string
   isOptional?: boolean
+  style?: CSSProperties
   value?: string
 }
 
@@ -17,6 +18,7 @@ const TextInput: FC<TextInputProps> = ({
   name,
   value,
   labelTitle,
+  style = {},
   isOptional = false,
   placeholder = ''
 }: TextInputProps) => {
@@ -38,6 +40,7 @@ const TextInput: FC<TextInputProps> = ({
           placeholder={placeholder}
           onBlur={onBlur}
           value={value}
+          style={style}
         />
       </div>
     </div>
