@@ -24,31 +24,28 @@ function getItem(
   } as MenuItem
 }
 
-const MenuNavigation = [
+const DashboardNavigation = [
   {
     icon: '/icons/dashboard-',
     title: 'Dashboard',
     route: '/dashboard'
+  }
+]
+
+const MenuNavigation = [
+  {
+    icon: '/icons/avatar-',
+    title: 'Customers',
+    route: '/customers'
   },
   {
     icon: '/icons/orders-',
     title: 'Orders',
     route: '/orders'
-  },
-  {
-    icon: '/icons/avatar-',
-    title: 'Customers',
-    route: '/customers'
   }
 ]
 
 const BusinessNavigation = [
-  {
-    icon: '/icons/shipment-',
-    title: 'Shipment',
-    route: '/shipment',
-    subRoute: '/shipment'
-  },
   {
     icon: '/icons/user-',
     title: 'Users',
@@ -133,11 +130,12 @@ const Sidebar = () => {
           </div>
         </div>
 
-        <div className="sidebar__element relative">
+        <div className="sidebar__element">
           {/* Menu Navigation */}
           <h6 className="sidebar__navigation__title mt-4">Menu</h6>
+
           <ul className="sidebar__navigation__ul">
-            {MenuNavigation.map(({ route, title, icon }) => (
+            {DashboardNavigation.map(({ route, title, icon }) => (
               <li
                 className={`sidebar__navigation__list ${
                   router.pathname.includes(route)
@@ -234,6 +232,39 @@ const Sidebar = () => {
             />
           </div>
 
+          <ul className="sidebar__navigation__ul">
+            {MenuNavigation.map(({ route, title, icon }) => (
+              <li
+                className={`sidebar__navigation__list ${
+                  router.pathname.includes(route)
+                    ? 'sidebar__navigation__list__active'
+                    : ''
+                }
+                  `}
+                key={title}
+              >
+                <Link href={route}>
+                  <a className="sidebar__navigation__link">
+                    <Image
+                      src={
+                        icon +
+                        `${
+                          router.pathname.includes(route)
+                            ? 'dark.png'
+                            : 'light.png'
+                        }`
+                      }
+                      alt={title}
+                      height={18}
+                      width={18}
+                    />
+                    <span className="inline-block ml-4">{title}</span>
+                  </a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+
           {/* Divider */}
           <hr className="my-4 md:min-w-full block" />
 
@@ -274,7 +305,7 @@ const Sidebar = () => {
           </ul>
 
           {/* Settings Navigation */}
-          <ul className="sidebar__navigation__ul mt-10">
+          <ul className="sidebar__navigation__ul sidebar__navigation__ul__footer">
             {SettingsNavigation.map(({ route, title, icon }) => (
               <li
                 className={`sidebar__navigation__list ${

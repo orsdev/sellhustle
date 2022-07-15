@@ -1,7 +1,15 @@
 .profile__header {
-  @apply flex items-center justify-between relative py-2;
+  @apply flex items-center justify-between py-2;
+  position: fixed;
   border-right: none;
   border-left: none;
+  z-index: 999;
+  height: 54.5px;
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    width: calc(100% - 224px);
+  }
 
   &__mobile {
     @apply xs:w-[200px];

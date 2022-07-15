@@ -1,14 +1,14 @@
 import { Collapse } from 'antd'
 import { CaretRightOutlined } from '@ant-design/icons'
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 
 const { Panel } = Collapse
 
 type Props = {
   title: string
-  content: string
+  children: ReactNode
 }
-const CustomCollapse: FC<Props> = ({ title, content }) => {
+const CustomCollapse: FC<Props> = ({ title, children }) => {
   return (
     <div className="custom__collapse">
       <Collapse
@@ -22,7 +22,7 @@ const CustomCollapse: FC<Props> = ({ title, content }) => {
           header={<h3 className="custom__collapse__heading">{title}</h3>}
           key="1"
         >
-          <p className="font-xs">{content}</p>
+          {children}
         </Panel>
       </Collapse>
     </div>

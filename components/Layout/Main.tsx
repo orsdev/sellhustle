@@ -28,7 +28,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
           <ProfileHeader
             onChange={(event) => console.log(event.target.value)}
           />
-          {children}
+          <div className="relative top-[54.5px]">{children}</div>
         </div>
       </MainLayoutContext.Provider>
     </>

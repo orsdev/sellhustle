@@ -180,4 +180,9 @@
   &__navigation__menu {
     @apply md:flex-col md:min-w-full flex flex-col list-none;
   }
+
+  &__navigation__ul__footer {
+    position: absolute;
+    bottom: 5px;
+  }
 }

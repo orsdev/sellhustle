@@ -46,7 +46,7 @@ const columns: ColumnsType<DataType> = [
   {
     title: 'Weight',
     dataIndex: 'weight',
-    width: 70
+    width: 100
   },
   {
     title: 'Price',
@@ -64,11 +64,12 @@ const columns: ColumnsType<DataType> = [
   {
     title: 'Quantity',
     dataIndex: 'quantity',
-    width: 80
+    width: 100
   },
   {
     title: 'Total',
     dataIndex: 'total',
+    width: 100,
     render: (_, record) => {
       return (
         <>
@@ -124,9 +125,16 @@ const Items = () => {
           <div className="details__item__footer">
             <div className="details__item__footer__content">
               <h5 className="font-xs  mb-3">Order Note</h5>
-              <p className="font-xs">
+              <p
+                className="font-xs"
+                style={{
+                  fontSize: '12px'
+                }}
+              >
                 Ship all the ordered items together by friday and I send you an
-                email please check out that email. Thanks!
+                <span className="block">
+                  email please check out that email. Thanks!
+                </span>
               </p>
             </div>
             <div className="details__item__footer__total">
